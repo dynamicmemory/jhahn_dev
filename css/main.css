@@ -22,10 +22,10 @@ body {
     cursor: pointer; 
     user-select: none;
     color: #c3c3c3;
-    transition: color 1s, text-shadow 1.5s;
+    transition: color 2s, text-shadow 2s;
 }
 
 #memoryvoid-title:hover {
-    color: #ee33ee;
-    text-shadow: 0 0 25px #00CC00;
+    color: #efefef;
+    text-shadow: 0 0 50px #00CC00;
 }
