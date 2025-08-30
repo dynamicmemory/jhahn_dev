@@ -3,16 +3,52 @@
   <head>
     <title>Void of memories</title>
     <meta charset="utf-8">
-
+    
+<!-- Google Fonts: Exo 2 for headings, Roboto for body -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/reset.css"> 
     <link rel="stylesheet" type="text/css" href="css/main.css"> 
 
     <script src="js/main.js"></script>
   </head>
   <body>
+
+      <!- Title and nav for the website ->
+      <header>
+          <nav class="navbar">
+              <div class="nav-left">
+                  <h1 id="memoryvoid-title">Memory Void</h1>
+                  <button id="menu-toggle" aria-label="Toggle menu">☰</button>
+              </div>
+
+              <div class="nav-right">
+                  <a id="writings" href="writings">Writings</a>
+                  <a id="memories" href="memories">Memories</a>
+                  <a id="projects" href="projects">Projects</a>
+                  <a id="about" href="about">About</a>
+              </div>
+          </nav>
+      </header>
+
     <div id="main-container">
-      <h1 id="memoryvoid-title">Memory Void</h1>
+
+      <!- Main section on the home page ->
+      <div id="center-col">
+          <section id="blurb">
+            <h2>Hi, i'm _ _ _ _.</h2>
+            <!- TODO: Generate from db ->
+            <p>
+            Welcome to my void of memories where I share projects i've built or 
+            things i'm currently working on as well as write about stuff that 
+            interests me.
+            <br><br>
+            I'm currently studying computer science majoring in Cyber security, 
+            data science and software development. I would like to one day contribute 
+            or build something significant for the world.
+            </p>
+          </section>
+      </div>
+
     </div>
   </body>
 <html>
-
