@@ -1,7 +1,6 @@
 h1 {
     font-size: 3rem;    
     font-family: 'Exo 2', sans-serif;
-    text-shadow: 0 0 5px #00fff7;
 }
 
 h2 {
@@ -12,7 +11,7 @@ h2 {
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    background-color: #0a0a0f;
+    background-color: #111a0f;
     color: #c3c3c3;
 }
 
@@ -35,12 +34,14 @@ body {
     justify-self: normal;
     cursor: pointer; 
     user-select: none;
-    color: #c3c3c3;
+    color: #00fff7;
     transition: color 1s, text-shadow 1s;
+    animation: neonPulseDull 3s ease-in-out infinite;
+
 }
 
 #memoryvoid-title:hover {
-    color: #00ffea;
+    color: #c3c3c3;
     text-shadow: 0 0 10px #00fff7, 0 0 20px #00b8b8, 0 0 40px #00fff7;}
 
 #menu-toggle {
@@ -100,4 +101,49 @@ body {
 #blurb p {
     font-size: 1.5rem;
     padding: 20px 0 0 0;
+}
+
+/* NEON GLOWS*/
+
+.neon-cyan {
+    color: #00fff7;
+    text-shadow: 
+        0 0 2px rgba(0, 255, 247, 0.5),
+        0 0 5px rgba(0, 184, 184, 0.4),
+        0 0 10px rgba(0, 255, 247, 0.3);
+    animation: neonPulseDull 4s ease-in-out infinite;
+}
+
+.neon-magenta {
+    color: #ff6fff;
+    text-shadow: 
+        0 0 2px rgba(255, 111, 255, 0.5),
+        0 0 5px rgba(255, 63, 255, 0.4),
+        0 0 10px rgba(199, 0, 199, 0.3);
+    animation: neonPulseDull 4s ease-in-out infinite;
+}
+
+.neon-green {
+    color: #39FF14;
+    text-shadow: 
+        0 0 2px rgba(57, 255, 20, 0.5),
+        0 0 5px rgba(0, 255, 127, 0.4),
+        0 0 10px rgba(0, 255, 0, 0.3);
+    animation: neonPulseDull 4s ease-in-out infinite;
+}
+
+/* Keyframes for slow, subtle pulse */
+@keyframes neonPulseDull {
+    0%, 100% {
+        text-shadow:
+            0 0 2px currentColor,
+            0 0 5px currentColor,
+            0 0 10px currentColor;
+    }
+    50% {
+        text-shadow:
+            0 0 4px currentColor,
+            0 0 10px currentColor,
+            0 0 20px currentColor;
+    }
 }
