@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase / 
+
+# Don't rewrite requests to real files or dirs 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# All other requests go to index.html
+RewriteRule . /index.html [L]
