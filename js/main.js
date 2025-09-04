@@ -1,34 +1,51 @@
+import { home } from './pages/home.js';
+import { writings } from './pages/writings.js';
+import { memories } from './pages/memories.js';
+import { projects } from './pages/projects.js';
+import { about } from './pages/about.js';
+
 document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("main-container");
-    const links = document.querySelectorAll(".nav-right a");
 
-    // load page into main-containers
-    async function loadPage(page) {
-        try {
-            const res = await fetch(`/pages/${page}.html`);
-            if (!res.ok) throw new Error("Page not found");
-            const html = await res.text();
-            container.innerHTML = html;
-        }
-        catch (err) {
-            container.innerHTML = `<h2>404</h2><p>Page not found</p>`;
-            console.error(err);
-        }
-    }
-
-    links.forEach(link => {
-        link.addEventListener("click", e => {
-            e.preventDefault();
-            const page = link.getAttribute("id");
-            history.pushState({ page }, "", `/${page}`);
-            loadPage(page);
+    // Load the header dynamically
+    fetch("partials/header.html")
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("site-header").innerHTML = html;
         });
-    });
+    
+    const routes = {
+        "/": home, 
+        "/writings": writings,
+        "/memories": memories,
+        "/projects": projects,
+        "/about": about 
+    };
 
-    window.addEventListener("popstate", e => {
-        const page = e.state?.page || "home";
-        loadPage(page);
-    });
+    function loadRoute() {
+        const path = location.hash.replace('#', '') || '/';
+        const page = routes[path] || home;
+        document.getElementById("main-container").innerHTML = page();
+    
 
-    loadPage("home");
+    // Handles the population of the articles
+    if (path === "/writings") {
+        import("./pages/writings.js").then(module => {
+        // test code 
+            const testFrag = [
+                {title: "Why agi will never happen", body: "Sam fraud bank..altman"},
+                {title: "Controversial opinion", body: "This is my controversial"},
+                {title: "Title of tiel ", body: "peter tiel? or epter tiel?"},
+                {title: "Musk a scammer?", body: "elon van ge lone"}
+            ];
+            module.populateFragments(testFrag);
+
+        // backend code
+        //     fetch("/api/fragments")
+        //         .then(res => res.json())
+        //         .then(fragments => module.populateFragments(fragments));
+        });
+    }
+}
+    window.addEventListener("hashchange", loadRoute);
+    loadRoute();
 });

@@ -1,0 +1,33 @@
+#frag-container {
+    display: flex; 
+    gap: 20px;
+    padding: 20px;
+}
+
+#frag-left-col {
+    width: 300px;
+    border-right: 1px solid #555;
+    padding-right: 10px;
+}
+
+#frag-left-col li {
+    font-size: 1.5rem;
+    margin: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+
+#frag-left-col li:hover {
+    background-color: grey;
+}
+
+#frag-center-col {
+    text-align: center;
+    flex: 1;
+    padding-left: 10px;
+}
+
+#frag-body {
+    padding: 10px;
+}
+ 
