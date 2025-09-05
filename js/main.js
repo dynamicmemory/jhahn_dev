@@ -12,7 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(html => {
             document.getElementById("site-header").innerHTML = html;
         });
-    
+
+    // Website routes for hash routing
     const routes = {
         "/": home, 
         "/writings": writings,
@@ -21,31 +22,32 @@ document.addEventListener("DOMContentLoaded", () => {
         "/about": about 
     };
 
+    // Loads the content for the specific route 
     function loadRoute() {
         const path = location.hash.replace('#', '') || '/';
         const page = routes[path] || home;
         document.getElementById("main-container").innerHTML = page();
-    
 
-    // Handles the population of the articles
-    if (path === "/writings") {
-        import("./pages/writings.js").then(module => {
-        // test code 
-            const testFrag = [
-                {title: "Why agi will never happen", body: "Sam fraud bank..altman"},
-                {title: "Controversial opinion", body: "This is my controversial"},
-                {title: "Title of tiel ", body: "peter tiel? or epter tiel?"},
-                {title: "Musk a scammer?", body: "elon van ge lone"}
-            ];
-            module.populateFragments(testFrag);
 
-        // backend code
-        //     fetch("/api/fragments")
-        //         .then(res => res.json())
-        //         .then(fragments => module.populateFragments(fragments));
-        });
+        // Handles the population of the articles
+        if (path === "/writings") {
+            writingsRoute()
+        }
+        else if (path === "/projects") {
+            // add projects route 
+        }
     }
-}
+
     window.addEventListener("hashchange", loadRoute);
     loadRoute();
 });
+
+// Handles the writings route 
+function writingsRoute() {
+    import("./pages/writings.js").then(module => {
+        // backend code
+        fetch("/api/fragments.php")
+            .then(res => res.json())
+            .then(fragments => module.populateFragments(fragments));
+    });
+}
