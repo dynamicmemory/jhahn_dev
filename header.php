@@ -5,6 +5,7 @@
         <meta charset="utf-8">
 
         <link rel="icon" href="/img/favicon/mv-ghost.png" type="image/png">
+
         <!-- Google Fonts: Exo 2 for headings, Roboto for body -->
         <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/reset.css"> 
@@ -15,7 +16,6 @@
     </head>
     <body>
         <div id="site-header">
-
             <header>
                 <nav class="navbar">
                     <div class="nav-left">
@@ -24,34 +24,10 @@
                     </div>
 
                     <div class="nav-right">
-                        <a id="writings" href="/writings">Writings</a>
-                        <a id="projects" href="/projects">Projects</a>
-                        <a id="about" href="/about">About</a>
+                        <a id="writings" href="/writings.php">Writings</a>
+                        <a id="projects" href="/projects.php">Projects</a>
+                        <a id="about" href="/about.php">About</a>
                     </div>
                 </nav>
             </header>
-
-
         </div>
-        <div id="main-container">
-
-            <div id="center-col">
-                <section id="blurb">
-                    <h2>Hi, I'm <span class="neon-green">emVee.</span></h2>
-                    <p>
-                    Welcome to the <span class="neon-cyan">Memory Void</span> - a space
-                    where my projects, interests and fragmented thoughts float through
-                    the digital ether.
-                    <br><br>
-                    I'm currently studying computer science, majoring in Cyber Security,
-                    Data Science, and Software Development. My goal is to work on systems
-                    that benefit humanity.
-                    </p>
-                </section>
-            </div>
-
-
-
-        </div>
-    </body>
-    <html>
