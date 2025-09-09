@@ -1,0 +1,3 @@
+# What is life
+
+In the beginning I created myself....
