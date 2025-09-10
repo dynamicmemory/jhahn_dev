@@ -1,0 +1,8 @@
+#about-container {
+    align-self: center;
+    justify-content: center;
+}
+
+#about-container p {
+    padding-top: 10px;
+}

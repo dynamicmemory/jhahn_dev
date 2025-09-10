@@ -27,7 +27,6 @@
     user-select: none;
     border-bottom: solid 1px rgb(255,255,255,0.1);
     padding: 10px;
-
 }
 
 #frag-left-col li:hover {
@@ -57,22 +56,7 @@
     padding: 10px;
 }
 
-
-/* mobile adjustments */
-@media (max-width: 768px) {
-  #frag-left-col {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background: #111;
-    z-index: 100;
-
-    transform: translateX(-100%); /* hidden by default */
-  }
-
-  #frag-left-col.active {
-    transform: translateX(0); /* shown when active */
-  }
+small {
+    font-size: 1rem;
+    font-style: italic;
 }
-

@@ -2,6 +2,7 @@
 require "Parsedown.php";
 $Parsedown = new Parsedown();
 
+// Get the dir and all the md files 
 $dir = __DIR__ . "/writings";
 $files = glob("$dir/*.md");
 
@@ -9,14 +10,21 @@ $files = glob("$dir/*.md");
 $writings = [];
 foreach ($files as $file) {
     $slug = basename($file, ".md");
-    $writings[$slug] = $file;
+    // Get the date of creation
+    $writings[$slug] = [
+        "path" => $file,
+        "time" => filemtime($file)
+    ];
 }
+
+// Sorth the articles from newest to oldest for display
+uasort($writings, fn($a, $b) => $b["time"] <=> $a["time"]);
 
 $slug = $_GET["id"] ?? array_key_first($writings);
 
 $content = "";
 if (isset($writings[$slug])) {
-    $content = file_get_contents($writings[$slug]);
+    $content = file_get_contents($writings[$slug]["path"]);
 }
 else {
     $content = "File not found";
@@ -29,8 +37,11 @@ else {
     <ul>
     <?php foreach($writings as $s => $a): ?>
       <li> 
-      <a href="?id=<?= $s ?>" class="<?= $s==$slug?'active':'' ?>"><?= ucfirst($s) ?></a>
-      
+        <a href="?id=<?= $s ?>" class="<?= $s==$slug?'active':'' ?>">
+          <?= ucfirst($s) ?>
+        <br>
+        <small><?= date("F j, Y", $a["time"]) ?></small>
+        </a> 
       </li> 
   <?php endforeach; ?>
     </ul>
