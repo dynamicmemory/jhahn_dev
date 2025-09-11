@@ -1,16 +1,16 @@
 #frag-container {
     display: flex;
-    /* max-width: 1500px; */
     align-items: flex-start;
+    justify-content: flex-start;
     gap: 50px;
     padding: 20px;
+    font-size: 1.5rem;
 }
 
 #frag-left-col {
     width: 250px;
     flex-shrink: 0;
-    /* padding-right: 10px; */
-    transition: transform 0.3s ease;
+    transition: width 0.3s, transform 0.3s ease;
     background-color: rgb(50, 50, 50, 0.4);
     height: 100vh;
     border-radius: 20px;
@@ -18,6 +18,8 @@
 
 #frag-left-col.hidden {
     transform: translateX(-100%);
+    /* width: 0; */
+    /* overflow: hidden; */
 }
 
 #frag-left-col li {
@@ -50,6 +52,9 @@
     justify-content: center;
     flex: 1;
     padding-left: 10px;
+    /* max-width: 500px; */
+    margin: 0 auto;
+    /* transition: margin 0.3s ease, max-width 0.3s ease; */
 }
 
 #frag-body {

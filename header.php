@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="css/reset.css"> 
         <link rel="stylesheet" type="text/css" href="css/main.css"> 
         <link rel="stylesheet" type="text/css" href="css/writings.css"> 
+        <link rel="stylesheet" type="text/css" href="css/project.css"> 
         <link rel="stylesheet" type="text/css" href="css/about.css"> 
 
         <script src="js/main.js"></script>
