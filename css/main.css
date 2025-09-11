@@ -1,160 +1,38 @@
 h1 {
-    font-size: 3rem;    
-    font-family: 'Exo 2', sans-serif;
-}
-
-h2 {
-    font-size: 2.5rem;
-    font-family: 'Exo 2', sans-serif;
-}
-
-h3 {
-    font-size: 2rem;
-    font-family: 'Exo 2', sans-serif;
+    font-size: 3rem;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    background-color: #111a0f;
-    color: #c3c3c3;
-}
-
-/* NAVBAR styling*/
-.navbar {
     display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-    /* border-bottom: 1px solid #333333; */
-}
-
-/* left side */
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-#memoryvoid-title {
-    justify-self: normal;
-    cursor: pointer; 
-    user-select: none;
-    color: #00fff7;
-    transition: color 1s, text-shadow 1s;
-    animation: neonPulseDull 3s ease-in-out infinite;
-
-}
-
-#memoryvoid-title:hover {
-    color: #c3c3c3;
-    text-shadow: 0 0 10px #00fff7, 0 0 20px #00b8b8, 0 0 40px #00fff7;
-}
-
-#memoryvoid-title a {
-    text-decoration: none;
-    color: inherit;
-}
-
-#menu-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #c3c3c3;
-    cursor: pointer;
-}
-
-#menu-toggle:hover {
-    color: #e3e3e3;
-}
-
-/* right side */
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.nav-right a {
-    align-items: right;
-    margin-left: 1.5rem;
-    text-decoration: none;
-    font-family: "Exo 2", sans-serif;
-    font-size: 1rem; 
-    color: #c3c3c3;
-    text-shadow: 0 0 5px #ff6fff, 0 0 10px #ff3fff;
-    transition: color 0.5s, text-shadow 1s;
-}
-
-.nav-right a:hover {
-    color: #ff6fff;
-    text-shadow: 0 0 10px #ff6fff, 0 0 20px #ff3fff, 0 0 30px #c700c7
-}
-
-
-/* MAIN CONTAINER styling */
-#main-container {
-    display: flex;
-    /* justify-content: center; */
     flex-direction: column;
-    /* align-items: center;  */
-    min-height: 100vh;
+    font-size: 16px;
+    height: 100vh;
+    max-width: 1200px;
+    width: 100%;
     margin: auto;
 }
 
-
-#center-col {
-    align-self: center;
-    max-width: 700px;
-    margin: 100px 0 0 0;
-}
-
-
-#blurb p {
+nav {
+    display: flex;
+    justify-content: space-between;
     font-size: 1.5rem;
-    padding: 20px 0 0 0;
+    padding: 10px;
 }
 
-/* NEON GLOWS*/
-
-.neon-cyan {
-    color: #00fff7;
-    text-shadow: 
-        0 0 2px rgba(0, 255, 247, 0.5),
-        0 0 5px rgba(0, 184, 184, 0.4),
-        0 0 10px rgba(0, 255, 247, 0.3);
-    animation: neonPulseDull 4s ease-in-out infinite;
+.nav-text a {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.neon-magenta {
-    color: #ff6fff;
-    text-shadow: 
-        0 0 2px rgba(255, 111, 255, 0.5),
-        0 0 5px rgba(255, 63, 255, 0.4),
-        0 0 10px rgba(199, 0, 199, 0.3);
-    animation: neonPulseDull 4s ease-in-out infinite;
+
+
+#main-container {
+    font-size: 1.5rem;
+    margin: auto;
+    max-width: 800px;
 }
 
-.neon-green {
-    color: #39FF14;
-    text-shadow: 
-        0 0 2px rgba(57, 255, 20, 0.5),
-        0 0 5px rgba(0, 255, 127, 0.4),
-        0 0 10px rgba(0, 255, 0, 0.3);
-    animation: neonPulseDull 4s ease-in-out infinite;
-}
-
-/* Keyframes for slow, subtle pulse */
-@keyframes neonPulseDull {
-    0%, 100% {
-        text-shadow:
-            0 0 2px currentColor,
-            0 0 5px currentColor,
-            0 0 10px currentColor;
-    }
-    50% {
-        text-shadow:
-            0 0 4px currentColor,
-            0 0 10px currentColor,
-            0 0 20px currentColor;
-    }
+#main-container p {
+    margin: 20px 0;
 }
