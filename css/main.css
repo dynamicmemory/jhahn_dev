@@ -25,8 +25,6 @@ nav {
     text-decoration: none;
 }
 
-
-
 #main-container {
     font-size: 1.5rem;
     margin: auto;
@@ -35,4 +33,9 @@ nav {
 
 #main-container p {
     margin: 20px 0;
+}
+
+footer {
+    margin-top: auto;
+    text-align: center;
 }
