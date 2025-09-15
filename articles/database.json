@@ -1,0 +1,13 @@
+[
+    {
+        "title": "Example post",
+        "date": "2025-08-25",
+        "content": "articles/example1.md"
+    },
+
+    {
+        "title": "Example post 2",
+        "date": "2025-08-26",
+        "content": "articles/example2.md"
+    }
+]
