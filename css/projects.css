@@ -1,0 +1,21 @@
+#container {
+    display: flex;
+    margin: auto, 0;
+    width: 100%;
+}
+
+/* controls Project and contact page main area */
+#center-container{
+    font-size: 2rem;
+    margin: 100px;
+}
+
+#center-container p {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+#center-container li {
+    margin: 20px;
+}

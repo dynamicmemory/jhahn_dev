@@ -2,12 +2,24 @@
     {
         "title": "Example post",
         "date": "2025-08-25",
-        "content": "articles/example1.md"
+        "content": "articles/000-example1.md"
     },
 
     {
-        "title": "Example post 2",
-        "date": "2025-08-26",
-        "content": "articles/example2.md"
+        "title": "A long way to go",
+        "date": "2025-11-04",
+        "content": "articles/001-tues_04_11_25.md"
+    },
+
+    {
+        "title": "Looking Forward",
+        "date": "2025-11-05",
+        "content": "articles/002-wed_05_11_25.md"
+    },
+
+    {
+        "title": "Focus",
+        "date": "2025-11-06",
+        "content": "articles/003-Focus.md"
     }
 ]

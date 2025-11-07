@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="/css/reset.css">
         <link rel="stylesheet" type="text/css" href="/css/main.css">
         <link rel="stylesheet" type="text/css" href="/css/thoughts.css">
+        <link rel="stylesheet" type="text/css" href="/css/projects.css">
         <script src="js/main.js"></script>
     </head>
     <body>
@@ -20,7 +21,11 @@
                 </div>
                 <div id="right-nav">
                     <h1 class="nav-text">
-                        <a href="/thoughts.php">(&Thoughts)</a> 
+                        <!-- Turning off articles for the moment, devlog instead-->
+                        <!--<a href="/thoughts.php">(&Thoughts)</a> -->
+                        <a href="/log.php">(&Log)</a> 
+                        <a href="/projects.php">(&Projects)</a> 
+                        <a href="/contact.php">(&Contact)</a> 
                     </h1>
                 </div>
             </nav>

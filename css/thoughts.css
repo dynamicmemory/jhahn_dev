@@ -12,8 +12,10 @@
     overflow-y: auto;
 }
 
+/* Main log body text */
 #center-col {
     flex: 1;
+    font-size: 2rem;
 }
 
 #thoughts-title, #thoughts-date, #thoughts-body {

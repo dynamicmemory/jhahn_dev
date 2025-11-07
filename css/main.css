@@ -1,5 +1,5 @@
 h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 html {
@@ -11,7 +11,7 @@ body {
     flex-direction: column;
     font-size: 16px;
     height: 100vh;
-    max-width: 1200px;
+    max-width: 1800px;
     width: 100%;
     margin: auto;
 }
@@ -27,6 +27,10 @@ nav {
     color: inherit;
     cursor: pointer;
     text-decoration: none;
+}
+
+#right-nav a {
+    font-size: 2.5rem;
 }
 
 #main-container {
