@@ -6,7 +6,7 @@ $contact_info = ["Phone Number: That seems like a bad idea to put here.",
 ?>
 
 <?php include "header.php" ?>
-<div id="container">
+<div id="contact-container">
     <div id="center-container">
         <p>Contact info</p>
         <ul>

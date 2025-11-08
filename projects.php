@@ -10,7 +10,7 @@ $current_projects = ["Void (C) - Text editor of the future",
 ?>
 
 <?php include "header.php" ?>
-<div id="container">
+<div id="project-container">
     <div id="center-container">
         <p>Current Projects</p>
         <ul> 
