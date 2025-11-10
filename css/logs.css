@@ -1,28 +1,34 @@
-#thoughts-container {
+#logs-container{
     display: flex;
     gap: 10px;
+    margin: 0;
     /* height: 100vh; */
     font-size: 1.25rem;
 }
 
-#left-col {
+#logs-left-col {
     padding-top: 10px;
     padding-left: 10px;
     width: 200px;
     overflow-y: auto;
+    text-decoration: none;
 }
 
 /* Main log body text */
-#center-col {
+#logs-center-col {
     flex: 1;
     font-size: 2rem;
 }
 
-#thoughts-title, #thoughts-date, #thoughts-body {
+#logs-title, #logs-date, #logs-body {
     padding: 10px;
 }
 
-#thoughts-content {
+#logs-date {
+    font-size: 1.5rem;
+}
+
+#logs-content {
     margin: 0 auto;
     width: 100%;
 }

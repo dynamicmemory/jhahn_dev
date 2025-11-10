@@ -7,9 +7,9 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="/css/reset.css">
         <link rel="stylesheet" type="text/css" href="/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/thoughts.css">
-        <link rel="stylesheet" type="text/css" href="/css/projects.css">
-        <link rel="stylesheet" type="text/css" href="/css/contact.css">
+        <link rel="stylesheet" type="text/css" href="/css/logs.css">
+     <!--   <link rel="stylesheet" type="text/css" href="/css/projects.css">
+        <link rel="stylesheet" type="text/css" href="/css/contact.css"> -->
         <script src="js/main.js"></script>
     </head>
     <body>

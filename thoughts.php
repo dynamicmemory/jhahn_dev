@@ -33,8 +33,8 @@ else {
 ?>
 
 <?php include "header.php" ?>
-<div id="thoughts-container">
-    <div id="left-col">
+<div class="main-container" id="logs-container">
+    <div class="left-col" id="logs-left-col">
         <ul>
         <!--For every article in the db, loop through and display the name and date-->
         <?php  
@@ -53,15 +53,15 @@ else {
         </ul>
     </div>
 
-    <div id="center-col">
-        <div id="thoughts-content">
-            <h1 id="thoughts-title">
+    <div class="center-col" id="logs-center-col">
+        <div id="logs-content">
+            <h1 id="logs-title">
             <?php echo htmlspecialchars($clickedArticle['title']);?>
             </h1>
-            <p id="thoughts-date">Published - 
+            <p id="logs-date">Published - 
             <?php echo htmlspecialchars($clickedArticle['date']);?>
             </p>
-            <p id="thoughts-body"><?php echo $content;?>
+            <p id="logs-body"><?php echo $content;?>
             </p>
         </div>
     </div>

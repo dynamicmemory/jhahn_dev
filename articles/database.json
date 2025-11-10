@@ -21,5 +21,11 @@
         "title": "Focus",
         "date": "2025-11-06",
         "content": "articles/003-Focus.md"
+    },
+
+    {
+        "title": "Today is a day",
+        "date": "2025-11-08",
+        "content": "articles/004-today-is-a-good-day.md"
     }
 ]

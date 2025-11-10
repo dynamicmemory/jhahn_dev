@@ -1,10 +1,6 @@
-h1 {
-    font-size: 3.5rem;
-}
+h1 { font-size: 3.5rem }
 
-html {
-    overflow-y: scroll;
-}
+html { overflow-y: scroll; }
 
 body {
     display: flex;
@@ -16,6 +12,7 @@ body {
     margin: auto;
 }
 
+/* -------- HEADER SPECIFIC ---------- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -32,14 +29,18 @@ nav {
 #right-nav a {
     font-size: 2.5rem;
 }
+/* -------- HEADER SPECIFIC END---------- */
 
-#main-container {
+
+/* Holds all left and center col content as well as home page about me*/
+.main-container {
     font-size: 1.5rem;
     margin: auto;
     max-width: 800px;
 }
 
-#main-container p {
+/* Probably should go, currently controlling the about me paragraph */
+.main-container p {
     margin: 20px 0;
 }
 

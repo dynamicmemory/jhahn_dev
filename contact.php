@@ -6,8 +6,10 @@ $contact_info = ["Phone Number: That seems like a bad idea to put here.",
 ?>
 
 <?php include "header.php" ?>
-<div id="contact-container">
-    <div id="center-container">
+<div class="main-container" id="contact-container">
+    <div class="left-col" id="contact-left-col">
+    </div>
+    <div class="center-col" id="contact-center-col">
         <p>Contact info</p>
         <ul>
             <?php foreach($contact_info as $contact): ?>
