@@ -27,5 +27,15 @@
         "title": "Today is a day",
         "date": "2025-11-08",
         "content": "articles/004-today-is-a-good-day.md"
-    }
+    },
+
+{
+    "title": "WebFrights!",
+    "date": "2025-11-11",
+    "content": "articles/005-the-state-of-things.md"
+
+}
+
+
+
 ]

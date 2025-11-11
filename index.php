@@ -5,7 +5,7 @@
 <?php include "header.php" ?>
 
 <div class="main-container" id="home-container">
-    <h1>Hello, I'm Hahn.</h1>
+    <h1>Hello, I'm No one.</h1>
     <p>
     Welcome to the Memory Void - a space where my projects, interests 
     and thoughts float through the digital ether.

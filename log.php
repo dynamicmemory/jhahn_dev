@@ -33,7 +33,7 @@ else {
 ?>
 
 <?php include "header.php" ?>
-<div class="main-container" id="logs-container">
+<div id="logs-container">
     <div class="left-col" id="logs-left-col">
         <ul>
         <!--For every article in the db, loop through and display the name and date-->

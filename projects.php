@@ -5,7 +5,7 @@ $projects = ["Void" => "Written in C, Text editor of the future... today!",
     "Algorithmic Trading System" => "Written in Python, End-to-end trading platform with trend modeling and automation.",
     "Latent" => "Written in C#, A skeleton ERP software.",
     "MemoryVoid" => "Written in html/css/PHP, This very website project.",
-    "Promag" => "Written in Undecided, An upcoming project still in concept phase."
+    "Cache" => "Written in C#, A Kanban style productivity manager designed to store projects, ideas, plans outside of the brain."
 ];
 
 $key = $_GET['project'] ?? null;
@@ -14,7 +14,7 @@ if ($key && isset($projects[$key])) {
     $content = $projects[$key];
 }
 else {
-    $content = $projects[0];
+    $content = $projects["Void"];
 }
 
 ?>
