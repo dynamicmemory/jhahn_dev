@@ -1,0 +1,25 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    function wrapCharInSpan(id) {
+        const e = document.getElementById(id);
+        if (!e) return; 
+
+        // Split up every char and place it in an individual span
+        e.innerHTML = e.textContent
+            .split('')
+            .map(c => c === ' ' ? ' ' :`<span class="char">${c}</span>`)
+            .join('');
+
+        // Randomise the length of the duration
+        e.querySelectorAll('.char').forEach(c => {
+            // c.style.animationDuration = `${10 + Math.random()*10}s`;
+            c.style.animationDuration = `${10 + Math.random()*10}s`;
+            c.style.animationDelay = `${Math.random()*10}s`;
+        });
+    }
+
+    // For each id in the list, call the wrap span function and apply the span
+    // TODO: Dynamically load the ids from the page.
+    const ids = ["about-h1", "about-p1", "about-p2", "about-p3"]
+    ids.forEach(id => wrapCharInSpan(id));
+});

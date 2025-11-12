@@ -34,9 +34,10 @@ nav {
 
 /* Holds all left and center col content as well as home page about me*/
 .main-container {
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin: auto;
     max-width: 800px;
+    color: #FFFFFF;
 }
 
 /* Probably should go, currently controlling the about me paragraph */

@@ -7,10 +7,12 @@
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="/css/reset.css">
         <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/about.css">
         <link rel="stylesheet" type="text/css" href="/css/logs.css">
      <!--   <link rel="stylesheet" type="text/css" href="/css/projects.css">
         <link rel="stylesheet" type="text/css" href="/css/contact.css"> -->
         <script src="js/main.js"></script>
+        <script src="js/char.js"></script>
     </head>
     <body>
         <header>
