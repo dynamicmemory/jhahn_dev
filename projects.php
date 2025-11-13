@@ -20,7 +20,7 @@ else {
 ?>
 
 <?php include "header.php" ?>
-<div class="main-container" id="logs-container">
+<div id="logs-container">
     <div class="left-col" id="logs-left-col">
         <ul> 
             <?php foreach($projects as $project => $desc): ?>

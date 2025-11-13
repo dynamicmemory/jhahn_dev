@@ -1,3 +1,9 @@
+/*
+ Changed from '' to  ' ' as a shortterm solution to the performance problem of 
+ trying to refresh every single letter. Will return to this problem later when 
+ the site is more fully develop
+    */
+
 document.addEventListener("DOMContentLoaded", () => {
 
     function wrapCharInSpan(id) {
@@ -6,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Split up every char and place it in an individual span
         e.innerHTML = e.textContent
-            .split('')
+            .split(' ')
             .map(c => c === ' ' ? ' ' :`<span class="char">${c}</span>`)
-            .join('');
+            .join(' ');
 
         // Randomise the length of the duration
         e.querySelectorAll('.char').forEach(c => {
@@ -23,3 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const ids = ["about-h1", "about-p1", "about-p2", "about-p3"]
     ids.forEach(id => wrapCharInSpan(id));
 });
+
+
+
