@@ -52,3 +52,31 @@ footer {
 
 
 /*Media query for main paragraph on resizing down to scale with page*/
+
+
+/* PAGE ANIMATIONS, MOVE TO SEPARATE CSS FILE EVENTUALLY*/
+.fly-left { animation: flyLeft 600ms forwards; }
+.fly-right { animation: flyRight 600ms forwards; }
+.enter-from-right { animation: enterFromRight 600ms forwards; }
+.enter-from-left { animation: enterFromLeft 600ms forwards; }
+
+#left-nav, #right-nav, #page-content {
+    will-change: transform, opacity;
+}
+
+@keyframes flyLeft {
+    from { transform: translateX(0); opacity: 1; }
+    to   { transform: translateX(-120vw); opacity: 0; }
+}
+@keyframes flyRight {
+    from { transform: translateX(0); opacity: 1; }
+    to   { transform: translateX(120vw); opacity: 0; }
+}
+@keyframes enterFromRight {
+    from { transform: translateX(120vw); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes enterFromLeft {
+    from { transform: translateX(-120vw); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}

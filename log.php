@@ -1,4 +1,5 @@
 <?php 
+$PAGE = 1;
 // Get the json data 
 $database = file_get_contents("articles/database.json");
 // Reverse the db so newest is first
@@ -33,6 +34,7 @@ else {
 ?>
 
 <?php include "header.php" ?>
+<main id="page-content">
 <div id="logs-container">
     <div class="left-col" id="logs-left-col">
         <ul>
@@ -66,4 +68,5 @@ else {
         </div>
     </div>
 </div>
+</main>
 <?php include "footer.php" ?>
