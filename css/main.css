@@ -10,6 +10,16 @@ body {
     max-width: 1800px;
     width: 100%;
     margin: auto;
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+body.fade-in {
+    opacity: 1;
+}
+
+body.fade-out {
+    opacity: 0;
 }
 
 /* -------- HEADER SPECIFIC ---------- */
@@ -56,8 +66,8 @@ footer {
 
 /* PAGE ANIMATIONS, MOVE TO SEPARATE CSS FILE EVENTUALLY*/
 .fly-left { animation: flyLeft 600ms forwards; }
-.fly-right { animation: flyRight 600ms forwards; }
 .enter-from-right { animation: enterFromRight 600ms forwards; }
+.fly-right { animation: flyRight 600ms forwards; }
 .enter-from-left { animation: enterFromLeft 600ms forwards; }
 
 #left-nav, #right-nav, #page-content {

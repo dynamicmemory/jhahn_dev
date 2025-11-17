@@ -1,5 +1,4 @@
 <?php 
-// Add php code or objects here for the page
 ?>
 
 <?php include "header.php" ?>
