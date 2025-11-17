@@ -1,5 +1,4 @@
 <?php 
-$PAGE = 2;
 // Hardcode for now as example, dynamically generate eventually
 $projects = ["Void" => "Written in C, Text editor of the future... today!",
     "Triple Triad" => "Written in JS/PHP, The card game from FFVIII",
@@ -21,7 +20,6 @@ else {
 ?>
 
 <?php include "header.php" ?>
-<main id="page-content">
 <div id="logs-container">
     <div class="left-col" id="logs-left-col">
         <ul> 
@@ -41,5 +39,4 @@ else {
         <p><?= htmlspecialchars($content) ?></p>
     </div>
 </div>
-</main>
 <?php include "footer.php" ?>

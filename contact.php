@@ -1,6 +1,4 @@
 <?php
-$PAGE = 3;
-
 $contact_info = ["Phone Number: That seems like a bad idea to put here.",
                         "Email: That also seems a little sketchy.",
                         "Github: Yeah that seems fine to add here."
@@ -8,7 +6,6 @@ $contact_info = ["Phone Number: That seems like a bad idea to put here.",
 ?>
 
 <?php include "header.php" ?>
-<main id="page-content">
 <div class="main-container" id="contact-container">
     <div class="left-col" id="contact-left-col">
     </div>
@@ -21,5 +18,4 @@ $contact_info = ["Phone Number: That seems like a bad idea to put here.",
        </ul> 
     </div>
 </div>
-</main>
 <?php include "footer.php" ?>

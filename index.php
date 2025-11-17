@@ -1,10 +1,8 @@
 <?php 
 // Add php code or objects here for the page
-$PAGE = 0;
 ?>
 
 <?php include "header.php" ?>
-<main id="page-content">
 <div class="main-container" id="about-container">
     <div class="float" id="about-center-container">
         <h1 class="float" id="about-h1">Hello, I'm No one.</h1>
@@ -23,5 +21,4 @@ $PAGE = 0;
         </p>
     </div>
 </div>
-</main>
 <?php include "footer.php" ?>
