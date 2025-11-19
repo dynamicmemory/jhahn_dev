@@ -10,8 +10,10 @@ body {
     max-width: 1800px;
     width: 100%;
     margin: auto;
-    opacity: 0;
-    transition: opacity 0.1s ease;
+    background-color: black;
+    color:white;
+    /* opacity: 0; */
+    /* transition: opacity 1s ease; */
 }
 
 body.fade-in {
@@ -47,7 +49,7 @@ nav {
     font-size: 2rem;
     margin: auto;
     max-width: 800px;
-    color: #FFFFFF;
+    /* color: #FFFFFF; */
 }
 
 /* Probably should go, currently controlling the about me paragraph */
