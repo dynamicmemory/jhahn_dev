@@ -12,8 +12,7 @@
         <link rel="stylesheet" type="text/css" href="/css/projects.css">
         <link rel="stylesheet" type="text/css" href="/css/contact.css">
         <script defer src="js/main.js"></script>
-        <script defer src="js/transitions.js"></script>
-        <script src="js/char.js"></script>
+        <script src="js/word.js"></script>
     </head>
     <body> 
         <header>

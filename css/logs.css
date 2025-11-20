@@ -12,6 +12,11 @@
     padding-left: 10px;
     width: 200px;
     overflow-y: auto;
+
+}
+
+#logs-left-col a {
+    color: #FFDEFF;
     text-decoration: none;
 }
 
@@ -37,5 +42,4 @@
     margin: 0 auto;
     width: 100%;
 }
-
 

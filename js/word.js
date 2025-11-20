@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
         // Split up every char and place it in an individual span
         e.innerHTML = e.textContent
             .split(' ')
-            .map(c => c === ' ' ? ' ' :`<span class="char">${c}</span>`)
+            .map(c => c === ' ' ? ' ' :`<span class="word">${c}</span>`)
             .join(' ');
 
         // Randomise the length of the duration
-        e.querySelectorAll('.char').forEach(c => {
+        e.querySelectorAll('.word').forEach(c => {
             // c.style.animationDuration = `${10 + Math.random()*10}s`;
             c.style.animationDuration = `${10 + Math.random()*10}s`;
             c.style.animationDelay = `${Math.random()*10}s`;
