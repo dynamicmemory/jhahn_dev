@@ -20,8 +20,8 @@ else {
 ?>
 
 <?php include "header.php" ?>
-<div id="logs-container">
-    <div class="left-col" id="logs-left-col">
+<div id="projects-container">
+    <div class="left-col" id="projects-left-col">
         <ul> 
             <?php foreach($projects as $project => $desc): ?>
                 <li>
@@ -34,8 +34,7 @@ else {
         </ul>
     </div>
 
-    <div class="center-col" id="logs-center-col">
-        <p>Current Projects</p>
+    <div class="center-col" id="projects-center-col">
         <p><?= htmlspecialchars($content) ?></p>
     </div>
 </div>

@@ -1,3 +1,29 @@
-#project-container {
-    color: #000000;
+#projects-container {
+    display: flex;
+    margin: 0;
+    padding: 40px 20px;
+    font-size: 1.75rem;
+    /* border-top: 1px #FFDEFF solid; */
+}
+
+#projects-center-col {
+    flex: 1;
+    margin: 0 0 0 20px;
+}
+
+#projects-left-col {
+    /* padding: 0 20px 0 0; */
+    width: 15%;
+    /* font-size: 1.75rem;     */
+    border-right: 2px #FFDEFF solid;
+}
+
+#projects-left-col li {
+    padding: 0 0 40px 0;
+}
+
+/* Side bar links*/
+a {
+    text-decoration: none;
+    color: #FFDEFF;
 }
