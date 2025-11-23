@@ -10,14 +10,16 @@
 }
 
 @keyframes shimmer {
-    0% { color: #292929; }
+    0% { color: #252525; }
+    3% { color: #303030; }
+    5% { color: #353535; }
     10% { color: #454545; }
     18% { color: #808080; }
-    36% { color: #BABABA; }
+    36% { color: #BAA2BA; }
     54% { color: #393939; }
-    70% { color: #BABABA; }
+    70% { color: #BAA2BA; }
     84% { color: #808080; }
-    100% { color: #FFFFFF; }
+    100% { color: #FFDEFF; }
 }
 
 
