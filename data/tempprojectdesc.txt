@@ -1,0 +1,21 @@
+
+ADD A CREATE PROJECT OR EDIT CURRENT WITH BELOW INFORMATION TO PROJECT CREATION
+
+// Hardcode for now as example, dynamically generate eventually
+$projects = [
+    "MemoryVoid" => "Written in html/css/PHP, 
+    This very website you are viewing this on. Primarily built as a demo of how 
+    I handle core web-dev fundamentals:
+    Clean HTML/CSS for the layout 
+    JS for simple dynamic behavior on the frontend 
+    PHP for backend logic and database access using SQL 
+    It also includes a basic but secure login system that lets you access my contact details 
+    using the correct provided credentials.",
+    "Void" => "Written in C, Text editor of the future... today!",
+    "Triple Triad" => "Written in JS/PHP, The card game from FFVIII",
+    "Algorithmic Trading System" => "Written in Python, End-to-end trading platform with trend modeling and automation.",
+    "Latent" => "Written in C#, A skeleton ERP software.",
+
+    "Cache" => "Written in C#, A Kanban style productivity manager designed to store projects, ideas, plans outside of the brain."
+];
+

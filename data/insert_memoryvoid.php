@@ -2,7 +2,7 @@
 require "../db.php";
 
 // Test markdown for memoryvoid project (this website)
-$description = <<<MD 
+$description = <<<MD
 # MemoryVoid 
 
 ## Written in html/css/PHP/JS
@@ -31,5 +31,8 @@ $statement->execute([
     "MemoryVoid",
     "memoryvoid",
     $description,
-    $media]);
+    $media
+]);
+
+echo "Memoryvoid was successfully added";
 ?>

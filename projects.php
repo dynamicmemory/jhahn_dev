@@ -1,30 +1,36 @@
 <?php 
-// Hardcode for now as example, dynamically generate eventually
-$projects = [
-    "MemoryVoid" => "Written in html/css/PHP, 
-    This very website you are viewing this on. Primarily built as a demo of how 
-    I handle core web-dev fundamentals:
-    Clean HTML/CSS for the layout 
-    JS for simple dynamic behavior on the frontend 
-    PHP for backend logic and database access using SQL 
-    It also includes a basic but secure login system that lets you access my contact details 
-    using the correct provided credentials.",
-    "Void" => "Written in C, Text editor of the future... today!",
-    "Triple Triad" => "Written in JS/PHP, The card game from FFVIII",
-    "Algorithmic Trading System" => "Written in Python, End-to-end trading platform with trend modeling and automation.",
-    "Latent" => "Written in C#, A skeleton ERP software.",
 
-    "Cache" => "Written in C#, A Kanban style productivity manager designed to store projects, ideas, plans outside of the brain."
-];
+require "./db.php";
 
-$key = $_GET['project'] ?? null;
+// Markdown Parser (https://github.com/erusev/parsedown/blob/master/Parsedown.php)
+// Maybe ill build my own md parser but for now ill use this.
+require __DIR__ . "/vendor/Parsedown.php";
+$Parsedown = new Parsedown();
 
-if ($key && isset($projects[$key])) {
-    $content = $projects[$key];
+// Get the extension (slug) from the url
+$slug = $_GET['project'] ?? 'memoryvoid';
+
+// Load a project using the url slug
+$statement = $projects_db->prepare("SELECT * FROM projects WHERE slug = ?");
+$statement->execute([$slug]);
+$project = $statement->fetch(PDO::FETCH_ASSOC);
+
+// Failsafe inscase something failed
+if (!$project) {
+    $statement = $projects_db->query("SELECT * FROM projects ORDER BY id ASC LIMIT 1");
+    $project = $statement->fetch(PDO::FETCH_ASSOC);
+    if (!$project) {
+        die("No projects found, Add one with XYZ that I haven't built yet");
+    } 
 }
-else {
-    $content = $projects["MemoryVoid"];
-}
+
+$list = $projects_db->query(
+    "SELECT name, slug FROM projects ORDER BY id ASC")->fetchALL(PDO::FETCH_ASSOC);
+
+$description = $Parsedown->text($project['description']);
+
+// TODO: Ill do media after if i can get name, slug and description in
+
 
 ?>
 
@@ -32,11 +38,11 @@ else {
 <div id="projects-container">
     <div class="left-col" id="projects-left-col">
         <ul> 
-            <?php foreach($projects as $project => $desc): ?>
+            <?php foreach($list as $item): ?>
                 <li>
-                    <a href="?project=<?= urlencode($project) ?>"
+                    <a href="?project=<?= urlencode($item['slug']) ?>"
                         class="<?= ($key === $project) ? 'active' : '' ?>">
-                        <?= htmlspecialchars($project) ?>
+                        <?= htmlspecialchars($item['name']) ?>
                     </a>
                 </li>
             <?php endforeach; ?>
@@ -44,7 +50,11 @@ else {
     </div>
 
     <div class="center-col" id="projects-center-col">
-        <p><?= htmlspecialchars($content) ?></p>
+        <h2><?= htmlspecialchars($project['name']) ?></h2>
+        <p><?= $description ?></p>
     </div>
 </div>
 <?php include "footer.php" ?>
+
+
+
