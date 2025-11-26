@@ -3,7 +3,7 @@ require "../db.php";
 
 // Test markdown for memoryvoid project (this website)
 $description = <<<MD
-# MemoryVoid 
+# memoryvoid 
 
 ## Written in html/css/PHP/JS
 
@@ -23,7 +23,7 @@ MD;
 // If I want to use json for media in the md instead of inserting it above
     //Could add same for videos or embed games 
 $media = json_encode([
-    ["type" => "image", "src" => "../media/memoryvoid/screenshot1.png", "alt" => "Webstie screenshot"]
+    ["type" => "image", "src" => "../media/memoryvoid/screenshot1.png", "alt" => "Website screenshot"]
 ]);
 
 $statement = $projects_db->prepare("INSERT OR IGNORE INTO projects (name, slug, description, media) VALUES (?, ?, ?, ?)");

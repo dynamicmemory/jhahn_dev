@@ -30,3 +30,8 @@ a {
     text-decoration: none;
     color: #FFDEFF;
 }
+
+#projects-center-col img {
+    width: 50%;
+    height: auto;
+}

@@ -50,7 +50,7 @@ $description = $Parsedown->text($project['description']);
     </div>
 
     <div class="center-col" id="projects-center-col">
-        <h2><?= htmlspecialchars($project['name']) ?></h2>
+      <!--  <h2><?= htmlspecialchars($project['name']) ?></h2> -->
         <p><?= $description ?></p>
     </div>
 </div>
