@@ -1,6 +1,35 @@
 <?php
 // TODO: Change how the db is named EVERYWHERE including the actual db 
 // TODO: Change description key to content or md EVERYWHERE
+$db = new SQLite3(__DIR__ . '/../data/projects.db');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $slug = $_POST['slug'];
+    $content = $_POST['description'];   // TODO: Change description to content in db
+
+    $statement = $db->prepare("UPDATE projects SET name = ?, slug = ?, description = ? WHERE id = ?");
+    $statement->bindValue(1, $name, SQLITE3_TEXT);
+    $statement->bindValue(2, $slug, SQLITE3_TEXT);
+    $statement->bindValue(3, $description, SQLITE3_TEXT);
+    $statement->bindValue(4, $id, SQLITE3_INTEGER);
+    $statement->execute();
+
+    echo "<p>Updated!</p>";
+}
+
+$selected_project = null;
+
+if (isset($_GET['id'])) {
+    $statement = $db->prepare("SELECT * FROM projects WHERE id = ?");
+    $statement->bindValue(1, $_GET['id'], SQLITE3_INTEGER);
+    $result = $statement->execute();
+    $selected_project = $result->fetchArray(SQLITE3_ASSOC);
+}
+
+$projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
+
 ?>
 
 <h1>Projects DB editor</h1>
@@ -11,21 +40,20 @@
   <div style="min-width: 200px;"> 
     <h3>Projects</h3>
     <ul> 
-    <?php #while ($p = $projects->fetchArray(SQLITE3_ASSOC)) : ?>
+    <?php while ($p = $projects->fetchArray(SQLITE3_ASSOC)) : ?>
       <li>
-        <a >Empty for now</a>  <!-- href="?id=<?= $p["id"] ?>">-->
+        <a href="?id=<?= $p["id"] ?>"> 
+          <?= htmlspecialchars($p["name"]) ?> 
+        </a>
       </li>
-      <li>
-        <a >Empty for now</a> 
-      </li>
-    <?php #endwhile ?> 
+    <?php endwhile ?> 
     </ul>
   </div>
 
   <!-- Center col-->
   <div style="flex: 1;">
-  <?php # if ($selected_project): ?>
-    <h3>Editing: <?= htmlspecialchars($selected_project["title"]) ?></h3> 
+  <?php  if ($selected_project): ?>
+    <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
 
     <form method="POST"> 
       <fieldset> 
@@ -52,8 +80,8 @@
 
     </form>
 
-  <?php #else: ?>
+  <?php else: ?>
     <p>Select a project from the left to edit.</>
-  <?php #endif; ?>
+  <?php endif; ?>
   </div>
 </div>
