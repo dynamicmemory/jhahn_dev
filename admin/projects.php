@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $slug = $_POST['slug'];
-    $content = $_POST['description'];   // TODO: Change description to content in db
+    $description = $_POST['description'];   // TODO: Change description to content in db
 
     $statement = $db->prepare("UPDATE projects SET name = ?, slug = ?, description = ? WHERE id = ?");
     $statement->bindValue(1, $name, SQLITE3_TEXT);
@@ -34,7 +34,7 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
 
 <h1>Projects DB editor</h1>
 <!-- Main container -->
-<div style="display: flex; gap: 2rem;"> 
+<div style="display: flex; gap: 2rem; max-width: 1000px;"> 
 
   <!-- Left col -->
   <div style="min-width: 200px;"> 
@@ -68,8 +68,7 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
                style="width: 100%"><br><br>
 
         <label>Content (Markdown body): </label><br>
-        <textarea name="description" rows="30" style="width: 100%;">
-          <?= htmlspecialchars($selected_project["description"]) ?>
+        <textarea name="description" rows="30" style="width: 100%;"><?= htmlspecialchars($selected_project["description"]) ?>
         </textarea><br><br>
 
         <!-- ADD JSON MEDIA OBJECTS IF I CHOOSE TO IMPLEMENT HERE-->

@@ -5,7 +5,10 @@ require "./db.php";
 // Markdown Parser (https://github.com/erusev/parsedown/blob/master/Parsedown.php)
 // Maybe ill build my own md parser but for now ill use this.
 require __DIR__ . "/vendor/Parsedown.php";
-$Parsedown = new Parsedown();
+/* $Parsedown = new Parsedown(); */
+
+require __DIR__ . "/vendor/ParsedownExtra.php";
+$Parsedown = new ParsedownExtra();
 
 // Get the extension (slug) from the url
 $slug = $_GET['project'] ?? 'memoryvoid';
@@ -41,7 +44,7 @@ $description = $Parsedown->text($project['description']);
             <?php foreach($list as $item): ?>
                 <li>
                     <a href="?project=<?= urlencode($item['slug']) ?>"
-                        class="<?= ($key === $project) ? 'active' : '' ?>">
+                        class="<?= ($item === $project) ? 'active' : '' ?>">
                         <?= htmlspecialchars($item['name']) ?>
                     </a>
                 </li>
@@ -51,7 +54,7 @@ $description = $Parsedown->text($project['description']);
 
     <div class="center-col" id="projects-center-col">
       <!--  <h2><?= htmlspecialchars($project['name']) ?></h2> -->
-        <p><?= $description ?></p>
+      <?= $description ?>
     </div>
 </div>
 <?php include "footer.php" ?>

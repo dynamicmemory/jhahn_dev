@@ -5,7 +5,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="/css/reset.css">
+        <!-- <link rel="stylesheet" type="text/css" href="/css/reset.css"> -->
         <link rel="stylesheet" type="text/css" href="/css/main.css">
         <link rel="stylesheet" type="text/css" href="/css/about.css">
         <!--<link rel="stylesheet" type="text/css" href="/css/logs.css"> -->
