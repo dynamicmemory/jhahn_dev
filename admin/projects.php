@@ -4,22 +4,42 @@
 $db = new SQLite3(__DIR__ . '/../data/projects.db');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['id'];
     $name = $_POST['name'];
     $slug = $_POST['slug'];
     $description = $_POST['description'];   // TODO: Change description to content in db
 
-    $statement = $db->prepare("UPDATE projects SET name = ?, slug = ?, description = ? WHERE id = ?");
+    // Code for adding a new project
+    if ($_POST["mode"] === "create") {
+    $statement = $db->prepare(
+            "INSERT OR IGNORE INTO projects (name, slug, description) VALUES (?, ?, ?)");
+    $statement->bindValue(1, $name, SQLITE3_TEXT);
+    $statement->bindValue(2, $slug, SQLITE3_TEXT);
+    $statement->bindValue(3, $description, SQLITE3_TEXT);
+    $statement->execute();
+
+    echo "<p>Created!</p>";
+    }
+
+    // Code for updating a project 
+    elseif ($_POST["mode"] === "update") {
+    $id = $_POST['id'];
+    $statement = $db->prepare(
+        "UPDATE projects SET name = ?, slug = ?, description = ? WHERE id = ?");
     $statement->bindValue(1, $name, SQLITE3_TEXT);
     $statement->bindValue(2, $slug, SQLITE3_TEXT);
     $statement->bindValue(3, $description, SQLITE3_TEXT);
     $statement->bindValue(4, $id, SQLITE3_INTEGER);
     $statement->execute();
-
     echo "<p>Updated!</p>";
+    }
 }
 
 $selected_project = null;
+$isNew = false;
+
+if (isset($_GET["action"]) && $_GET["action"] === "new") {
+    $isNew = true;
+}
 
 if (isset($_GET['id'])) {
     $statement = $db->prepare("SELECT * FROM projects WHERE id = ?");
@@ -39,6 +59,7 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
   <!-- Left col -->
   <div style="min-width: 200px;"> 
     <h3>Projects</h3>
+    <a href="?action=new">Add New Project</a>
     <ul> 
     <?php while ($p = $projects->fetchArray(SQLITE3_ASSOC)) : ?>
       <li>
@@ -52,12 +73,19 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
 
   <!-- Center col-->
   <div style="flex: 1;">
-  <?php  if ($selected_project): ?>
-    <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
+  <?php  if ($selected_project || $isNew): ?>
+    <?php if (!$isNew): ?>
+      <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
+    <?php else: ?>
+      <h3>Adding New Project</h3>
+    <?php endif; ?>
 
     <form method="POST"> 
       <fieldset> 
+        <input type="hidden" name="mode" value="<?= $isNew ? "create" : "update" ?>">
+      <?php if (!$isNew): ?>
         <input type="hidden" name="id" value="<?= $selected_project["id"]?>">
+      <?php endif; ?>
 
         <label>Name: </label><br>
         <input name="name" value="<?= htmlspecialchars($selected_project["name"]) ?>"
@@ -72,7 +100,9 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
         </textarea><br><br>
 
         <!-- ADD JSON MEDIA OBJECTS IF I CHOOSE TO IMPLEMENT HERE-->
-        <button type="submit">Save</button>
+        <button type="submit">
+          <?= $isNew ? "Add Project" : "Save Changes" ?>
+        </button>
 
       </fieldset> 
 

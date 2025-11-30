@@ -1,14 +1,18 @@
 #projects-container {
     display: flex;
     margin: 0;
-    padding: 40px 0px;
-    font-size: 1.75rem;
+    padding: 20px 0px;
+    font-size: 1.5rem;
     /* border-top: 1px #FFDEFF solid; */
 }
 
 #projects-center-col {
     flex: 1;
     margin: 0 0 0 20px;
+    background-color: #FFDEFF;
+    color: #0A0A0A;
+    border-radius: 15px;
+    padding: 5px;
 }
 
 #projects-left-col {

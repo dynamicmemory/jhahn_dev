@@ -24,7 +24,7 @@
                 </div>
                 <div id="right-nav">
                     <h1 class="nav-text">
-                        <!--<a href="/log.php">(&Log)</a>  -->
+                        <!-- <a href="/log.php">(&Log)</a>   -->
                         <a href="/projects.php">(&Projects)</a> 
                         <a href="/contact.php">(&Contact)</a> 
                     </h1>
