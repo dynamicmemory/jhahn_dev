@@ -1,5 +1,3 @@
-add create new project 
-add delete project '
 add markdown live preview 
 add image upload 
 add login protection 
