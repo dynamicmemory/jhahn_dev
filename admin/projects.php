@@ -1,20 +1,22 @@
 <?php
 // TODO: Change how the db is named EVERYWHERE including the actual db 
 // TODO: Change description key to content or md EVERYWHERE
-$db = new SQLite3(__DIR__ . '/../data/projects.db');
+$db = new SQLite3(__DIR__ . '/../data/memoryvoid.db');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $slug = $_POST['slug'];
-    $description = $_POST['description'];   // TODO: Change description to content in db
+    $description= $_POST['description'];
+    $content = $_POST['content'];
 
     // Code for adding a new project
     if ($_POST["mode"] === "create") {
         $statement = $db->prepare(
-            "INSERT OR IGNORE INTO projects (name, slug, description) VALUES (?, ?, ?)");
+            "INSERT OR IGNORE INTO projects (name, slug, description, content) VALUES (?, ?, ?, ?)");
         $statement->bindValue(1, $name, SQLITE3_TEXT);
         $statement->bindValue(2, $slug, SQLITE3_TEXT);
         $statement->bindValue(3, $description, SQLITE3_TEXT);
+        $statement->bindValue(4, $content, SQLITE3_TEXT);
         $statement->execute();
 
         echo "<p>Created!</p>";
@@ -24,11 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif ($_POST["mode"] === "update") {
         $id = $_POST['id'];
         $statement = $db->prepare(
-            "UPDATE projects SET name = ?, slug = ?, description = ? WHERE id = ?");
+            "UPDATE projects SET name = ?, slug = ?, description = ?, content = ? WHERE id = ?");
         $statement->bindValue(1, $name, SQLITE3_TEXT);
         $statement->bindValue(2, $slug, SQLITE3_TEXT);
         $statement->bindValue(3, $description, SQLITE3_TEXT);
-        $statement->bindValue(4, $id, SQLITE3_INTEGER);
+        $statement->bindValue(4, $content, SQLITE3_TEXT);
+        $statement->bindValue(5, $id, SQLITE3_INTEGER);
         $statement->execute();
         echo "<p>Updated!</p>";
     }
@@ -60,18 +63,6 @@ if (isset($_GET['id'])) {
 $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -118,8 +109,12 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
                 <input name="slug" value="<?= htmlspecialchars($selected_project["slug"]) ?>"
                     style="width: 100%"><br><br>
 
+                <label>Description: </label><br>
+                <input name="description" value="<?= htmlspecialchars($selected_project["description"]) ?>"
+                    style="width: 100%"><br><br>
+
                 <label>Content (Markdown body): </label><br>
-                <textarea name="description" rows="30" style="width: 100%;"><?= htmlspecialchars($selected_project["description"]) ?></textarea>
+                <textarea name="content" rows="30" style="width: 100%;"><?= htmlspecialchars($selected_project["content"]) ?></textarea>
                 <br><br>
 
                 <!-- ADD JSON MEDIA OBJECTS IF I CHOOSE TO IMPLEMENT HERE-->
