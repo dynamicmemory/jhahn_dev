@@ -27,7 +27,7 @@ $media = json_encode([
     ["type" => "image", "src" => "../media/cache/screenshot1.png", "alt" => "UI screenshot"]
 ]);
 
-$statement = $projects_db->prepare("INSERT OR IGNORE INTO projects (name, slug, description, media) VALUES (?, ?, ?, ?)");
+$statement = $database->prepare("INSERT OR IGNORE INTO projects (name, slug, description, media) VALUES (?, ?, ?, ?)");
 $statement->execute([
     "Cache",
     "cache",

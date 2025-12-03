@@ -30,7 +30,7 @@ if (!$project) {
 $list = $projects_db->query(
     "SELECT name, slug FROM projects ORDER BY id ASC")->fetchALL(PDO::FETCH_ASSOC);
 
-$description = $Parsedown->text($project['description']);
+$content = $Parsedown->text($project['content']);
 
 // TODO: Ill do media after if i can get name, slug and description in
 
@@ -54,7 +54,7 @@ $description = $Parsedown->text($project['description']);
 
     <div class="center-col" id="projects-center-col">
       <!--  <h2><?= htmlspecialchars($project['name']) ?></h2> -->
-      <?= $description ?>
+      <?= $content?>
     </div>
 </div>
 <?php include "footer.php" ?>

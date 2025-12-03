@@ -1,4 +1,5 @@
 <?php
+require_once "auth.php";
 // TODO: Change how the db is named EVERYWHERE including the actual db 
 // TODO: Change description key to content or md EVERYWHERE
 $db = new SQLite3(__DIR__ . '/../data/memoryvoid.db');
