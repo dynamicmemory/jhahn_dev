@@ -14,20 +14,20 @@ $Parsedown = new ParsedownExtra();
 $slug = $_GET['project'] ?? 'memoryvoid';
 
 // Load a project using the url slug
-$statement = $projects_db->prepare("SELECT * FROM projects WHERE slug = ?");
+$statement = $database->prepare("SELECT * FROM projects WHERE slug = ?");
 $statement->execute([$slug]);
 $project = $statement->fetch(PDO::FETCH_ASSOC);
 
 // Failsafe inscase something failed
 if (!$project) {
-    $statement = $projects_db->query("SELECT * FROM projects ORDER BY id ASC LIMIT 1");
+    $statement = $database->query("SELECT * FROM projects ORDER BY id ASC LIMIT 1");
     $project = $statement->fetch(PDO::FETCH_ASSOC);
     if (!$project) {
         die("No projects found, Add one with XYZ that I haven't built yet");
     } 
 }
 
-$list = $projects_db->query(
+$list = $database->query(
     "SELECT name, slug FROM projects ORDER BY id ASC")->fetchALL(PDO::FETCH_ASSOC);
 
 $content = $Parsedown->text($project['content']);

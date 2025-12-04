@@ -2,7 +2,7 @@
 session_start();
 
 // Locks the admin section from anyone not logged in
-if (!isset($_SESSION["admin"])) {
+if (!isset($_SESSION["user_id"])) {
     header("Location: login.php");
     exit;
 }
