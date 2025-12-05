@@ -2,7 +2,7 @@
 require_once "auth.php";
 // TODO: Change how the db is named EVERYWHERE including the actual db 
 // TODO: Change description key to content or md EVERYWHERE
-$db = new SQLite3(__DIR__ . '/../data/memoryvoid.db');
+$db = new SQLite3(__DIR__ . '/../../website_data/data/memoryvoid.db');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
@@ -68,6 +68,8 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
 
 
 <h1>Projects DB editor</h1>
+<div><a href="index.php">Admin Dashboard</a></div>
+
 <!-- Main container -->
 <div style="display: flex; gap: 2rem; max-width: 1000px;"> 
 

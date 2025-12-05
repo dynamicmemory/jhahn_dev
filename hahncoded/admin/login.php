@@ -1,6 +1,6 @@
 <?php 
 session_start();
-require_once '../database.php';
+require_once "../../website_data/database.php";
 /* $db = new SQLite3(__DIR__ . '/../data/memoryvoid.db'); */
 
 if (isset($_POST["username"], $_POST["password"])) {
