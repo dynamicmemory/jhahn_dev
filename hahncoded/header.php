@@ -19,7 +19,7 @@
             <nav>
                 <div id="left-nav">
                     <h1 class="nav-text">
-                        <a href="/index.php">{MEMORY VOID}</a>
+                        <a href="/index.php">{HAHN CODED}</a>
                     </h1>
                 </div>
                 <div id="right-nav">

@@ -4,7 +4,7 @@
 <?php include "header.php" ?>
 <div class="main-container" id="about-container">
     <div class="float" id="about-center-container">
-        <h1 class="float" id="about-h1">Hello, I'm No one.</h1>
+        <h1 class="float" id="about-h1">Hello, I'm Hahn.</h1>
         <p class="float" id="about-p1">
         Welcome to the Memory Void - a space where my projects, interests 
         and thoughts float through the digital ether.

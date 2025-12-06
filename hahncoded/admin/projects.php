@@ -1,8 +1,10 @@
 <?php
 require_once "auth.php";
+require "../../website_data/database.php";
 // TODO: Change how the db is named EVERYWHERE including the actual db 
 // TODO: Change description key to content or md EVERYWHERE
-$db = new SQLite3(__DIR__ . '/../../website_data/data/memoryvoid.db');
+/* $db = new SQLite3(__DIR__ . '/../../website_data/data/memoryvoid.db'); */
+/* $project = $statement->fetch(PDO::FETCH_ASSOC); */
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
@@ -12,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Code for adding a new project
     if ($_POST["mode"] === "create") {
-        $statement = $db->prepare(
+        $statement = $database->prepare(
             "INSERT OR IGNORE INTO projects (name, slug, description, content) VALUES (?, ?, ?, ?)");
         $statement->bindValue(1, $name, SQLITE3_TEXT);
         $statement->bindValue(2, $slug, SQLITE3_TEXT);
@@ -20,13 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement->bindValue(4, $content, SQLITE3_TEXT);
         $statement->execute();
 
-        echo "<p>Created!</p>";
+        echo "<p>Added project: $name</p>";
     }
 
     // Code for updating a project 
     elseif ($_POST["mode"] === "update") {
         $id = $_POST['id'];
-        $statement = $db->prepare(
+        $statement = $database->prepare(
             "UPDATE projects SET name = ?, slug = ?, description = ?, content = ? WHERE id = ?");
         $statement->bindValue(1, $name, SQLITE3_TEXT);
         $statement->bindValue(2, $slug, SQLITE3_TEXT);
@@ -48,24 +50,22 @@ if (isset($_GET["action"]) && $_GET["action"] === "new") {
 if (isset($_GET["delete"])) {
     $id = (int)$_GET["delete"];
 
-    $statement = $db->prepare("DELETE FROM projects WHERE id = ?");
+    $statement = $database->prepare("DELETE FROM projects WHERE id = ?");
     $statement->bindValue(1, $id, SQLITE3_INTEGER);
     $statement->execute();
     echo "<p>Deleted project $id</p>";
 }
 
 if (isset($_GET['id'])) {
-    $statement = $db->prepare("SELECT * FROM projects WHERE id = ?");
+    $statement = $database->prepare("SELECT * FROM projects WHERE id = ?");
     $statement->bindValue(1, $_GET['id'], SQLITE3_INTEGER);
-    $result = $statement->execute();
-    $selected_project = $result->fetchArray(SQLITE3_ASSOC);
+    $statement->execute();
+    $selected_project = $statement->fetch(PDO::FETCH_ASSOC);
 }
 
-$projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
+$projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
 
 ?>
-
-
 
 <h1>Projects DB editor</h1>
 <div><a href="index.php">Admin Dashboard</a></div>
@@ -78,7 +78,7 @@ $projects = $db->query("SELECT id, name FROM projects ORDER BY id ASC");
         <h3>Projects</h3>
         <a href="?action=new">Add New Project</a>
         <ul> 
-            <?php while ($p = $projects->fetchArray(SQLITE3_ASSOC)) : ?>
+            <?php while ($p = $projects->fetch(PDO::FETCH_ASSOC)) : ?>
             <li>
                 <a href="?id=<?= $p["id"] ?>"> 
                     <?= htmlspecialchars($p["name"]) ?> 
