@@ -1,10 +1,6 @@
 <?php
 require_once "auth.php";
 require "../../website_data/database.php";
-// TODO: Change how the db is named EVERYWHERE including the actual db 
-// TODO: Change description key to content or md EVERYWHERE
-/* $db = new SQLite3(__DIR__ . '/../../website_data/data/memoryvoid.db'); */
-/* $project = $statement->fetch(PDO::FETCH_ASSOC); */
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];

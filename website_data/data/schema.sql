@@ -14,3 +14,12 @@ CREATE TABLE IF NOT EXISTS projects (
     pcontent TEXT,
     pmedia TEXT
 );
+
+
+CREATE TABLE IF NOT EXISTS settings (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    key TEXT NOT NULL,
+    value TEXT NOT NULL,
+    type TEXT DEFAULT "text",
+    group TEXT DEFAULT "general"
+);
