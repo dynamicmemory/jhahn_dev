@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif ($_POST["mode"] === "update") {
         $id = $_POST['id'];
         $statement = $database->prepare(
-            "UPDATE projects SET name = ?, slug = ?, description = ?, content = ? WHERE id = ?");
+           "UPDATE projects SET name = ?, slug = ?, description = ?, content = ? WHERE id = ?");
         $statement->bindValue(1, $name, SQLITE3_TEXT);
         $statement->bindValue(2, $slug, SQLITE3_TEXT);
         $statement->bindValue(3, $description, SQLITE3_TEXT);

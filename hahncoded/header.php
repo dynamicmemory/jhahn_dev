@@ -11,6 +11,7 @@
         <!--<link rel="stylesheet" type="text/css" href="/css/logs.css"> -->
         <link rel="stylesheet" type="text/css" href="/css/projects.css">
         <link rel="stylesheet" type="text/css" href="/css/contact.css">
+        <!-- <link rel="stylesheet" type="text/css" href="/css/admin.css"> -->
         <script defer src="js/main.js"></script>
         <script src="js/word.js"></script>
     </head>

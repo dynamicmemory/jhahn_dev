@@ -1,0 +1,17 @@
+.main-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 1000px;
+}
+
+.side-panel {
+    min-width: 200px;
+}
+
+.center-panel {
+    flex: 1;
+}
+
+input, textarea{
+    width: 100%;
+}
