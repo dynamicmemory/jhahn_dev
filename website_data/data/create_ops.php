@@ -8,7 +8,7 @@ function create_table($database, $table_name, $schema) {
 
 function remove_table($database, $table_name) {
     $database->exec("DROP TABLE $table_name;");
-    echo "$table_name table dropped.<br>";
+    echo "$table_name table dropped.";
 }
 
 function rename_table($database, $table_name, $new_name) {
@@ -37,12 +37,13 @@ $schema = "(
 $table_name = "settings";
 $schema = "(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    key TEXT NOT NULL,
+    key TEXT UNIQUE NOT NULL,
     value TEXT NOT NULL,
     type TEXT DEFAULT 'text',
     tag TEXT DEFAULT 'general'
 );";
 
+/* remove_table($database, $table_name); */
 create_table($database, $table_name, $schema);
 
 ?>
