@@ -1,5 +1,7 @@
+<?php 
+?>
         <footer> 
-            <p>&copy; <?php echo date('Y'); ?> MemoryVoid.</p>
+            <p><?=getSetting("footer")?></p>
         </footer>
     </body>
 </html>

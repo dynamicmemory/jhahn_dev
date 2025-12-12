@@ -11,9 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // Create a new setting 
     if ($_POST["mode"] === "create") {
-        $statement = $database->prepare("INSERT OR IGNORE settings 
-            WHERE (key, value, type, tag) 
-            VALUES (?, ?, ?, ?)");
+        $statement = $database->prepare(
+            "INSERT OR IGNORE INTO settings (key, value, type, tag) VALUES (?, ?, ?, ?)");
         $statement->bindValue(1, $key, SQLITE3_TEXT);
         $statement->bindValue(2, $value, SQLITE3_TEXT);
         $statement->bindValue(3, $type, SQLITE3_TEXT);
@@ -66,10 +65,11 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 
     <!-- Main container-->
     <div class="main-container">
-        <a href="?action=new">Add new setting</a>
+
 
         <!-- Side panel-->
         <div class="side-panel">
+            <a href="?action=new">Add new setting</a>
             <ul> 
                 <?php while($s = $settings->fetch(PDO::FETCH_ASSOC)): ?>
                 <li>
@@ -91,10 +91,9 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
                     <input type="hidden" name="id" value="<?=$selected_setting["id"]?>">
                     <?php endif; ?>
                     <label>Key</label>
-                    <input name="key" value="<?= htmlspecialchars($selected_setting["key"])?>">
+                    <input name="key" value="<?=htmlspecialchars($selected_setting["key"])?>">
                     <label>Value</label>
-                    <textarea name="value" value="<?=htmlspecialchars($selected_setting["value"])?>">
-                    </textarea>
+                    <textarea name="value" rows="20"><?=htmlspecialchars($selected_setting["value"])?></textarea>
                     <label>Type</label>
                     <input name="type" value="<?=htmlspecialchars($selected_setting["type"])?>">
                     <label>Tag</label>
