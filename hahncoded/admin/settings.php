@@ -1,6 +1,9 @@
 <?php
 require_once "auth.php";
 require "../../website_data/database.php";
+require_once "../includes/csrf.php";
+
+csrf_verify();
 
 // Sending a new/updating a record in the settings table
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -33,6 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $statement->bindValue(5, $id, SQLITE3_INTEGER);
         $statement->execute();
         echo "<p>Successfully updated $key</p>";
+    }
+
+    elseif ($_POST["mode"] === "delete") {
+        $id = (int)$_POST["id"];
+        $statement = $database->prepare("DELETE from settings WHERE id = ?");
+        $statement->bindValue(1, $id, SQLITE3_INTEGER);
+        $statement->execute();
+        echo "<p>Successfully deleted $key</p>";
     }
 }
 
@@ -86,6 +97,7 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 
             <form method="POST">
                 <fieldset> 
+                    <input type="hidden" name="csrf_token" value="<?=csrf_token() ?>">
                     <input type="hidden" name="mode" value="<?=$isNew ? 'create' : 'update'?>">
                     <?php if (!$isNew): ?>
                     <input type="hidden" name="id" value="<?=$selected_setting["id"]?>">
@@ -98,11 +110,21 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
                     <input name="type" value="<?=htmlspecialchars($selected_setting["type"])?>">
                     <label>Tag</label>
                     <input name="tag" value="<?=htmlspecialchars($selected_setting["tag"])?>">
-                    <button type="submit">SUMBIT</button>
 
+                    <button type="submit">SUMBIT</button>
                 </fieldset>
             </form>
-
+                    <?php if (!$isNew): ?>
+                    <form method="POST" style="display:inline;">
+                    <input type="hidden" name="mode" value="delete">
+                    <input type="hidden" name="id" value="<?= $selected_setting["id"] ?>">
+                    <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
+                    <button type="submit" onclick="return confirm
+                        ('Are you sure you want to delete this project');"
+                        style="color:red; text-decoration: none;"> 
+                        Delete this project
+                        </button>
+                    <?php endif; ?>
         </div>
     </div>
 </html>

@@ -1,6 +1,8 @@
 <?php
 require_once "auth.php";
 require "../../website_data/database.php";
+require_once "../includes/csrf.php";
+csrf_verify();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
@@ -23,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Code for updating a project 
     elseif ($_POST["mode"] === "update") {
-        $id = $_POST['id'];
+        $id = $_POST["id"];
         $statement = $database->prepare(
            "UPDATE projects SET name = ?, slug = ?, description = ?, content = ? WHERE id = ?");
         $statement->bindValue(1, $name, SQLITE3_TEXT);
@@ -34,6 +36,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement->execute();
         echo "<p>Updated!</p>";
     }
+
+    elseif ($_POST["mode"] === "delete") {
+        $id = (int)$_POST["id"];
+        $statement = $database->prepare("DELETE FROM projects WHERE id = ?");
+        $statement->bindValue(1, $id, SQLITE3_INTEGER);
+        $statement->execute();
+        echo "<p>Deleted project $id</p>";
+    }
 }
 
 $selected_project = null;
@@ -41,15 +51,6 @@ $isNew = false;
 
 if (isset($_GET["action"]) && $_GET["action"] === "new") {
     $isNew = true;
-}
-
-if (isset($_GET["delete"])) {
-    $id = (int)$_GET["delete"];
-
-    $statement = $database->prepare("DELETE FROM projects WHERE id = ?");
-    $statement->bindValue(1, $id, SQLITE3_INTEGER);
-    $statement->execute();
-    echo "<p>Deleted project $id</p>";
 }
 
 if (isset($_GET['id'])) {
@@ -95,6 +96,7 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
 
         <form method="POST"> 
             <fieldset> 
+                <input type="hidden" name="csrf_token" value="<?=csrf_token() ?>">
                 <input type="hidden" name="mode" value="<?= $isNew ? "create" : "update" ?>">
                 <?php if (!$isNew): ?>
                 <input type="hidden" name="id" value="<?= $selected_project["id"]?>">
@@ -120,21 +122,25 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
                 <button type="submit">
                     <?= $isNew ? "Add Project" : "Save Changes" ?>
                 </button>
-
-                <?php if (!$isNew): ?>
-                <p style="margin-top:1rem; float: right;">
-                    <button> 
-                        <a href="?delete=<?= $selected_project["id"] ?>"
-                            onclick="return confirm('Are you sure you want to delete this project');"
-                            style="color:red; text-decoration: none;"> 
-                            Delete this project
-                        </a>
-                    </button>
-                </p>
-                <?php endif; ?>
-
             </fieldset> 
         </form>
+
+                <?php if (!$isNew): ?>
+                <!-- <p style="margin-top:1rem; float: right;"> -->
+
+                    <form method="POST" style="display:inline;">
+                    <input type="hidden" name="mode" value="delete">
+                    <input type="hidden" name="id" value="<?= $selected_project["id"] ?>">
+                    <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
+                    <button type="submit" onclick="return confirm
+                        ('Are you sure you want to delete this project');"
+                        style="color:red; text-decoration: none;"> 
+                        Delete this project
+                    </button>
+                <!-- </p> -->
+                <?php endif; ?>
+
+
 
         <?php else: ?>
         <p>Select a project from the left to edit.</>
