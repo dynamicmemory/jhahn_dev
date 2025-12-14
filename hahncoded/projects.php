@@ -1,5 +1,4 @@
 <?php 
-
 require "../website_data/database.php";
 
 // Markdown Parser (https://github.com/erusev/parsedown/blob/master/Parsedown.php)
@@ -12,26 +11,23 @@ $Parsedown = new ParsedownExtra();
 $slug = $_GET['project'] ?? 'memoryvoid';
 
 // Load a project using the url slug
-$statement = $database->prepare("SELECT * FROM projects WHERE slug = ?");
-$statement->execute([$slug]);
-$project = $statement->fetch(PDO::FETCH_ASSOC);
+$statement = $database->prepare("SELECT * FROM projects WHERE slug = :slug");
+$statement->execute([":slug" => $slug]);
+$project = $statement->fetch();
 
-// Failsafe inscase something failed
+// On failure
 if (!$project) {
-    $statement = $database->query("SELECT * FROM projects ORDER BY id ASC LIMIT 1");
-    $project = $statement->fetch(PDO::FETCH_ASSOC);
-    if (!$project) {
-        die("No projects found, Add one with XYZ that I haven't built yet");
-    } 
-}
+    /* http_reponse_code(404); */
+    die("Project $slug not found");
+} 
 
-$list = $database->query(
-    "SELECT name, slug FROM projects ORDER BY id ASC")->fetchALL(PDO::FETCH_ASSOC);
+$list = $database
+    ->query("SELECT name, slug FROM projects ORDER BY id ASC")
+    ->fetchAll();
 
 $content = $Parsedown->text($project['content']);
 
 // TODO: Ill do media after if i can get name, slug and description in
-
 
 ?>
 
@@ -42,7 +38,7 @@ $content = $Parsedown->text($project['content']);
             <?php foreach($list as $item): ?>
                 <li>
                     <a href="?project=<?= urlencode($item['slug']) ?>"
-                        class="<?= ($item === $project) ? 'active' : '' ?>">
+                        class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
                         <?= htmlspecialchars($item['name']) ?>
                     </a>
                 </li>
@@ -56,6 +52,3 @@ $content = $Parsedown->text($project['content']);
     </div>
 </div>
 <?php include "footer.php" ?>
-
-
-

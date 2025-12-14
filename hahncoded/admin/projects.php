@@ -13,13 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Code for adding a new project
     if ($_POST["mode"] === "create") {
         $statement = $database->prepare(
-            "INSERT OR IGNORE INTO projects (name, slug, description, content) VALUES (?, ?, ?, ?)");
-        $statement->bindValue(1, $name, SQLITE3_TEXT);
-        $statement->bindValue(2, $slug, SQLITE3_TEXT);
-        $statement->bindValue(3, $description, SQLITE3_TEXT);
-        $statement->bindValue(4, $content, SQLITE3_TEXT);
-        $statement->execute();
-
+            "INSERT INTO projects (name, slug, description, content) 
+            VALUES (:name, :slug, :description, :content)"
+        );
+        // Protect against inserting existing slug 
+        try {
+            $statement->execute([
+                ":name" => $name,
+                ":slug" => $slug,
+                ":description" => $description,
+                ":content" => $content
+            ]);
+        } catch (PDOException $e) {
+            die("Slug already exists");
+        }
         echo "<p>Added project: $name</p>";
     }
 
@@ -27,21 +34,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     elseif ($_POST["mode"] === "update") {
         $id = $_POST["id"];
         $statement = $database->prepare(
-           "UPDATE projects SET name = ?, slug = ?, description = ?, content = ? WHERE id = ?");
-        $statement->bindValue(1, $name, SQLITE3_TEXT);
-        $statement->bindValue(2, $slug, SQLITE3_TEXT);
-        $statement->bindValue(3, $description, SQLITE3_TEXT);
-        $statement->bindValue(4, $content, SQLITE3_TEXT);
-        $statement->bindValue(5, $id, SQLITE3_INTEGER);
-        $statement->execute();
+            "UPDATE projects 
+            SET name = :name, 
+                slug = :slug, 
+                description = :description, 
+                content = :content 
+            WHERE id = :id"
+        );
+
+        $statement->execute([
+            ":id" => $id,
+            ":name" => $name,
+            ":slug" => $slug,
+            ":description" => $description,
+            ":content" => $content
+        ]);
+
         echo "<p>Updated!</p>";
     }
 
     elseif ($_POST["mode"] === "delete") {
         $id = (int)$_POST["id"];
-        $statement = $database->prepare("DELETE FROM projects WHERE id = ?");
-        $statement->bindValue(1, $id, SQLITE3_INTEGER);
-        $statement->execute();
+        $statement = $database->prepare("DELETE FROM projects WHERE id = :id");
+        $statement->execute([":id" => $id]);
         echo "<p>Deleted project $id</p>";
     }
 }
@@ -54,10 +69,9 @@ if (isset($_GET["action"]) && $_GET["action"] === "new") {
 }
 
 if (isset($_GET['id'])) {
-    $statement = $database->prepare("SELECT * FROM projects WHERE id = ?");
-    $statement->bindValue(1, $_GET['id'], SQLITE3_INTEGER);
-    $statement->execute();
-    $selected_project = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement = $database->prepare("SELECT * FROM projects WHERE id = :id");
+    $statement->execute([":id" => $_GET["id"]]);
+    $selected_project = $statement->fetch();
 }
 
 $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
@@ -75,7 +89,7 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
         <h3>Projects</h3>
         <a href="?action=new">Add New Project</a>
         <ul> 
-            <?php while ($p = $projects->fetch(PDO::FETCH_ASSOC)) : ?>
+            <?php while ($p = $projects->fetch()) : ?>
             <li>
                 <a href="?id=<?= $p["id"] ?>"> 
                     <?= htmlspecialchars($p["name"]) ?> 
@@ -137,6 +151,7 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
                         style="color:red; text-decoration: none;"> 
                         Delete this project
                     </button>
+                </form>
                 <!-- </p> -->
                 <?php endif; ?>
 
