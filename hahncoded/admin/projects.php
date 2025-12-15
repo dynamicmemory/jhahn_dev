@@ -35,11 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST["id"];
         $statement = $database->prepare(
             "UPDATE projects 
-            SET name = :name, 
-                slug = :slug, 
-                description = :description, 
-                content = :content 
-            WHERE id = :id"
+            SET name = :name, slug = :slug, description = :description, 
+                content = :content WHERE id = :id"
         );
 
         $statement->execute([
@@ -57,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = (int)$_POST["id"];
         $statement = $database->prepare("DELETE FROM projects WHERE id = :id");
         $statement->execute([":id" => $id]);
-        echo "<p>Deleted project $id</p>";
+        echo "<p>Deleted project $name</p>";
     }
 }
 

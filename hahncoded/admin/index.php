@@ -1,7 +1,6 @@
 <?php 
 require_once "auth.php";
 
-
 ?>
 <h1>ADMIN DASHBOARD</h1>
 

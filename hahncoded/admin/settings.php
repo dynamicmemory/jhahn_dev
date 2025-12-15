@@ -2,47 +2,58 @@
 require_once "auth.php";
 require "../../website_data/database.php";
 require_once "../includes/csrf.php";
-
 csrf_verify();
 
 // Sending a new/updating a record in the settings table
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $key = $_POST["key"];
     $value = $_POST["value"];
-    $type = $_POST["type"];
+    $section = $_POST["section"];
     $tag = $_POST["tag"];
 
     // Create a new setting 
     if ($_POST["mode"] === "create") {
         $statement = $database->prepare(
-            "INSERT OR IGNORE INTO settings (key, value, type, tag) VALUES (?, ?, ?, ?)");
-        $statement->bindValue(1, $key, SQLITE3_TEXT);
-        $statement->bindValue(2, $value, SQLITE3_TEXT);
-        $statement->bindValue(3, $type, SQLITE3_TEXT);
-        $statement->bindValue(4, $tag, SQLITE3_TEXT);
-        $statement->execute();
-        echo "<p>Successfully added $key to the settings table</p>";
+            "INSERT INTO settings (key, value, section, tag) 
+            VALUES (:key, :value, :section, :tag)");
+        try {
+            $statement->execute([
+                ":key" => $key,
+                ":value" => $value,
+                ":section" => $section,
+                ":tag" => $tag,
+            ]);
+            echo "<p>Successfully added $key to the settings table</p>";
+        } 
+        catch (PDOException $e) {
+            echo "<p>$key already exists in table, $e</p>";
+        } 
     }
 
     // Update an exisiting setting 
     elseif ($_POST["mode"] === "update") {
         $id = $_POST["id"];
         $statement = $database->prepare("UPDATE settings 
-            SET key = ?, value = ?, type = ?, tag = ? WHERE id = ?");
-        $statement->bindValue(1, $key, SQLITE3_TEXT);
-        $statement->bindValue(2, $value, SQLITE3_TEXT);
-        $statement->bindValue(3, $type, SQLITE3_TEXT);
-        $statement->bindValue(4, $tag, SQLITE3_TEXT);
-        $statement->bindValue(5, $id, SQLITE3_INTEGER);
-        $statement->execute();
-        echo "<p>Successfully updated $key</p>";
+            SET key=:key, value=:value, section=:section, tag=:tag WHERE id=:id");
+        try {
+            $statement->execute([
+                ":key" => $key,
+                ":value" => $value,
+                ":section" => $section,
+                ":tag" => $tag,
+            ]);
+            echo "<p>Successfully updated $key</p>";
+        }
+        catch (PDOException $e) {
+            echo "<p>Failed to update $key, $e</p>";
+        }
     }
 
+    // Delete a record
     elseif ($_POST["mode"] === "delete") {
         $id = (int)$_POST["id"];
-        $statement = $database->prepare("DELETE from settings WHERE id = ?");
-        $statement->bindValue(1, $id, SQLITE3_INTEGER);
-        $statement->execute();
+        $statement = $database->prepare("DELETE from settings WHERE id = :id");
+        $statement->execute([":id" => $id]);
         echo "<p>Successfully deleted $key</p>";
     }
 }
@@ -55,10 +66,9 @@ if (isset($_GET["action"]) && $_GET["action"] === "new") {
 }
 
 if (isset($_GET["id"])) {
-    $statement = $database->prepare("SELECT * FROM settings WHERE id = ?");
-    $statement->bindValue(1, $_GET["id"], SQLITE3_INTEGER);
-    $statement->execute();
-    $selected_setting = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement = $database->prepare("SELECT * FROM settings WHERE id = :id");
+    $statement->execute([":id" => $id]);
+    $selected_setting = $statement->fetch();
 }
 
 // Gets all the settings to display in the sidebar
@@ -82,7 +92,7 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
         <div class="side-panel">
             <a href="?action=new">Add new setting</a>
             <ul> 
-                <?php while($s = $settings->fetch(PDO::FETCH_ASSOC)): ?>
+                <?php while($s = $settings->fetch()): ?>
                 <li>
                     <a href="?id=<?=$s["id"]?>">
                         <?=htmlspecialchars($s["key"])?> 
@@ -106,8 +116,8 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
                     <input name="key" value="<?=htmlspecialchars($selected_setting["key"])?>">
                     <label>Value</label>
                     <textarea name="value" rows="20"><?=htmlspecialchars($selected_setting["value"])?></textarea>
-                    <label>Type</label>
-                    <input name="type" value="<?=htmlspecialchars($selected_setting["type"])?>">
+                    <label>Section (Area of the site)</label>
+                    <input name="section" value="<?=htmlspecialchars($selected_setting["section"])?>">
                     <label>Tag</label>
                     <input name="tag" value="<?=htmlspecialchars($selected_setting["tag"])?>">
 

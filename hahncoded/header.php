@@ -2,6 +2,7 @@
 // Add any php objects or code I need here.
 require_once __DIR__ . "/../website_data/database.php";
 require_once __DIR__ . "/includes/functions.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

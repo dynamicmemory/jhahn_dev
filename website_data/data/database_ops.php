@@ -39,7 +39,7 @@ $schema = "(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     key TEXT UNIQUE NOT NULL,
     value TEXT NOT NULL,
-    type TEXT DEFAULT 'text',
+    section TEXT DEFAULT 'setting',
     tag TEXT DEFAULT 'general'
 );";
 

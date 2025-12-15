@@ -1,13 +1,11 @@
 <?php 
 session_start();
 require_once "../../website_data/database.php";
-/* $db = new SQLite3(__DIR__ . '/../data/memoryvoid.db'); */
 
 if (isset($_POST["username"], $_POST["password"])) {
     $statement = $database->prepare("SELECT * FROM users WHERE username = :u");
-    $statement->bindValue(":u", $_POST["username"]);
-    $statement->execute();
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement->execute([":u" => $_POST["username"]]);
+    $user = $statement->fetch();
 
     if ($user && password_verify($_POST["password"], $user["password"])) {
         $_SESSION["user_id"] = $user["id"];

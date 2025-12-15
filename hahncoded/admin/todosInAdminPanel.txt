@@ -1,4 +1,0 @@
-add markdown live preview 
-add image upload 
-add login protection 
-Make it not look like a bag of dogshit.
