@@ -103,8 +103,9 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
         </div>
         <!-- Center panel-->
         <div class="center-panel">
-        <?php if ($selected_setting || $isNew): ?>
+        <?php if ($selected_setting || $isNew) ?>
     
+
             <form method="POST">
                 <fieldset> 
                     <input type="hidden" name="csrf_token" value="<?=csrf_token() ?>">
@@ -124,7 +125,7 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
                     <button type="submit">SUMBIT</button>
                 </fieldset>
             </form>
-                <?php if (!$isNew): ?>
+                    <?php if (!$isNew): ?>
                     <form method="POST" style="display:inline;">
                     <input type="hidden" name="mode" value="delete">
                     <input type="hidden" name="id" value="<?= $selected_setting["id"] ?>">
@@ -134,9 +135,8 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
                         style="color:red; text-decoration: none;"> 
                         Delete this project
                         </button>
-                <?php endif; ?>
-
-        <?php else: ?>
+                    <?php endif; ?>
+        <?php else ?>
             <p>Select a setting from the left to edit.</p>
         <?php endif; ?>
 

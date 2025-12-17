@@ -99,63 +99,55 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
     <!-- Center col-->
     <div style="flex: 1;">
         <?php  if ($selected_project || $isNew): ?>
-        <?php if (!$isNew): ?>
-        <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
-        <?php else: ?>
-        <h3>Adding New Project</h3>
-        <?php endif; ?>
+            <?php if (!$isNew): ?>
+                <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
+            <?php else: ?>
+                <h3>Adding New Project</h3>
+            <?php endif; ?>
 
-        <form method="POST"> 
-            <fieldset> 
-                <input type="hidden" name="csrf_token" value="<?=csrf_token() ?>">
-                <input type="hidden" name="mode" value="<?= $isNew ? "create" : "update" ?>">
-                <?php if (!$isNew): ?>
-                <input type="hidden" name="id" value="<?= $selected_project["id"]?>">
-                <?php endif; ?>
+            <form method="POST"> 
+                <fieldset> 
+                    <input type="hidden" name="csrf_token" value="<?=csrf_token() ?>">
+                    <input type="hidden" name="mode" value="<?= $isNew ? "create" : "update" ?>">
+                    <?php if (!$isNew): ?>
+                    <input type="hidden" name="id" value="<?= $selected_project["id"]?>">
+                    <?php endif; ?>
 
-                <label>Name: </label><br>
-                <input name="name" value="<?= htmlspecialchars($selected_project["name"]) ?>"
-                    style="width: 100%"><br><br>
+                    <label>Name: </label><br>
+                    <input name="name" value="<?= htmlspecialchars($selected_project["name"]) ?>" style="width: 100%"><br><br>
 
-                <label>URL-Slug: </label><br>
-                <input name="slug" value="<?= htmlspecialchars($selected_project["slug"]) ?>"
-                    style="width: 100%"><br><br>
+                    <label>URL-Slug: </label><br>
+                    <input name="slug" value="<?= htmlspecialchars($selected_project["slug"]) ?>" style="width: 100%"><br><br>
 
-                <label>Description: </label><br>
-                <input name="description" value="<?= htmlspecialchars($selected_project["description"]) ?>"
-                    style="width: 100%"><br><br>
+                    <label>Description: </label><br>
+                    <input name="description" value="<?= htmlspecialchars($selected_project["description"]) ?>" style="width: 100%"><br><br>
 
-                <label>Content (Markdown body): </label><br>
-                <textarea name="content" rows="30" style="width: 100%;"><?= htmlspecialchars($selected_project["content"]) ?></textarea>
-                <br><br>
+                    <label>Content (Markdown body): </label><br>
+                    <textarea name="content" rows="30" style="width: 100%;"><?= htmlspecialchars($selected_project["content"]) ?></textarea>
+                    <br><br>
 
-                <!-- ADD JSON MEDIA OBJECTS IF I CHOOSE TO IMPLEMENT HERE-->
-                <button type="submit">
-                    <?= $isNew ? "Add Project" : "Save Changes" ?>
-                </button>
-            </fieldset> 
-        </form>
-
-                <?php if (!$isNew): ?>
-                <!-- <p style="margin-top:1rem; float: right;"> -->
-
-                    <form method="POST" style="display:inline;">
-                    <input type="hidden" name="mode" value="delete">
-                    <input type="hidden" name="id" value="<?= $selected_project["id"] ?>">
-                    <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
-                    <button type="submit" onclick="return confirm
-                        ('Are you sure you want to delete this project');"
-                        style="color:red; text-decoration: none;"> 
-                        Delete this project
+                    <!-- ADD JSON MEDIA OBJECTS IF I CHOOSE TO IMPLEMENT HERE-->
+                    <button type="submit">
+                        <?= $isNew ? "Add Project" : "Save Changes" ?>
                     </button>
+                </fieldset> 
+            </form>
+
+            <?php if (!$isNew): ?>
+            <!-- <p style="margin-top:1rem; float: right;"> -->
+
+                <form method="POST" style="display:inline;">
+                <input type="hidden" name="mode" value="delete">
+                <input type="hidden" name="id" value="<?= $selected_project["id"] ?>">
+                <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
+                <button type="submit" onclick="return confirm ('Are you sure you want to delete this project');"
+                        style="color:red; text-decoration: none;">Delete this project</button>
                 </form>
-                <!-- </p> -->
-                <?php endif; ?>
-
-
+            <!-- </p> -->
+            <?php endif; ?>
 
         <?php else: ?>
-        <p>Select a project from the left to edit.</>
+            <p>Select a project from the left to edit.</>
         <?php endif; ?>
     </div>
 </div>
