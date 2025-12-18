@@ -1,8 +1,6 @@
 <?php
-$contact_info = ["Phone Number: -",
-                        "Email: -",
-                        "Github: dynamicmemory"
-                 ];
+include "./includes/functions.php";
+
 ?>
 
 <?php include "header.php" ?>
@@ -11,11 +9,10 @@ $contact_info = ["Phone Number: -",
     </div>
     <div class="center-col" id="contact-center-col">
         <p>Contact info</p>
-        <ul>
-            <?php foreach($contact_info as $contact): ?>
-                <li><?= $contact ?></li>
-            <?php endforeach; ?>
-       </ul> 
+            <ul> 
+            <li><a href="<?= htmlspecialchars(getSetting('contact_email')) ?>">Email</a></li>
+            <li><a href="<?= htmlspecialchars(getSetting('contact_github')) ?>">Github</a></li>
+            </ul>
     </div>
 </div>
 <?php include "footer.php" ?>

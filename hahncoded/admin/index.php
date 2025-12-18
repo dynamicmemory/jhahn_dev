@@ -2,12 +2,17 @@
 require_once "auth.php";
 
 ?>
-<h1>ADMIN DASHBOARD</h1>
+<html> 
+    <head> 
+        <link rel="stylesheet" type="text/css" href="/css/admin.css">
+    </head>
 
-<ul > 
-    <li style="padding: 10px;"><a href="projects.php">Projects</a></li>
-    <!-- <li><a href="users/">Users</a></li> -->
-    <li style="padding: 10px;"><a href="settings.php">Settings</a></li>
-    <li style="padding: 10px;"><a href="logout.php">Logout</a></li>
-    <!-- <li><a href="projects/">Projects</a></li> -->
-</ul>
+<div style="display: block; justify-items: center;">
+<h1>ADMIN DASHBOARD</h1>
+<div style="display: flex; gap: 1rem; align-items: center;">
+    <a href="index.php">Home</a>
+    <a href="projects.php">Projects</a>
+    <a href="settings.php">Settings</a>
+    <a href="logout.php">Logout</a>
+</div>
+</div>

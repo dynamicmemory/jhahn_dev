@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 ":value" => $value,
                 ":section" => $section,
                 ":tag" => $tag,
+                ":id" => $id
             ]);
             echo "<p>Successfully updated $key</p>";
         }
@@ -66,6 +67,7 @@ if (isset($_GET["action"]) && $_GET["action"] === "new") {
 }
 
 if (isset($_GET["id"])) {
+    $id = $_GET["id"];
     $statement = $database->prepare("SELECT * FROM settings WHERE id = :id");
     $statement->execute([":id" => $id]);
     $selected_setting = $statement->fetch();
@@ -76,14 +78,9 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 
 ?>
 <!-- Make a new header for the admin panel so i can load css scripts and the like-->
-<html> 
-    <head> 
-        <link rel="stylesheet" type="text/css" href="/css/admin.css">
-    </head>
 
-    <h1>Settings</h1> 
-    <a href="index.php">Dashboard</a>
-
+<?php include "index.php" ?>
+<h1>Settings Editor</h1>
     <!-- Main container-->
     <div class="main-container">
 
