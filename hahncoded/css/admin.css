@@ -1,7 +1,18 @@
+body {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* font-size: 16px; */
+    /* height: 100vh; */
+    /* max-width: 1000px; */
+    /* width: 100%; */
+    /* margin: auto; */
+}
+
 .main-container {
     display: flex;
     gap: 2rem;
     max-width: 1000px;
+    margin: auto;
 }
 
 .side-panel {
@@ -17,7 +28,9 @@ input, textarea{
 }
 
 
+footer {
+    margin-top: auto;
+    text-align: center;
+}
 
-/* li { */
-/*     padding: 10px; */
-/* } */
+

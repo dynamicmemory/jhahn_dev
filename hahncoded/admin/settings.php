@@ -77,67 +77,68 @@ if (isset($_GET["id"])) {
 $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 
 ?>
-<!-- Make a new header for the admin panel so i can load css scripts and the like-->
 
-<?php include "index.php" ?>
-<h1>Settings Editor</h1>
-    <!-- Main container-->
-    <div class="main-container">
+<?php include "header.php" ?>
 
-        <!-- Side panel-->
-        <div class="side-panel">
-            <a href="?action=new">Add new setting</a>
-            <ul> 
-                <?php while($s = $settings->fetch()): ?>
-                <li>
-                    <a href="?id=<?=$s["id"]?>">
-                        <?=htmlspecialchars($s["key"])?> 
-                    </a>   
-                </li>
-                <?php endwhile ?>
-            </ul>
+<!-- Main container-->
+<div class="main-container">
+  <!-- Side panel-->
+  <div class="side-panel">
+    <a href="?action=new">Add new setting</a>
+      <ul> 
+        <?php while($s = $settings->fetch()): ?>
+          <li>
+            <a href="?id=<?=$s["id"]?>">
+              <?=htmlspecialchars($s["key"])?>
+            </a>   
+          </li>
+        <?php endwhile ?>
+      </ul>
 
-        </div>
-        <!-- Center panel-->
-        <div class="center-panel">
-        <?php if ($selected_setting || $isNew): ?>
+  </div>
+        
+  <!-- Center panel-->
+  <div class="center-panel">
+    <h1>Settings Editor</h1>
+    <?php if ($selected_setting || $isNew): ?>
     
-            <form method="POST">
-                <fieldset> 
-                    <input type="hidden" name="csrf_token" value="<?=csrf_token() ?>">
-                    <input type="hidden" name="mode" value="<?=$isNew ? 'create' : 'update'?>">
-                    <?php if (!$isNew): ?>
-                    <input type="hidden" name="id" value="<?=$selected_setting["id"]?>">
-                    <?php endif; ?>
-                    <label>Key</label>
-                    <input name="key" value="<?=htmlspecialchars($selected_setting["key"])?>">
-                    <label>Value</label>
-                    <textarea name="value" rows="20"><?=htmlspecialchars($selected_setting["value"])?></textarea>
-                    <label>Section (Area of the site)</label>
-                    <input name="section" value="<?=htmlspecialchars($selected_setting["section"])?>">
-                    <label>Tag</label>
-                    <input name="tag" value="<?=htmlspecialchars($selected_setting["tag"])?>">
+      <form method="POST">
+        <fieldset> 
+          <input type="hidden" name="csrf_token" value="<?=csrf_token() ?>">
+          <input type="hidden" name="mode" value="<?=$isNew ? 'create' : 'update'?>">
+          <?php if (!$isNew): ?>
+            <input type="hidden" name="id" value="<?=$selected_setting["id"]?>">
+          <?php endif; ?>
+          <label>Key</label>
+          <input name="key" value="<?=htmlspecialchars($selected_setting["key"])?>">
+          <label>Value</label>
+          <textarea name="value" rows="20"><?=htmlspecialchars($selected_setting["value"])?></textarea>
+          <label>Section (Area of the site)</label>
+          <input name="section" value="<?=htmlspecialchars($selected_setting["section"])?>">
+          <label>Tag</label>
+          <input name="tag" value="<?=htmlspecialchars($selected_setting["tag"])?>">
 
-                    <button type="submit">SUMBIT</button>
-                </fieldset>
-            </form>
-                <?php if (!$isNew): ?>
-                    <form method="POST" style="display:inline;">
-                    <input type="hidden" name="mode" value="delete">
-                    <input type="hidden" name="id" value="<?= $selected_setting["id"] ?>">
-                    <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
-                    <button type="submit" onclick="return confirm
-                        ('Are you sure you want to delete this project');"
-                        style="color:red; text-decoration: none;"> 
-                        Delete this project
-                        </button>
-                <?php endif; ?>
+          <button type="submit">SUMBIT</button>
+        </fieldset>
+      </form>
+      <?php if (!$isNew): ?>
+        <form method="POST" style="display:inline;">
+          <input type="hidden" name="mode" value="delete">
+          <input type="hidden" name="id" value="<?= $selected_setting["id"] ?>">
+          <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
+          <button type="submit" onclick="return confirm
+            ('Are you sure you want to delete this project');"
+            style="color:red; text-decoration: none;"> 
+            Delete this project
+          </button>
+        </form>
+      <?php endif; ?>
 
-        <?php else: ?>
-            <p>Select a setting from the left to edit.</p>
-        <?php endif; ?>
+    <?php else: ?>
+      <p>Select a setting from the left to edit.</p>
+    <?php endif; ?>
 
-        </div>
-    </div>
-</html>
+  </div>
+</div>
+<?php include "footer.php" ?>
 <!-- -->
