@@ -81,7 +81,6 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
 <!-- Main container -->
 <div class="main-container"> 
 
-
     <!-- Left col -->
     <div style="min-width: 200px;"> 
         <h3>Projects</h3>
