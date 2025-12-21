@@ -81,10 +81,10 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 <?php include "header.php" ?>
 
 <!-- Main container-->
-<div class="main-container">
+<main class="main-container">
   <!-- Side panel-->
   <div class="side-panel">
-    <a href="?action=new">Add new setting</a>
+    <h3>Settings</h3>
       <ul> 
         <?php while($s = $settings->fetch()): ?>
           <li>
@@ -94,6 +94,8 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
           </li>
         <?php endwhile ?>
       </ul>
+    <h3>Other Options</h3>
+    <a href="?action=new">Add new setting</a>
 
   </div>
         
@@ -101,6 +103,11 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
   <div class="center-panel">
     <h1>Settings Editor</h1>
     <?php if ($selected_setting || $isNew): ?>
+      <?php if (!$isNew): ?>
+        <h3>Editing: <?= htmlspecialchars($selected_setting["key"])?></h3>
+      <?php else: ?>
+        <h3>Adding a New setting</h3>
+      <?php endif ?>
     
       <form method="POST">
         <fieldset> 
@@ -110,25 +117,32 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
             <input type="hidden" name="id" value="<?=$selected_setting["id"]?>">
           <?php endif; ?>
           <label>Key</label>
+          <br>
           <input name="key" value="<?=htmlspecialchars($selected_setting["key"])?>">
+          <br><br>
           <label>Value</label>
+          <br>
           <textarea name="value" rows="20"><?=htmlspecialchars($selected_setting["value"])?></textarea>
+          <br><br>
           <label>Section (Area of the site)</label>
+          <br>
           <input name="section" value="<?=htmlspecialchars($selected_setting["section"])?>">
+          <br><br>
           <label>Tag</label>
+          <br>
           <input name="tag" value="<?=htmlspecialchars($selected_setting["tag"])?>">
+          <br><br>
 
           <button type="submit">SUMBIT</button>
         </fieldset>
       </form>
       <?php if (!$isNew): ?>
-        <form method="POST" style="display:inline;">
+        <form method="POST"> 
           <input type="hidden" name="mode" value="delete">
           <input type="hidden" name="id" value="<?= $selected_setting["id"] ?>">
           <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
           <button type="submit" onclick="return confirm
-            ('Are you sure you want to delete this project');"
-            style="color:red; text-decoration: none;"> 
+            ('Are you sure you want to delete this project');"> 
             Delete this project
           </button>
         </form>
@@ -139,6 +153,6 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
     <?php endif; ?>
 
   </div>
-</div>
+</main>
 <?php include "footer.php" ?>
 <!-- -->

@@ -5,10 +5,10 @@ require_once "auth.php";
 
 <?php include "header.php" ?>
 
-<div>
+<main>
   <p>
-     Dashboard information of the entire portfolio
+     Dashboard information and summary of tables in db of the entire portfolio
   </p>
-</div>
+</main>
 
 <?php include "footer.php" ?>
