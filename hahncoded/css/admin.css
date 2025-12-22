@@ -36,6 +36,8 @@ main {
 
 .side-panel {
     min-width: 200px;
+    max-width: 200px;
+    overflow-wrap: break-word;
 }
 
 .center-panel {

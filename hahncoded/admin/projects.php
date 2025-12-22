@@ -96,7 +96,7 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
   <!-- Center col-->
   <div class="center-panel">
     <h1>Projects DB editor</h1>
-    <?php  if ($selected_project || $isNew): ?>
+    <?php if ($selected_project || $isNew): ?>
       <?php if (!$isNew): ?>
         <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
       <?php else: ?>
