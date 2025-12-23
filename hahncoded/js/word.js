@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.querySelectorAll('.word').forEach(c => {
             // c.style.animationDuration = `${10 + Math.random()*10}s`;
             c.style.animationDuration = `${10 + Math.random()*10}s`;
-            c.style.animationDelay = `${Math.random()*10}s`;
+            c.style.animationDelay = `${Math.random()*5}s`;
         });
     }
 

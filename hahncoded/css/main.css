@@ -1,4 +1,4 @@
-h1 { font-size: 3.25rem }
+h1 { font-size: 2.25rem }
 
 html { overflow-y: scroll; }
 
@@ -28,7 +28,7 @@ body.fade-out {
 nav {
     display: flex;
     justify-content: space-between;
-    font-size: 3.25rem;   /* not being used currently */
+    font-size: 3rem;   /* not being used currently */
     padding: 20px;
 }
 

@@ -43,8 +43,10 @@ $schema = "(
     tag TEXT DEFAULT 'general'
 );";
 
+
+
 /* remove_table($database, $table_name); */
-create_table($database, $table_name, $schema);
+/* create_table($database, $table_name, $schema); */
 
 ?>
 
