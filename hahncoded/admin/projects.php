@@ -2,9 +2,37 @@
 require_once "auth.php";
 require "../../website_data/database.php";
 require_once "../includes/csrf.php";
+require_once "../includes/helpers.php";
 csrf_verify();
 
+
+$selected_project = null;
+$isNew = false;
+
+if (isset($_GET["action"]) && $_GET["action"] === "new") {
+    $isNew = true;
+}
+
+if (isset($_GET['id'])) {
+    $statement = $database->prepare("SELECT * FROM projects WHERE id = :id");
+    $statement->execute([":id" => $_GET["id"]]);
+    $selected_project = $statement->fetch();
+}
+
+$projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Works for now, but really don't like this design
+    $errors = enforceFields($_POST, ["name", "slug", "description", "content"]);
+    if (!empty($errors)) {
+        $_SESSION["form_errors"] = $errors;
+        $_SESSION["form_data"] = $_POST;
+        header("Location: projects.php" . ($isNew ? "?action=new" : "?id=$_POST[id]"));
+        exit;
+    }
+
+
     $name = $_POST['name'];
     $slug = $_POST['slug'];
     $description= $_POST['description'];
@@ -58,20 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$selected_project = null;
-$isNew = false;
-
-if (isset($_GET["action"]) && $_GET["action"] === "new") {
-    $isNew = true;
-}
-
-if (isset($_GET['id'])) {
-    $statement = $database->prepare("SELECT * FROM projects WHERE id = :id");
-    $statement->execute([":id" => $_GET["id"]]);
-    $selected_project = $statement->fetch();
-}
-
-$projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
 
 ?>
 <?php include "header.php" ?>

@@ -43,7 +43,7 @@ $schema = "(
     tag TEXT DEFAULT 'general'
 );";
 
-
+$database->exec("ALTER TABLE settings RENAME COLUMN section TO type;");
 
 /* remove_table($database, $table_name); */
 /* create_table($database, $table_name, $schema); */

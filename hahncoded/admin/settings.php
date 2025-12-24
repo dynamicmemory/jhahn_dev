@@ -1,26 +1,56 @@
 <?php
+// This area just gets larger and larger... simplify
 require_once "auth.php";
 require "../../website_data/database.php";
 require_once "../includes/csrf.php";
+require_once "../includes/helpers.php";
 csrf_verify();
+
+
+$selected_setting = null;
+$isNew = false;
+
+if (isset($_GET["action"]) && $_GET["action"] === "new") {
+    $isNew = true;
+}
+
+if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+    $statement = $database->prepare("SELECT * FROM settings WHERE id = :id");
+    $statement->execute([":id" => $id]);
+    $selected_setting = $statement->fetch();
+}
+
+// Gets all the settings to display in the sidebar
+$settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
+
 
 // Sending a new/updating a record in the settings table
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Works for now, but really don't like this design
+    $errors = enforceFields($_POST, ["key", "value", "type", "tag"]);
+    if (!empty($errors)) {
+        $_SESSION["form_errors"] = $errors;
+        $_SESSION["form_data"] = $_POST;
+        header("Location: settings.php" . ($isNew ? "?action=new" : "?id=$_POST[id]"));
+        exit;
+    }
+
     $key = $_POST["key"];
     $value = $_POST["value"];
-    $section = $_POST["section"];
+    $type = $_POST["type"];
     $tag = $_POST["tag"];
 
     // Create a new setting 
     if ($_POST["mode"] === "create") {
         $statement = $database->prepare(
-            "INSERT INTO settings (key, value, section, tag) 
-            VALUES (:key, :value, :section, :tag)");
+            "INSERT INTO settings (key, value, type, tag) 
+            VALUES (:key, :value, :type, :tag)");
         try {
             $statement->execute([
                 ":key" => $key,
                 ":value" => $value,
-                ":section" => $section,
+                ":type" => $type,
                 ":tag" => $tag,
             ]);
             echo "<p>Successfully added $key to the settings table</p>";
@@ -34,12 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     elseif ($_POST["mode"] === "update") {
         $id = $_POST["id"];
         $statement = $database->prepare("UPDATE settings 
-            SET key=:key, value=:value, section=:section, tag=:tag WHERE id=:id");
+            SET key=:key, value=:value, type=:type, tag=:tag WHERE id=:id");
         try {
             $statement->execute([
                 ":key" => $key,
                 ":value" => $value,
-                ":section" => $section,
+                ":type" => $type,
                 ":tag" => $tag,
                 ":id" => $id
             ]);
@@ -59,22 +89,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
-$selected_setting = null;
-$isNew = false;
-
-if (isset($_GET["action"]) && $_GET["action"] === "new") {
-    $isNew = true;
-}
-
-if (isset($_GET["id"])) {
-    $id = $_GET["id"];
-    $statement = $database->prepare("SELECT * FROM settings WHERE id = :id");
-    $statement->execute([":id" => $id]);
-    $selected_setting = $statement->fetch();
-}
-
-// Gets all the settings to display in the sidebar
-$settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 
 ?>
 
@@ -116,19 +130,19 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
           <?php if (!$isNew): ?>
             <input type="hidden" name="id" value="<?=$selected_setting["id"]?>">
           <?php endif; ?>
-          <label>Key</label>
+          <label>Key:</label>
           <br>
           <input name="key" value="<?=htmlspecialchars($selected_setting["key"])?>">
           <br><br>
-          <label>Value</label>
+          <label>Value:</label>
           <br>
           <textarea name="value" rows="20"><?=htmlspecialchars($selected_setting["value"])?></textarea>
           <br><br>
-          <label>Section (Area of the site)</label>
+          <label>Type (settings/content):</label>
           <br>
-          <input name="section" value="<?=htmlspecialchars($selected_setting["section"])?>">
+          <input name="type" value="<?=htmlspecialchars($selected_setting["type"])?>">
           <br><br>
-          <label>Tag</label>
+          <label>Tag (Area of the website):</label>
           <br>
           <input name="tag" value="<?=htmlspecialchars($selected_setting["tag"])?>">
           <br><br>
