@@ -22,7 +22,7 @@ if (!$project) {
 } 
 
 $list = $database
-    ->query("SELECT name, slug FROM projects ORDER BY id ASC")
+    ->query("SELECT name, slug, languages FROM projects ORDER BY id ASC")
     ->fetchAll();
 
 $content = $Parsedown->text($project['content']);
@@ -33,22 +33,23 @@ $content = $Parsedown->text($project['content']);
 
 <?php include "header.php" ?>
 <div id="projects-container">
-    <div class="left-col" id="projects-left-col">
-        <ul> 
-            <?php foreach($list as $item): ?>
-                <li>
-                    <a href="?project=<?= urlencode($item['slug']) ?>"
-                        class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
-                        <?= htmlspecialchars($item['name']) ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-    </div>
+  <div class="left-col" id="projects-left-col">
+    <ul> 
+      <?php foreach($list as $item): ?>
+        <li>
+          <a href="?project=<?= urlencode($item['slug']) ?>"
+             class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
+             <?= htmlspecialchars($item['name']) ?>
+             <p style="font-size: 16px; font-weight: normal;"><?= htmlspecialchars($item['languages']) ?></p>
+          </a>
+        </li>
+      <?php endforeach; ?>
+    </ul>
+  </div>
 
-    <div class="center-col" id="projects-center-col">
-      <!--  <h2><?= htmlspecialchars($project['name']) ?></h2> -->
-      <?= $content?>
-    </div>
+  <div class="center-col" id="projects-center-col">
+    <!--  <h2><?= htmlspecialchars($project['name']) ?></h2> -->
+    <?= $content?>
+  </div>
 </div>
 <?php include "footer.php" ?>

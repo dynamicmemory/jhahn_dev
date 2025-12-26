@@ -6,25 +6,6 @@ require_once "../includes/csrf.php";
 require_once "../includes/helpers.php";
 csrf_verify();
 
-
-$selected_setting = null;
-$isNew = false;
-
-if (isset($_GET["action"]) && $_GET["action"] === "new") {
-    $isNew = true;
-}
-
-if (isset($_GET["id"])) {
-    $id = $_GET["id"];
-    $statement = $database->prepare("SELECT * FROM settings WHERE id = :id");
-    $statement->execute([":id" => $id]);
-    $selected_setting = $statement->fetch();
-}
-
-// Gets all the settings to display in the sidebar
-$settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
-
-
 // Sending a new/updating a record in the settings table
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Works for now, but really don't like this design
@@ -32,6 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!empty($errors)) {
         $_SESSION["form_errors"] = $errors;
         $_SESSION["form_data"] = $_POST;
+
+        // Check if the form was for ading a new setting
+        if (isset($_GET["action"]) && $_GET["action"] === "new") {
+            $isNew = true;
+        }
         header("Location: settings.php" . ($isNew ? "?action=new" : "?id=$_POST[id]"));
         exit;
     }
@@ -89,6 +75,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+$selected_setting = null;
+$isNew = false;
+
+if (isset($_GET["action"]) && $_GET["action"] === "new") {
+    $isNew = true;
+}
+
+if (isset($_GET["id"])) {
+    $id = $_GET["id"];
+    $statement = $database->prepare("SELECT * FROM settings WHERE id = :id");
+    $statement->execute([":id" => $id]);
+    $selected_setting = $statement->fetch();
+}
+
+// Gets all the settings to display in the sidebar
+$settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 
 ?>
 

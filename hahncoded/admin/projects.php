@@ -5,50 +5,41 @@ require_once "../includes/csrf.php";
 require_once "../includes/helpers.php";
 csrf_verify();
 
-
-$selected_project = null;
-$isNew = false;
-
-if (isset($_GET["action"]) && $_GET["action"] === "new") {
-    $isNew = true;
-}
-
-if (isset($_GET['id'])) {
-    $statement = $database->prepare("SELECT * FROM projects WHERE id = :id");
-    $statement->execute([":id" => $_GET["id"]]);
-    $selected_project = $statement->fetch();
-}
-
-$projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Works for now, but really don't like this design
     $errors = enforceFields($_POST, ["name", "slug", "description", "content"]);
     if (!empty($errors)) {
         $_SESSION["form_errors"] = $errors;
         $_SESSION["form_data"] = $_POST;
-        header("Location: projects.php" . ($isNew ? "?action=new" : "?id=$_POST[id]"));
+
+     // Check if the form is for adding a new project 
+    if (isset($_GET["action"]) && $_GET["action"] === "new") {
+        $isNew = true;
+    }
+        header("Location: projects.php" . ($isNew ? "?action=new" : "?id=$_GET[id]"));
         exit;
     }
 
-
     $name = $_POST['name'];
     $slug = $_POST['slug'];
+    $last_updated = $_POST['last_updated'];
+    $languages = $_POST['languages'];
     $description= $_POST['description'];
     $content = $_POST['content'];
 
     // Code for adding a new project
     if ($_POST["mode"] === "create") {
         $statement = $database->prepare(
-            "INSERT INTO projects (name, slug, description, content) 
-            VALUES (:name, :slug, :description, :content)"
+            "INSERT INTO projects (name, slug, last_updated, languages, description, content) 
+            VALUES (:name, :slug, :last_updated, :languages, :description, :content)"
         );
         // Protect against inserting existing slug 
         try {
             $statement->execute([
                 ":name" => $name,
                 ":slug" => $slug,
+                ":last_updated" => $last_updated,
+                ":languages" => $languages,
                 ":description" => $description,
                 ":content" => $content
             ]);
@@ -63,14 +54,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id = $_POST["id"];
         $statement = $database->prepare(
             "UPDATE projects 
-            SET name = :name, slug = :slug, description = :description, 
-                content = :content WHERE id = :id"
+            SET name = :name, slug = :slug, last_updated = :last_updated,
+                       languages = :languages, description = :description, 
+                       content = :content WHERE id = :id"
         );
 
         $statement->execute([
             ":id" => $id,
             ":name" => $name,
             ":slug" => $slug,
+            ":last_updated" => date('Y-m-d'),
+            ":languages" => $languages,
             ":description" => $description,
             ":content" => $content
         ]);
@@ -86,6 +80,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+$selected_project = null;
+$isNew = false;
+
+if (isset($_GET["action"]) && $_GET["action"] === "new") {
+    $isNew = true;
+}
+
+if (isset($_GET['id'])) {
+    $statement = $database->prepare("SELECT * FROM projects WHERE id = :id");
+    $statement->execute([":id" => $_GET["id"]]);
+    $selected_project = $statement->fetch();
+}
+
+$projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
 
 ?>
 <?php include "header.php" ?>
@@ -131,6 +139,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <label>URL-Slug: </label><br>
           <input name="slug" value="<?= htmlspecialchars($selected_project["slug"]) ?>">
+          <br><br>
+          <!--
+          <label>Latest update: </label><br>
+          <input name="last_updated" value="<?= htmlspecialchars($selected_project["last_updated"]) ?>">
+          <br><br> -->
+
+          <label>Languages: </label><br>
+          <input name="languages" value="<?= htmlspecialchars($selected_project["languages"]) ?>">
           <br><br>
 
           <label>Description: </label><br>

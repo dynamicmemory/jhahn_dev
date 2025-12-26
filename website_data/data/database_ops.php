@@ -24,32 +24,31 @@ $schema = "(
     role TEXT NOT NULL DEFAULT 'viewer' 
     );";
 
-$table_name = "projects"; 
+$table_name = "projects";
 $schema = "(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     slug TEXT NOT NULL UNIQUE,
+    last_updated TEXT NOT NULL DEFAULT (date('now')),
+    languages TEXT,
     description TEXT NOT NULL,
-    content TEXT NOT NULL,
-    media TEXT 
+    content TEXT NOT NULL
     );";
 
-$table_name = "settings";
-$schema = "(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    key TEXT UNIQUE NOT NULL,
-    value TEXT NOT NULL,
-    section TEXT DEFAULT 'setting',
-    tag TEXT DEFAULT 'general'
-);";
+/* $table_name = "settings"; */
+/* $schema = "( */
+/*     id INTEGER PRIMARY KEY AUTOINCREMENT, */
+/*     key TEXT UNIQUE NOT NULL, */
+/*     value TEXT NOT NULL, */
+/*     section TEXT DEFAULT 'setting', */
+/*     tag TEXT DEFAULT 'general' */
+/* );"; */
 
-$database->exec("ALTER TABLE settings RENAME COLUMN section TO type;");
 
-/* remove_table($database, $table_name); */
-/* create_table($database, $table_name, $schema); */
+
+remove_table($database, $table_name);
+create_table($database, $table_name, $schema);
+
+/* $database->exec("ALTER TABLE settings RENAME COLUMN section TO type;"); */
 
 ?>
-
-
-
-

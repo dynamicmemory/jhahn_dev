@@ -5,7 +5,6 @@ require "../../website_data/database.php";
 require_once "../includes/csrf.php";
 csrf_verify();
 
-
 ?>
 
 <?php include "header.php" ?>
