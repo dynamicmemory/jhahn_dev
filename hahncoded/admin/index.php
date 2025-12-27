@@ -1,9 +1,5 @@
 <?php 
-// Simplify this security flow into a util function or header or something, I use it everywhere
-require_once "auth.php";
-require "../../website_data/database.php";
-require_once "../includes/csrf.php";
-csrf_verify();
+require_once "init.php";
 
 ?>
 

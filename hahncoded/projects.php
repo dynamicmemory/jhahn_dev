@@ -25,7 +25,11 @@ $list = $database
     ->query("SELECT name, slug, languages FROM projects ORDER BY id ASC")
     ->fetchAll();
 
-$content = $Parsedown->text($project['content']);
+// Get 'last updated' and inject it into the md file
+$md = $project["content"];
+$formatDate = date('d-m-Y', strtotime($project["last_updated"]));
+$md = str_replace("{{last_updated}}", htmlspecialchars($formatDate), $md);
+$content = $Parsedown->text($md);
 
 // TODO: Ill do media after if i can get name, slug and description in
 

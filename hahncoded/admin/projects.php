@@ -1,9 +1,5 @@
 <?php
-require_once "auth.php";
-require "../../website_data/database.php";
-require_once "../includes/csrf.php";
-require_once "../includes/helpers.php";
-csrf_verify();
+require_once "init.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Works for now, but really don't like this design
@@ -17,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $isNew = true;
     }
         header("Location: projects.php" . ($isNew ? "?action=new" : "?id=$_GET[id]"));
-        exit;
+        /* exit; */
     }
 
     $name = $_POST['name'];
@@ -44,7 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ":content" => $content
             ]);
         } catch (PDOException $e) {
-            die("Slug already exists");
+            die($e);
+            /* die("Slug already exists"); */
         }
         echo "<p>Added project: $name</p>";
     }
@@ -119,11 +116,24 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
   <div class="center-panel">
     <h1>Projects DB editor</h1>
     <?php if ($selected_project || $isNew): ?>
-      <?php if (!$isNew): ?>
-        <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
-      <?php else: ?>
-        <h3>Adding New Project</h3>
-      <?php endif; ?>
+      <div class="form-heading">
+        <?php if (!$isNew): ?>
+      
+          <h3>Editing: <?= htmlspecialchars($selected_project["name"]) ?></h3> 
+          <form method="POST">
+            <input type="hidden" name="mode" value="delete">
+            <input type="hidden" name="id" value="<?= $selected_project["id"] ?>">
+            <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
+            <button class="delete-btn" type="submit" onclick="return 
+              confirm('Are you sure you want to delete this project');">
+              Delete this project
+            </button>
+          </form>
+
+        <?php else: ?>
+          <h3>Adding New Project</h3>
+        <?php endif; ?>
+      </div>
 
       <form method="POST"> 
         <fieldset> 
@@ -140,10 +150,8 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
           <label>URL-Slug: </label><br>
           <input name="slug" value="<?= htmlspecialchars($selected_project["slug"]) ?>">
           <br><br>
-          <!--
-          <label>Latest update: </label><br>
-          <input name="last_updated" value="<?= htmlspecialchars($selected_project["last_updated"]) ?>">
-          <br><br> -->
+
+          <input type="hidden" name="last_updated" value="<?= htmlspecialchars($selected_project["last_updated"]) ?>">
 
           <label>Languages: </label><br>
           <input name="languages" value="<?= htmlspecialchars($selected_project["languages"]) ?>">
@@ -162,17 +170,7 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
         </fieldset> 
       </form>
 
-      <?php if (!$isNew): ?>
-        <form method="POST">
-          <input type="hidden" name="mode" value="delete">
-          <input type="hidden" name="id" value="<?= $selected_project["id"] ?>">
-          <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
-          <button type="submit" onclick="return 
-            confirm('Are you sure you want to delete this project');">
-            Delete this project
-          </button>
-        </form>
-      <?php endif; ?>
+
 
     <?php else: ?>
       <p>Select a project from the left to edit.</>

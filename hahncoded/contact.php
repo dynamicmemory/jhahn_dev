@@ -10,7 +10,8 @@ include "./includes/functions.php";
     <div class="center-col" id="contact-center-col">
         <p>Contact info</p>
             <ul> 
-            <li><a href="<?= htmlspecialchars(getSetting('contact_email')) ?>">Email</a></li>
+            <li><?= htmlspecialchars(getSetting('contact_email')) ?>
+            </li>
             <li><a href="<?= htmlspecialchars(getSetting('contact_github')) ?>">Github</a></li>
             </ul>
     </div>

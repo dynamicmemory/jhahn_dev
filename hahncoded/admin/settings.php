@@ -1,10 +1,5 @@
 <?php
-// This area just gets larger and larger... simplify
-require_once "auth.php";
-require "../../website_data/database.php";
-require_once "../includes/csrf.php";
-require_once "../includes/helpers.php";
-csrf_verify();
+require_once "init.php";
 
 // Sending a new/updating a record in the settings table
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -19,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $isNew = true;
         }
         header("Location: settings.php" . ($isNew ? "?action=new" : "?id=$_POST[id]"));
-        exit;
+        /* exit; */
     }
 
     $key = $_POST["key"];
@@ -97,10 +92,10 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
 <?php include "header.php" ?>
 
 <!-- Main container-->
-<main class="main-container">
+<main>
   <!-- Side panel-->
   <div class="side-panel">
-    <h3>Settings</h3>
+    <h3>Settings/Content</h3>
       <ul> 
         <?php while($s = $settings->fetch()): ?>
           <li>
@@ -119,11 +114,22 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
   <div class="center-panel">
     <h1>Settings Editor</h1>
     <?php if ($selected_setting || $isNew): ?>
-      <?php if (!$isNew): ?>
-        <h3>Editing: <?= htmlspecialchars($selected_setting["key"])?></h3>
-      <?php else: ?>
-        <h3>Adding a New setting</h3>
-      <?php endif ?>
+      <div class="form-heading">
+        <?php if (!$isNew): ?>
+          <h3>Editing: <?= htmlspecialchars($selected_setting["key"])?></h3>
+          <form method="POST"> 
+            <input type="hidden" name="mode" value="delete">
+            <input type="hidden" name="id" value="<?= $selected_setting["id"] ?>">
+            <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
+            <button class="delete-btn" type="submit" onclick="return confirm
+              ('Are you sure you want to delete this project');"> 
+              Delete this setting 
+            </button>
+          </form>
+        <?php else: ?>
+          <h3>Adding a New setting</h3>
+        <?php endif ?>
+      </div>
     
       <form method="POST">
         <fieldset> 
@@ -152,17 +158,6 @@ $settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
           <button type="submit">SUMBIT</button>
         </fieldset>
       </form>
-      <?php if (!$isNew): ?>
-        <form method="POST"> 
-          <input type="hidden" name="mode" value="delete">
-          <input type="hidden" name="id" value="<?= $selected_setting["id"] ?>">
-          <input type="hidden" name="csrf_token" value="<?= csrf_token() ?>">
-          <button type="submit" onclick="return confirm
-            ('Are you sure you want to delete this project');"> 
-            Delete this project
-          </button>
-        </form>
-      <?php endif; ?>
 
     <?php else: ?>
       <p>Select a setting from the left to edit.</p>

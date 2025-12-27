@@ -44,6 +44,26 @@ main {
     flex: 1;
 }
 
+/* HEADING AREA FOR PROJECTS AND SETTINGS */
+.form-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background-color: red;
+    font-size: 18px;
+    border: 0;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: pink;
+}
+
+
 input, textarea{
     width: 100%;
 }
