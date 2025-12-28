@@ -1,8 +1,6 @@
 h1 { font-size: 3rem; font-weight: bold;}
 
 body {
-    /* display: flex; */
-    /* flex-direction: column; */
     font-size: 16px;
     height: 100vh;
     max-width: 1000px;
@@ -18,10 +16,7 @@ header {
     padding: 5px;
 }
 
-nav {
-    font-size: 1.25rem;
-    text-align: right;
-}
+nav { font-size: 1.25rem; text-align: right;}
 
 nav a { padding-left: 20px; padding-right: 20px; }
 
@@ -40,9 +35,7 @@ main {
     overflow-wrap: break-word;
 }
 
-.center-panel {
-    flex: 1;
-}
+.center-panel { flex: 1; }
 
 /* HEADING AREA FOR PROJECTS AND SETTINGS */
 .form-heading {
@@ -59,18 +52,9 @@ main {
     border-radius: 5px;
 }
 
-.delete-btn:hover {
-    background-color: pink;
-}
+.delete-btn:hover { background-color: pink; }
 
+input, textarea{ width: 100%; }
 
-input, textarea{
-    width: 100%;
-}
-
-
-footer {
-    margin-top: auto;
-    text-align: center;
-}
+footer { margin-top: auto; text-align: center; }
 

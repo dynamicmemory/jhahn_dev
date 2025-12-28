@@ -12,37 +12,33 @@ body {
     margin: auto;
     background-color: #212121;
     color: #FFDEFF;
-    /* opacity: 0; */
-    /* transition: opacity 1s ease; */
-}
-
-body.fade-in {
-    opacity: 1;
-}
-
-body.fade-out {
-    opacity: 0;
 }
 
 /* -------- HEADER SPECIFIC ---------- */
-nav {
+header {
     display: flex;
     justify-content: space-between;
-    font-size: 3rem;   /* not being used currently */
-    padding: 20px;
+    align-items: center;
 }
 
-.nav-text a {
+nav {
+    font-size: 1.5rem;
+    margin: 10px;
+    /* padding: 20px; */
+}
+
+.nav a {
     color: inherit;
     cursor: pointer;
     text-decoration: none;
 }
 
-#right-nav a {
-    font-size: 2rem;
+#github {
+    /* font-size: 1.25rem; */
+    margin-left: 20px;
 }
-/* -------- HEADER SPECIFIC END---------- */
 
+/* -------- HEADER SPECIFIC END---------- */
 
 /* Holds all left and center col content as well as home page about me*/
 .main-container {
@@ -58,6 +54,7 @@ nav {
 }
 
 footer {
+    font-size: 1.25rem;
     margin-top: auto;
     text-align: center;
 }
@@ -65,30 +62,3 @@ footer {
 
 /*Media query for main paragraph on resizing down to scale with page*/
 
-
-/* PAGE ANIMATIONS, MOVE TO SEPARATE CSS FILE EVENTUALLY*/
-.fly-left { animation: flyLeft 600ms forwards; }
-.enter-from-right { animation: enterFromRight 600ms forwards; }
-.fly-right { animation: flyRight 600ms forwards; }
-.enter-from-left { animation: enterFromLeft 600ms forwards; }
-
-#left-nav, #right-nav, #page-content {
-    will-change: transform, opacity;
-}
-
-@keyframes flyLeft {
-    from { transform: translateX(0); opacity: 1; }
-    to   { transform: translateX(-120vw); opacity: 0; }
-}
-@keyframes flyRight {
-    from { transform: translateX(0); opacity: 1; }
-    to   { transform: translateX(120vw); opacity: 0; }
-}
-@keyframes enterFromRight {
-    from { transform: translateX(120vw); opacity: 0; }
-    to   { transform: translateX(0); opacity: 1; }
-}
-@keyframes enterFromLeft {
-    from { transform: translateX(-120vw); opacity: 0; }
-    to   { transform: translateX(0); opacity: 1; }
-}

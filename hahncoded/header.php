@@ -6,32 +6,34 @@ require_once __DIR__ . "/includes/functions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <!-- <link rel="stylesheet" type="text/css" href="/css/reset.css"> -->
-        <link rel="stylesheet" type="text/css" href="/css/main.css">
-        <link rel="stylesheet" type="text/css" href="/css/about.css">
-        <!--<link rel="stylesheet" type="text/css" href="/css/logs.css"> -->
-        <link rel="stylesheet" type="text/css" href="/css/projects.css">
-        <link rel="stylesheet" type="text/css" href="/css/contact.css">
-        <!-- <link rel="stylesheet" type="text/css" href="/css/admin.css"> -->
-        <script defer src="js/main.js"></script>
-        <script src="js/word.js"></script>
-    </head>
-    <body> 
-        <header>
-            <nav>
-                <div id="left-nav">
-                    <h1 class="nav-text">
-                        <a href="/index.php">{HAHN CODED}</a>
-                    </h1>
-                </div>
-                <div id="right-nav">
-                    <h1 class="nav-text">
-                        <!-- <a href="/log.php">(&Log)</a>   -->
-                        <a href="/projects.php">(&Projects)</a> 
-                        <a href="/contact.php">(&Contact)</a> 
-                    </h1>
-                </div>
-            </nav>
-        </header>
+  <head>
+    <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="/css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/about.css">
+    <!--<link rel="stylesheet" type="text/css" href="/css/logs.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/projects.css">
+    <link rel="stylesheet" type="text/css" href="/css/contact.css">
+    <script defer src="js/main.js"></script>
+    <script src="js/word.js"></script>
+  </head>
+  <body> 
+    <header>
+      <h1 class="nav-text"> <a href="/index.php">{HAHN CODED}</a> </h1>
+      <nav>
+
+        <div id="left-nav">
+
+        </div>
+
+        <div id="right-nav">
+            <!-- <a href="/log.php">(&Log)</a>   -->
+            <a href="/projects.php">(&Projects)</a> 
+            <!-- <a href="/contact.php">(&Contact)</a>  -->
+            <!-- <a>Email: <?= getSetting("contact_email") ?></a> -->
+            <a id="github" href="<?= getSetting("contact_github") ?>">
+               Github: dynamicmemory</a>
+        </div>
+
+      </nav>
+    </header>
