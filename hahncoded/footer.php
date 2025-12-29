@@ -1,9 +1,9 @@
 <?php 
 ?>
-        <footer> 
-        <p><?=getSetting("footer")?>. Contact me: <?=getSetting("contact_email") ?></p>
-        </footer>
-    </body>
+    <footer> 
+      <p><?=getSetting("footer")?> ~ <?=date("Y")?>.</p>
+    </footer>
+  </body>
 </html>
 
 

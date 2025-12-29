@@ -44,3 +44,8 @@ a {
     width: 50%;
     height: auto;
 }
+
+#projects-center-col a {
+    text-decoration: underline;
+    color: black;
+}

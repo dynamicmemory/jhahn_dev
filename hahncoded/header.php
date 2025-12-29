@@ -30,9 +30,10 @@ require_once __DIR__ . "/includes/functions.php";
             <!-- <a href="/log.php">(&Log)</a>   -->
             <a href="/projects.php">(&Projects)</a> 
             <!-- <a href="/contact.php">(&Contact)</a>  -->
-            <!-- <a>Email: <?= getSetting("contact_email") ?></a> -->
-            <a id="github" href="<?= getSetting("contact_github") ?>">
-               Github: dynamicmemory</a>
+            <a id="github" href="<?= getSetting("contact_github") ?>" target="_blank"
+              rel="noopener">github |</a>
+            <a id="email" href="mailto:<?= getSetting("contact_email") ?>">
+            <?= getSetting("contact_email") ?></a>
         </div>
 
       </nav>
