@@ -31,9 +31,9 @@ require_once __DIR__ . "/includes/functions.php";
             <a href="/projects.php">(&Projects)</a> 
             <!-- <a href="/contact.php">(&Contact)</a>  -->
             <a id="github" href="<?= getSetting("contact_github") ?>" target="_blank"
-              rel="noopener">github |</a>
-            <a id="email" href="mailto:<?= getSetting("contact_email") ?>">
-            <?= getSetting("contact_email") ?></a>
+              rel="noopener">github</a> | 
+            <a id="email" href="mailto:<?= getSetting("contact_email") ?>" target="_blank"
+              rel="noopener"><?= getSetting("contact_email") ?></a>
         </div>
 
       </nav>

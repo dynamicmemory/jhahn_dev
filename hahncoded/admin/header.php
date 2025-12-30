@@ -11,7 +11,7 @@ require_once "init.php";
     <header>
       <h1>ADMIN DASHBOARD</h1>
         <nav> 
-          <a href="index.php">Home</a>
+          <a href="index.php">Dashboard</a>
           <a href="projects.php?action=new">Projects</a>
           <a href="settings.php?action=new">Settings</a>
           <a href="logout.php">Logout</a>

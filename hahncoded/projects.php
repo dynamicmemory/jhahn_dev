@@ -44,7 +44,8 @@ $content = $Parsedown->text($md);
           <a href="?project=<?= urlencode($item['slug']) ?>"
              class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
              <?= htmlspecialchars($item['name']) ?>
-             <p style="font-size: 16px; font-weight: normal;"><?= htmlspecialchars($item['languages']) ?></p>
+             <p>
+             <?= htmlspecialchars($item['languages']) ?></p>
           </a>
         </li>
       <?php endforeach; ?>

@@ -2,7 +2,7 @@
     display: flex;
     margin: 0;
     padding: 20px 0px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     /* border-top: 1px #FFDEFF solid; */
 }
 
@@ -34,18 +34,46 @@
     list-style-type: none;
 }
 
-/* Side bar links*/
+/* All links including header (annoyingly)*/
 a {
     text-decoration: none;
     color: #FFDEFF;
 }
 
-#projects-center-col img {
-    width: 50%;
-    height: auto;
+a:hover {
+    color: #FFAAFF;
 }
 
+#projects-center-col p img {
+    width: 50%;
+    height: auto;
+    margin: 5px 30px;
+    display: block;
+}
+
+/* Zig Zag images back and fourth inside the md (kind of, involves some sorting)*/
+#projects-center-col p:nth-of-type(odd) img {
+    float: left;
+    clear:both;
+}
+
+#projects-center-col p:nth-of-type(even) img {
+    float: right;
+    clear: both;
+}
+
+/* For links inside the md files*/
 #projects-center-col a {
     text-decoration: underline;
     color: black;
+}
+
+/* Makes name and language text one clickable link instead of two separate ones*/
+#projects-left-col a {
+    display: block;
+}
+/* For the languages section under the project name in the side bar*/
+#projects-left-col a p {
+    font-size: 16px;
+    font-weight: normal;
 }
