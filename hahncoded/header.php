@@ -21,19 +21,12 @@ require_once __DIR__ . "/includes/functions.php";
     <header>
       <h1 class="nav-text"> <a href="/index.php">{HAHN CODED}</a> </h1>
       <nav>
-
-        <div id="left-nav">
-
-        </div>
-
-        <div id="right-nav">
-            <!-- <a href="/log.php">(&Log)</a>   -->
-            <a href="/projects.php">(&Projects)</a> 
-            <!-- <a href="/contact.php">(&Contact)</a>  -->
-            <a id="github" href="<?= getSetting("contact_github") ?>" target="_blank"
-              rel="noopener">github</a> | 
-            <a id="email" href="mailto:<?= getSetting("contact_email") ?>" target="_blank"
-              rel="noopener"><?= getSetting("contact_email") ?></a>
+          <a href="/projects.php">(&Projects)</a> 
+        <div id="contact-info">
+          <a id="github" href="<?= getSetting("contact_github") ?>" target="_blank"
+              rel="noopener">*github</a> | 
+          <a id="email" href="mailto:<?= getSetting("contact_email") ?>" target="_blank"
+              rel="noopener">*email</a>
         </div>
 
       </nav>

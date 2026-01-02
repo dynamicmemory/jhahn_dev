@@ -19,23 +19,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 1.75rem;
 }
 
 nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+#contact-info{
     font-size: 1.5rem;
-    margin: 10px;
-    /* padding: 20px; */
-}
-
-.nav a {
-    color: inherit;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-#github {
-    /* font-size: 1.25rem; */
-    margin-left: 20px;
+    margin: 5px;
 }
 
 /* -------- HEADER SPECIFIC END---------- */
