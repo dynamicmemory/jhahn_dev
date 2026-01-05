@@ -28,7 +28,7 @@
 #projects-left-col li {
     display: block;
     overflow-wrap: break-word;
-    padding: 0 0 40px 0;
+    padding: 0 0 10px 0;
     font-weight: bold;
     /* margin: 0; */
     list-style-type: none;
@@ -71,9 +71,15 @@ a:hover {
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     display: block;
+    padding: 10px;
 }
+
 /* For the languages section under the project name in the side bar*/
 #projects-left-col a p {
     font-size: 16px;
     font-weight: normal;
+    margin: 3px;
+}
+
+#projects-left-col a:hover {
 }
