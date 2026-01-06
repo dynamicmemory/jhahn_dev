@@ -11,22 +11,33 @@ require_once __DIR__ . "/includes/functions.php";
     <!-- <link rel="stylesheet" type="text/css" href="/css/reset.css"> -->
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/about.css">
-    <!--<link rel="stylesheet" type="text/css" href="/css/logs.css"> -->
     <link rel="stylesheet" type="text/css" href="/css/projects.css">
-    <link rel="stylesheet" type="text/css" href="/css/contact.css">
     <script defer src="js/main.js"></script>
     <script src="js/word.js"></script>
   </head>
   <body> 
     <header>
-      <h1 class="nav-text"> <a href="/index.php">{HAHN CODED}</a> </h1>
+
+      <h1 class="nav-text"> 
+        <a href="/index.php"><?= getSetting("header_website_title") ?></a> 
+      </h1>
+
       <nav>
-          <a href="/projects.php">(&Projects)</a> 
+
+        <a href="/projects.php">Projects</a> 
+
         <div id="contact-info">
-          <a id="github" href="<?= getSetting("contact_github") ?>" target="_blank"
-              rel="noopener">*github</a> | 
-          <a id="email" href="mailto:<?= getSetting("contact_email") ?>" target="_blank"
-              rel="noopener">*email</a>
+          <a id="github" 
+             href="<?= getSetting("contact_github") ?>" 
+             target="_blank"
+             rel="noopener">github
+          </a> 
+          | 
+          <a id="email" 
+             href="mailto:<?= getSetting("contact_email") ?>" 
+             target="_blank"
+             rel="noopener">email
+          </a>
         </div>
 
       </nav>

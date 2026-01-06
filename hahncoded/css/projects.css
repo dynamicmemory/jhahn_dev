@@ -1,47 +1,17 @@
 #projects-container {
     display: flex;
-    margin: 0;
-    padding: 20px 0px;
     font-size: 1.25rem;
-    /* border-top: 1px #FFDEFF solid; */
 }
+
+/* -------------------------CENTER CONTAINER ---------------------------*/
 
 #projects-center-col {
     flex: 1;
-    margin: 0 0 0 20px;
+    margin: 0 0 0 10px;
     background-color: #FFDEFF;
     color: #0A0A0A;
     border-radius: 2px;
-    padding: 10px;
-}
-
-#projects-left-col {
-    padding: 0 20px 0 0;
-    width: 20%;
-    /* font-size: 1.75rem;     */
-    border-right: 2px #FFDEFF solid;
-    /* Temp till i figure out correct dimensions
-     */
-    overflow-y: auto;
-}
-
-#projects-left-col li {
-    display: block;
-    overflow-wrap: break-word;
-    padding: 0 0 10px 0;
-    font-weight: bold;
-    /* margin: 0; */
-    list-style-type: none;
-}
-
-/* All links including header (annoyingly)*/
-a {
-    text-decoration: none;
-    color: #FFDEFF;
-}
-
-a:hover {
-    color: #FFAAFF;
+    padding: 0px 10px 0px 10px;
 }
 
 #projects-center-col p img {
@@ -68,10 +38,30 @@ a:hover {
     color: black;
 }
 
+/* -------------------------LEFT CONTAINER -----------------------------*/
+
+#projects-left-col {
+    width: 20%;
+    overflow-y: auto;
+    /* border-right: 2px #FFDEFF solid; */
+    /* padding: 0px 10px 0px 0px; */
+}
+
+#projects-left-col ul {
+    padding: 0px;
+}
+
+#projects-left-col li {
+    display: block;
+    overflow-wrap: break-word;
+    font-weight: bold;
+    list-style-type: none;
+}
+
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     display: block;
-    padding: 10px;
+    padding: 0px 0px 40px 5px;
 }
 
 /* For the languages section under the project name in the side bar*/
@@ -81,5 +71,3 @@ a:hover {
     margin: 3px;
 }
 
-#projects-left-col a:hover {
-}
