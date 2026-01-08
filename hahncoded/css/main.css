@@ -8,13 +8,12 @@ html { overflow-y: scroll; }
 body {
     display: flex;
     flex-direction: column;
+    background-color: #212121;
     font-size: 16px;
     height: 100vh;
     max-width: 1200px;
     width: 100%;
     margin: auto;
-    background-color: #212121;
-    /* background-color: red; */
     color: #FFDEFF;
 }
 
@@ -23,6 +22,7 @@ header {
     display: flex;
     justify-content: space-between;
     font-size: 2rem;
+    padding: 0px 10px 0px 10px;
 }
 
 nav {

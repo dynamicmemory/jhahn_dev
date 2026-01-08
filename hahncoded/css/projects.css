@@ -1,6 +1,7 @@
 #projects-container {
     display: flex;
     font-size: 1.25rem;
+    padding: 0px 10px 0px 10px;
 }
 
 /* -------------------------CENTER CONTAINER ---------------------------*/
