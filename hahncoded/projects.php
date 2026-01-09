@@ -22,7 +22,7 @@ if (!$project) {
 } 
 
 $list = $database
-    ->query("SELECT name, slug, languages FROM projects ORDER BY id ASC")
+    ->query("SELECT name, slug, languages, description FROM projects ORDER BY id ASC")
     ->fetchAll();
 
 // Get 'last updated' and inject it into the md file
@@ -44,8 +44,9 @@ $content = $Parsedown->text($md);
           <a href="?project=<?= urlencode($item['slug']) ?>"
              class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
              <?= htmlspecialchars($item['name']) ?>
-             <p>
-             <?= htmlspecialchars($item['languages']) ?></p>
+             <span class="proj-lang">- <?= htmlspecialchars($item['languages']) ?></span>
+             <p class="proj-desc"><?= htmlspecialchars($item['description']) ?></p>
+
           </a>
         </li>
       <?php endforeach; ?>

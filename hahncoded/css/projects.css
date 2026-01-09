@@ -2,13 +2,14 @@
     display: flex;
     font-size: 1.25rem;
     padding: 0px 10px 0px 10px;
+    margin: 10px 0 0 0;
 }
 
 /* -------------------------CENTER CONTAINER ---------------------------*/
 
 #projects-center-col {
     flex: 1;
-    margin: 0 0 0 10px;
+    /* margin: 0 0 0 10px; */
     background-color: #FFDEFF;
     color: #0A0A0A;
     border-radius: 2px;
@@ -42,7 +43,8 @@
 /* -------------------------LEFT CONTAINER -----------------------------*/
 
 #projects-left-col {
-    width: 20%;
+    font-size: 1.5rem;
+    width: 25%;
     overflow-y: auto;
     /* border-right: 2px #FFDEFF solid; */
     /* padding: 0px 10px 0px 0px; */
@@ -50,6 +52,7 @@
 
 #projects-left-col ul {
     padding: 0px;
+
 }
 
 #projects-left-col li {
@@ -57,18 +60,30 @@
     overflow-wrap: break-word;
     font-weight: bold;
     list-style-type: none;
+    /* padding: 0px 10px 0px 0px; */
+}
+
+#projects-left-col li:hover a{
+    background-color: black;
+    border-radius: 5px;
 }
 
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     display: block;
-    padding: 0px 0px 40px 5px;
+    padding: 0px 10px 40px 5px;
+
 }
 
-/* For the languages section under the project name in the side bar*/
-#projects-left-col a p {
-    font-size: 16px;
+.proj-desc {
+    font-size: 1.1rem;
     font-weight: normal;
     margin: 3px;
+    padding: 5px 10px 10px 0px;
 }
 
+.proj-lang {
+    font-size: 1rem;
+    font-weight: normal;
+    color: #AAAAAA;
+}
