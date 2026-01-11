@@ -39,7 +39,12 @@ $content = $Parsedown->text($md);
 <div id="projects-container">
   <div class="left-col" id="projects-left-col">
     <ul> 
+      <p style="font-weight: bold; font-size:1.75rem; color:purple">Systems Programming</p>
+      <p style="font-weight: bold; font-size:1.75rem; color:purple">Data & Learning</p>
+      <p style="font-weight: bold; font-size:1.75rem; color:purple">Networked Applications</p>
+      <p style="font-weight: bold; font-size:1.75rem; color:purple">Web Platforms</p>
       <?php foreach($list as $item): ?>
+
         <li>
           <a href="?project=<?= urlencode($item['slug']) ?>"
              class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">

@@ -60,7 +60,7 @@
     overflow-wrap: break-word;
     font-weight: bold;
     list-style-type: none;
-    /* padding: 0px 10px 0px 0px; */
+    /* padding: 10px 0px 0px 0px; */
 }
 
 #projects-left-col li:hover a{
@@ -71,7 +71,7 @@
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     display: block;
-    padding: 0px 10px 40px 5px;
+    padding: 10px 10px 30px 10px;
 
 }
 
