@@ -19,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $slug = $_POST['slug'];
     $last_updated = $_POST['last_updated'];
+    $section = $_POST['section'];
+    $rank = $_POST['rank'];
     $languages = $_POST['languages'];
     $description= $_POST['description'];
     $content = $_POST['content'];
@@ -26,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Code for adding a new project
     if ($_POST["mode"] === "create") {
         $statement = $database->prepare(
-            "INSERT INTO projects (name, slug, last_updated, languages, description, content) 
-            VALUES (:name, :slug, :last_updated, :languages, :description, :content)"
+            "INSERT INTO projects (name, slug, last_updated, section, rank, languages, description, content) 
+            VALUES (:name, :slug, :last_updated, :section, :rank :languages, :description, :content)"
         );
         // Protect against inserting existing slug 
         try {
@@ -35,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ":name" => $name,
                 ":slug" => $slug,
                 ":last_updated" => $last_updated,
+                ":section" => $section,
+                ":rank" => $rank,
                 ":languages" => $languages,
                 ":description" => $description,
                 ":content" => $content
@@ -52,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $statement = $database->prepare(
             "UPDATE projects 
             SET name = :name, slug = :slug, last_updated = :last_updated,
+                       section = :section, rank = :rank,
                        languages = :languages, description = :description, 
                        content = :content WHERE id = :id"
         );
@@ -61,6 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ":name" => $name,
             ":slug" => $slug,
             ":last_updated" => date('Y-m-d'),
+            ":section" => $section,
+            ":rank" => $rank,
             ":languages" => $languages,
             ":description" => $description,
             ":content" => $content
@@ -152,6 +159,14 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
           <br><br>
 
           <input type="hidden" name="last_updated" value="<?= htmlspecialchars($selected_project["last_updated"]) ?>">
+
+          <label>Section ("General", "Systems"): </label><br>
+          <input name="section" value="<?= htmlspecialchars($selected_project["section"]) ?>">
+          <br><br>
+
+          <label>Rank (order): </label><br>
+          <input name="rank" value="<?= htmlspecialchars($selected_project["rank"]) ?>">
+          <br><br>
 
           <label>Languages: </label><br>
           <input name="languages" value="<?= htmlspecialchars($selected_project["languages"]) ?>">

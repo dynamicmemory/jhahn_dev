@@ -22,7 +22,7 @@ if (!$project) {
 } 
 
 $list = $database
-    ->query("SELECT name, slug, languages, description FROM projects ORDER BY id ASC")
+    ->query("SELECT name, slug, section , rank, languages, description FROM projects")
     ->fetchAll();
 
 // Get 'last updated' and inject it into the md file
@@ -33,27 +33,45 @@ $content = $Parsedown->text($md);
 
 // TODO: Ill do media after if i can get name, slug and description in
 
+// TODO: Turn this into a table and let the datatbase drive this, until then 
+//       use this array to control and edit the project section headings and 
+//       match them to the projects section in each of their tables to generate 
+//       them in the right place with the right order 
+$sections = ["Systems", "Data & Learning", "Networked Apps", "Web Design"];
+// Creating a new list of projects grouped together by their sections
+$projectBySection = [];
+foreach($list as $project) {
+    $projectBySection[$project["section"]][] = $project;
+}
+// Sorting the projects within the sections by their ranks
+foreach($projectBySection as &$projects) {
+    usort($projects, fn($a, $b) => $a["rank"] <=> $b["rank"]);
+}
+unset($projects);
+
 ?>
 
 <?php include "header.php" ?>
 <div id="projects-container">
   <div class="left-col" id="projects-left-col">
     <ul> 
-      <p style="font-weight: bold; font-size:1.75rem; color:purple">Systems Programming</p>
-      <p style="font-weight: bold; font-size:1.75rem; color:purple">Data & Learning</p>
-      <p style="font-weight: bold; font-size:1.75rem; color:purple">Networked Applications</p>
-      <p style="font-weight: bold; font-size:1.75rem; color:purple">Web Platforms</p>
-      <?php foreach($list as $item): ?>
+      <?php foreach($sections as $sectionName): ?>
+        <?php if(empty($projectsBySection[$sectionName])): ?>
+          <p style="font-weight: bold; font-size:1.75rem; color:purple">
+            <?= htmlspecialchars($sectionName) ?>
+          </p>
 
-        <li>
-          <a href="?project=<?= urlencode($item['slug']) ?>"
-             class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
-             <?= htmlspecialchars($item['name']) ?>
-             <span class="proj-lang">- <?= htmlspecialchars($item['languages']) ?></span>
-             <p class="proj-desc"><?= htmlspecialchars($item['description']) ?></p>
-
-          </a>
-        </li>
+          <?php foreach($projectBySection[$sectionName] as $item): ?>
+            <li>
+              <a href="?project=<?= urlencode($item['slug']) ?>"
+                class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
+                <?= htmlspecialchars($item['name']) ?>
+                <span class="proj-lang">- <?= htmlspecialchars($item['languages']) ?></span>
+                <p class="proj-desc"><?= htmlspecialchars($item['description']) ?></p>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        <?php endif; ?>
       <?php endforeach; ?>
     </ul>
   </div>
