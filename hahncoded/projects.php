@@ -57,7 +57,7 @@ unset($projects);
     <ul> 
       <?php foreach($sections as $sectionName): ?>
         <?php if(empty($projectsBySection[$sectionName])): ?>
-          <p style="font-weight: bold; font-size:1.75rem; color:purple">
+          <p class="section-header">
             <?= htmlspecialchars($sectionName) ?>
           </p>
 

@@ -13,7 +13,7 @@
     background-color: #FFDEFF;
     color: #0A0A0A;
     border-radius: 2px;
-    padding: 0px 10px 0px 10px;
+    padding: 0px 10px 10px 10px;
 }
 
 #projects-center-col p img {
@@ -55,6 +55,15 @@
 
 }
 
+.section-header {
+    font-weight: bold; 
+    font-size:2rem; 
+    color:#DEFFFF;
+    margin: 0 0 5px 0;
+    text-decoration: underline;
+
+}
+
 #projects-left-col li {
     display: block;
     overflow-wrap: break-word;
@@ -66,12 +75,13 @@
 #projects-left-col li:hover a{
     background-color: black;
     border-radius: 5px;
+    /* color: #FFCFFF; */
 }
 
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     display: block;
-    padding: 10px 10px 30px 10px;
+    padding: 10px 10px 20px 15px;
 
 }
 
