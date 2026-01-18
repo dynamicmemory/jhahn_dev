@@ -19,12 +19,12 @@ require_once __DIR__ . "/includes/functions.php";
     <header>
 
       <h1 class="nav-text"> 
-        <a href="/index.php"><?= getSetting("header_website_title") ?></a> 
+        <a href="/projects.php"><?= getSetting("header_website_title") ?></a> 
       </h1>
 
       <nav>
 
-        <a href="/projects.php">Projects</a> 
+        <!-- <a href="/projects.php">Projects</a>  -->
 
         <div id="contact-info">
           <a id="github" 
