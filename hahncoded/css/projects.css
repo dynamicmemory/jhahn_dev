@@ -43,12 +43,19 @@
 /* -------------------------LEFT CONTAINER -----------------------------*/
 
 #projects-left-col {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     width: 25%;
     overflow-y: auto;
-    /* border-right: 2px #FFDEFF solid; */
+    border-right: 2px #FFDEFF solid;
+    /* opacity: 0.2; */
+    /* transition: ease 0.5s opacity; */
     /* padding: 0px 10px 0px 0px; */
 }
+
+/* #projects-left-col:hover { */
+/*     opacity: 1; */
+/*     transition: ease 0.5s opacity; */
+/* } */
 
 #projects-left-col ul {
     padding: 0px;
@@ -57,10 +64,10 @@
 
 .section-header {
     font-weight: bold; 
-    font-size:2rem; 
+    font-size: 1.75rem; 
     color:#DEFFFF;
     margin: 0 0 5px 0;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 
 }
 
@@ -81,12 +88,11 @@
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     display: block;
-    padding: 10px 10px 20px 15px;
-
+    padding: 10px 10px 20px 5px;
 }
 
 .proj-desc {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: normal;
     margin: 3px;
     padding: 5px 10px 10px 0px;

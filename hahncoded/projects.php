@@ -83,7 +83,7 @@ unset($projects);
 
   <?php if ($project === null): ?>
     <div class="center-col" id="projects-center-col" style="background-color: #212121;">
-
+    
       <div class="main-container" id="about-container">
         <div class="float" id="about-center-container">
           <h1 class="float" id="about-h1"><?= getSetting("about_title"); ?></h1>
@@ -96,7 +96,14 @@ unset($projects);
 
     <?php else: ?>
     <div class="center-col" id="projects-center-col">
-      <!--  <h2><?= htmlspecialchars($project['name']) ?></h2> -->
+    
+      <div class="project-frame">
+        <h1><?= htmlspecialchars($project["name"])?></h1>
+        <p class="project-meta">Meta 1 ~ Meta 2 ~ Meta 3 
+          <?= htmlspecialchars($project["languages"]) ?>
+        </p>
+      </div>
+
       <?= $content?>
 
     </div>
