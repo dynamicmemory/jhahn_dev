@@ -46,7 +46,8 @@
     font-size: 1.25rem;
     width: 25%;
     overflow-y: auto;
-    border-right: 2px #FFDEFF solid;
+    /* border-right: 2px #FFDEFF solid; */
+    border-left: 2px #FFDEFF solid;
     /* opacity: 0.2; */
     /* transition: ease 0.5s opacity; */
     /* padding: 0px 10px 0px 0px; */
@@ -66,7 +67,7 @@
     font-weight: bold; 
     font-size: 1.75rem; 
     color:#DEFFFF;
-    margin: 0 0 5px 0;
+    margin: 0 0 5px 15px;
     /* text-decoration: underline; */
 
 }
@@ -88,7 +89,7 @@
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     display: block;
-    padding: 10px 10px 20px 5px;
+    padding: 10px 10px 20px 30px;
 }
 
 .proj-desc {

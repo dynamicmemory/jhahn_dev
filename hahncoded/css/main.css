@@ -30,6 +30,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 2rem;
+    padding-right: 80px;
 }
 
 #contact-info{

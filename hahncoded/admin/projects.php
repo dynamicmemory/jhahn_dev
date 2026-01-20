@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($_POST["mode"] === "create") {
         $statement = $database->prepare(
             "INSERT INTO projects (name, slug, last_updated, section, rank, languages, description, content) 
-            VALUES (:name, :slug, :last_updated, :section, :rank :languages, :description, :content)"
+            VALUES (:name, :slug, :last_updated, :section, :rank, :languages, :description, :content)"
         );
         // Protect against inserting existing slug 
         try {
@@ -45,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
         } catch (PDOException $e) {
             die($e);
+            /* echo "<p>$e</p>";  */
             /* die("Slug already exists"); */
         }
         echo "<p>Added project: $name</p>";
