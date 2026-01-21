@@ -5,6 +5,10 @@
     color: #212121;
 }
 
+#about-center-container p {
+    margin: 50px;
+}
+
 .word{
     position: relative;
     animation: shimmer ease-in-out infinite alternate;

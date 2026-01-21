@@ -8,7 +8,7 @@ require_once __DIR__ . "/includes/functions.php";
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <!-- <link rel="stylesheet" type="text/css" href="/css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="/css/reset.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/about.css">
     <link rel="stylesheet" type="text/css" href="/css/projects.css">
@@ -18,9 +18,9 @@ require_once __DIR__ . "/includes/functions.php";
   <body> 
     <header>
 
-      <h1 class="nav-text"> 
-        <a href="/projects.php"><?= getSetting("header_website_title") ?></a> 
-      </h1>
+      <!-- <h1 class="nav-text">  -->
+      <!--   <a href="/index.php"><?= getSetting("header_website_title") ?></a>  -->
+      <!-- </h1> -->
 
       <nav>
 

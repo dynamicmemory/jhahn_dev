@@ -56,44 +56,38 @@ unset($projects);
 ?>
 
 <?php include "header.php" ?>
-
-
 <div id="projects-container">
 
-
   <?php if ($project === null): ?>
-    <div class="center-col" id="projects-center-col" style="background-color: #212121;">
+    <section class="center-col" id="projects-center-col" style="background-color: #212121;">
+        
+      <h1 id="site-heading"> 
+        <a href="/index.php"><?= getSetting("header_website_title") ?></a> 
+            </h1>
     
        <?php include "about.php" ?>
-      <!-- <div class="main-container" id="about-container"> -->
-        <!-- <div class="float" id="about-center-container"> -->
-        <!--   <h1 class="float" id="about-h1"><?= getSetting("about_title"); ?></h1> -->
-          <!-- <p class="float" id="about-p1"><?= getsetting("about_p1"); ?></p> -->
-          <!-- <p class="float" id="about-p2"><?= getSetting("about_p2"); ?></p> -->
-        <!--   <p class="float" id="about-p3"><?= getSetting("about_p3"); ?></p> -->
-        <!-- </div> -->
-      <!-- </div> -->
-    </div>
+    </section>
 
     <?php else: ?>
-    <div class="center-col" id="projects-center-col">
+    <section class="center-col" id="projects-center-col">
 
-
+      <h1 id="site-heading"> 
+        <a href="/index.php"><?= getSetting("header_website_title") ?></a> 
+            </h1>
     
-      <div class="project-frame">
-        <h1><?= htmlspecialchars($project["name"])?></h1>
-        <p class="project-meta">Meta 1 ~ Meta 2 ~ Meta 3 
-          <?= htmlspecialchars($project["languages"]) ?>
-        </p>
-      </div>
+      <!-- <div class="project-frame"> -->
+      <!--   <h1><?= htmlspecialchars($project["name"])?></h1> -->
+        <!-- <p class="project-meta">Meta 1 ~ Meta 2 ~ Meta 3  -->
+        <!--   <?= htmlspecialchars($project["languages"]) ?> -->
+      <!--   </p> -->
+      <!-- </div> -->
 
       <?= $content?>
 
-    </div>
+    </section>
   <?php endif; ?>
 
-
-  <div class="left-col" id="projects-left-col">
+  <section class="left-col" id="projects-left-col">
 
         <ul> 
             <h1 style="text-align: center; margin: 0 0 30px 0;">Projects</h1>
@@ -116,9 +110,7 @@ unset($projects);
         <?php endif; ?>
       <?php endforeach; ?>
     </ul>
-  </div>
-
-
+  </section>
 
 </div>
 <?php include "footer.php" ?>

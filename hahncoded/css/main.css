@@ -1,8 +1,10 @@
 h1 { font-size: 2.5rem }
 
-a { text-decoration: none; color: #FFDEFF; }
-a:hover { color: #FFAAFF }
+/* a { text-decoration: none; color: #FFDEFF; } */
+/* a:hover { color: #FFAAFF } */
 ul { margin: 0px; }
+span { font-weight: normal; }
+p { font-weight: normal; }
 
 html { overflow-y: scroll; }
 
@@ -20,10 +22,10 @@ body {
 
 /* -------- HEADER SPECIFIC ---------- */
 header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 2rem;
-    padding: 0px 10px 20px 10px;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* font-size: 2rem; */
+    /* padding: 0px 10px 20px 10px; */
 }
 
 nav {

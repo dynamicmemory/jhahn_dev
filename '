@@ -11,7 +11,7 @@
     flex: 1;
     /* margin: 0 0 0 10px; */
     /* background-color: #FFDEFF; */
-    /* color: #FFDEFF; */
+    color: #FFDEFF;
     border-radius: 2px;
     padding: 0px 10px 10px 10px;
 }
@@ -37,20 +37,27 @@
 
 /* For links inside the md files*/
 #projects-center-col a {
-    text-decoration: none;
-    color: #FFAAFF;
+    text-decoration: underline;
+    color: black;
 }
 
 /* -------------------------LEFT CONTAINER -----------------------------*/
 
 #projects-left-col {
+    font-size: 1.25rem;
     width: 25%;
     overflow-y: auto;
     /* border-right: 2px #FFDEFF solid; */
     /* border-left: 2px #FFDEFF solid; */
     /* opacity: 0.2; */
+    /* transition: ease 0.5s opacity; */
     /* padding: 0px 10px 0px 0px; */
 }
+
+/* #projects-left-col:hover { */
+/*     opacity: 1; */
+/*     transition: ease 0.5s opacity; */
+/* } */
 
 #projects-left-col ul {
     padding: 0px;
@@ -62,6 +69,8 @@
     font-size: 1.75rem; 
     color:#DEFFFF;
     margin: 0 0 5px 15px;
+    /* text-decoration: underline; */
+
 }
 
 #projects-left-col li {
@@ -72,29 +81,32 @@
     /* padding: 10px 0px 0px 0px; */
 }
 
+#projects-left-col li:hover a{
+    background-color: black;
+    border-radius: 5px;
+    /* color: #FFCFFF; */
+}
+
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
-    font-size: 1.25rem;
     color: #FFDEFF; 
     display: block;
     padding: 10px 10px 20px 30px;
     text-decoration: none; 
+
 }
 
-#projects-left-col a:hover { 
-    color: #FFAAFF;
-    background-color: black;
-    border-radius: 5px;
-} 
+#projects-left-col a:hover { color: #FFAAFF } 
 
 .proj-desc {
     font-size: 1rem;
+    font-weight: normal;
     margin: 3px;
     padding: 5px 10px 10px 0px;
-
 }
 
-.proj-lang { 
+.proj-lang {
     font-size: 1rem;
-    color: #AAAAAA; 
+    font-weight: normal;
+    color: #AAAAAA;
 }
