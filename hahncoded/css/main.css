@@ -1,23 +1,34 @@
-h1 { font-size: 2.5rem }
-
-/* a { text-decoration: none; color: #FFDEFF; } */
-/* a:hover { color: #FFAAFF } */
-ul { margin: 0px; }
-span { font-weight: normal; }
-p { font-weight: normal; }
-
+h1 { font-size: 3rem; font-weight: bold;}
+h2 { font-size: 2.5rem; font-weight: bold;}
+h3 { font-size: 2rem; font-weight: bold;}
+h4 { font-size: 1.5rem; font-weight: bold;}
+a, a:visited, a:hover, a:active { text-decoration: none; }
 html { overflow-y: scroll; }
+
+ul, ol {
+    padding-left:1.4rem;
+    margin: 0 0 1.2rem 0;
+}
+li { 
+    line-height: 1.2;
+    color: #C8D2CC;
+    margin: 0.35rem 0;
+}
+
+li::marker {
+    color: #8FA39A;
+}
 
 body {
     display: flex;
     flex-direction: column;
-    background-color: #212121;
-    font-size: 16px;
-    height: 100vh;
-    max-width: 1200px;
-    width: 100%;
+    background-color: #0B0F0D;
+    /* font-size: 16px; */
+    /* height: 100vh; */
+    max-width: 1280px;
+    /* width: 100%; */
     margin: auto;
-    color: #FFDEFF;
+    /* color: #FFDEFF; */
 }
 
 /* -------- HEADER SPECIFIC ---------- */
@@ -29,31 +40,34 @@ header {
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding-right: 80px;
+    /* display: flex; */
+    /* align-items: center; */
+    /* gap: 2rem; */
+    /* padding-right: 80px; */
 }
 
-#contact-info{
+#contact-info a{
+    text-decoration: none;
     font-size: 1.5rem;
     margin: 5px;
+    color: #D1FFD1;
 }
 
 /* -------- HEADER SPECIFIC END---------- */
 
 /* Holds all left and center col content as well as home page about me*/
-.main-container {
-    font-size: 2rem;
-    margin: auto;
-    max-width: 1000px;
+/* .main-container { */
+/*     font-size: 2rem; */
+    /* margin: auto; */
+    /* max-width: 1000px; */
     /* color: #FFFFFF; */
-}
+/* } */
 
 footer {
     font-size: 1.25rem;
     margin-top: auto;
     text-align: center;
+    color: #8FA39A;
 }
 
 /*Media query for main paragraph on resizing down to scale with page*/

@@ -59,21 +59,24 @@ unset($projects);
 <div id="projects-container">
 
   <?php if ($project === null): ?>
-    <section class="center-col" id="projects-center-col" style="background-color: #212121;">
+    <section class="center-col" id="projects-center-col">
         
-      <h1 id="site-heading"> 
-        <a href="/index.php"><?= getSetting("header_website_title") ?></a> 
-            </h1>
-    
-       <?php include "about.php" ?>
+      <h1 class="site-heading"> 
+        <a class="site-heading" href="/index.php"><?= getSetting("header_website_title") ?></a> 
+      </h1>
+
+      <div class="about-me">
+        <?php include "about.php" ?>
+      </div>
+
     </section>
 
     <?php else: ?>
     <section class="center-col" id="projects-center-col">
 
-      <h1 id="site-heading"> 
-        <a href="/index.php"><?= getSetting("header_website_title") ?></a> 
-            </h1>
+      <h1 class="site-heading"> 
+        <a class="site-heading" href="/index.php"><?= getSetting("header_website_title") ?></a> 
+      </h1>
     
       <!-- <div class="project-frame"> -->
       <!--   <h1><?= htmlspecialchars($project["name"])?></h1> -->
@@ -82,7 +85,9 @@ unset($projects);
       <!--   </p> -->
       <!-- </div> -->
 
-      <?= $content?>
+     <div class="content">
+        <?= $content?>
+     </div>
 
     </section>
   <?php endif; ?>

@@ -1,21 +1,29 @@
 #projects-container {
     display: flex;
-    font-size: 1.25rem;
-    padding: 0px 10px 0px 10px;
-    margin: 10px 0 0 0;
+    font-size: 1rem;
+    /* padding: 0px 10px 0px 10px; */
+
+    background-color: #121815;
 }
+
 
 /* -------------------------CENTER CONTAINER ---------------------------*/
-
 #projects-center-col {
     flex: 1;
-    /* margin: 0 0 0 10px; */
-    /* background-color: #FFDEFF; */
-    /* color: #FFDEFF; */
-    border-radius: 2px;
-    padding: 0px 10px 10px 10px;
+    color: #C8D2CC; 
+    font-size: 1.5rem;
 }
 
+.site-heading {
+    color: #D1FFD1;
+    padding: 30px 0 30px 0;
+    margin-bottom: 10px;
+}
+
+#projects-center-col p {
+    margin: 10px;
+    padding: 10px;
+}
 
 #projects-center-col p img {
     width: 50%;
@@ -36,54 +44,73 @@
 }
 
 /* For links inside the md files*/
-#projects-center-col a {
+.content a {
     text-decoration: none;
     color: #FFAAFF;
 }
 
-/* -------------------------LEFT CONTAINER -----------------------------*/
+.content {
+    border-radius: 5px;
+    padding: 10px;
+}
 
+.content h1 {
+    text-align: center;
+}
+
+/* -------------------------LEFT CONTAINER -----------------------------*/
 #projects-left-col {
     width: 25%;
     overflow-y: auto;
-    /* border-right: 2px #FFDEFF solid; */
-    /* border-left: 2px #FFDEFF solid; */
-    /* opacity: 0.2; */
-    /* padding: 0px 10px 0px 0px; */
+    padding: 30px 0 0 0;
+    /* border: 1px solid white; */
+    /* border-left: 1px solid #2E3A32; */
+    margin-left: 5px;
+    /* background-color: #FFEEFF; */
+    color: #D1FFD1 
 }
 
 #projects-left-col ul {
     padding: 0px;
-
 }
 
 .section-header {
     font-weight: bold; 
     font-size: 1.75rem; 
-    color:#DEFFFF;
-    margin: 0 0 5px 15px;
+    color: #D1FFE8; 
+    /* color:#DEFFFF; */
+    /* border-top: 1px solid #; */
+    border-top: 1px solid #2E3A32;
+
+    border-bottom: 1px solid #2E3A32;
+    /* background-color: #FFAAFF; */
+    padding-left: 20px;
+    padding-bottom: 5px;
 }
 
 #projects-left-col li {
     display: block;
     overflow-wrap: break-word;
-    font-weight: bold;
     list-style-type: none;
-    /* padding: 10px 0px 0px 0px; */
+
+    background-color: #1A221E;
 }
 
 /* Makes name and language text one clickable link instead of two separate ones*/
 #projects-left-col a {
     font-size: 1.25rem;
-    color: #FFDEFF; 
+    color: #E8FFD1; 
+
     display: block;
     padding: 10px 10px 20px 30px;
     text-decoration: none; 
+    /* background-color: black; */
+    margin:5px;
 }
 
 #projects-left-col a:hover { 
-    color: #FFAAFF;
-    background-color: black;
+    color: #8FA39A;
+    background-color: #2A352E;
     border-radius: 5px;
 } 
 
@@ -96,5 +123,5 @@
 
 .proj-lang { 
     font-size: 1rem;
-    color: #AAAAAA; 
+    color: #D1FFE8; 
 }
