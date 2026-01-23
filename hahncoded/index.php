@@ -56,55 +56,30 @@ unset($projects);
 ?>
 
 <?php include "header.php" ?>
-<div id="projects-container">
+<main>
 
-  <?php if ($project === null): ?>
-    <section class="center-col" id="projects-center-col">
-        
-      <h1 class="site-heading"> 
-        <a class="site-heading" href="/index.php"><?= getSetting("header_website_title") ?></a> 
-      </h1>
+  <section>
+    <?php if ($project === null): ?>
 
-      <div class="about-me">
-        <?php include "about.php" ?>
-      </div>
-
-    </section>
+      <?php include "about.php" ?>
 
     <?php else: ?>
-    <section class="center-col" id="projects-center-col">
 
-      <h1 class="site-heading"> 
-        <a class="site-heading" href="/index.php"><?= getSetting("header_website_title") ?></a> 
-      </h1>
-    
-      <!-- <div class="project-frame"> -->
-      <!--   <h1><?= htmlspecialchars($project["name"])?></h1> -->
-        <!-- <p class="project-meta">Meta 1 ~ Meta 2 ~ Meta 3  -->
-        <!--   <?= htmlspecialchars($project["languages"]) ?> -->
-      <!--   </p> -->
-      <!-- </div> -->
+      <?= $content?>
 
-     <div class="content">
-        <?= $content?>
-     </div>
+    <?php endif; ?>
+  </section>
 
-    </section>
-  <?php endif; ?>
+  <aside>
 
-  <section class="left-col" id="projects-left-col">
-
-        <ul> 
-            <h1 style="text-align: center; margin: 0 0 30px 0;">Projects</h1>
+    <ul> 
       <?php foreach($sections as $sectionName): ?>
         <?php if(empty($projectsBySection[$sectionName])): ?>
-          <p class="section-header">
-            <?= htmlspecialchars($sectionName) ?>
-          </p>
+          <p><?= htmlspecialchars($sectionName) ?></p>
 
           <?php foreach($projectBySection[$sectionName] as $item): ?>
             <li>
-              <a href="?project=<?= urlencode($item['slug']) ?>"
+              <a href="?project=<?= urlencode($item['slug']) ?>" 
                 class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
                 <?= htmlspecialchars($item['name']) ?>
                 <span class="proj-lang">- <?= htmlspecialchars($item['languages']) ?></span>
@@ -112,10 +87,11 @@ unset($projects);
               </a>
             </li>
           <?php endforeach; ?>
+
         <?php endif; ?>
       <?php endforeach; ?>
     </ul>
-  </section>
+  </aside>
 
-</div>
+</main>
 <?php include "footer.php" ?>

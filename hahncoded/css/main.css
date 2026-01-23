@@ -1,74 +1,113 @@
-h1 { font-size: 3rem; font-weight: bold;}
-h2 { font-size: 2.5rem; font-weight: bold;}
-h3 { font-size: 2rem; font-weight: bold;}
-h4 { font-size: 1.5rem; font-weight: bold;}
-a, a:visited, a:hover, a:active { text-decoration: none; }
-html { overflow-y: scroll; }
+/* ===============================
+   GLOBAL FOUNDATION
+   =============================== */
 
-ul, ol {
-    padding-left:1.4rem;
-    margin: 0 0 1.2rem 0;
-}
-li { 
-    line-height: 1.2;
-    color: #C8D2CC;
-    margin: 0.35rem 0;
+* {
+  box-sizing: border-box;
 }
 
-li::marker {
-    color: #8FA39A;
+html {
+  overflow-y: scroll;
+  font-size: 16px;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    background-color: #0B0F0D;
-    /* font-size: 16px; */
-    /* height: 100vh; */
-    max-width: 1280px;
-    /* width: 100%; */
-    margin: auto;
-    /* color: #FFDEFF; */
+  margin: 0;
+  max-width: 1280px;
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--bg0);
+  color: var(--fg0);
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.6;
 }
 
-/* -------- HEADER SPECIFIC ---------- */
-header {
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* font-size: 2rem; */
-    /* padding: 0px 10px 20px 10px; */
+
+/* ===============================
+   TYPOGRAPHY (consistent scale)
+   =============================== */
+
+h1, h2, h3, h4 {
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  color: var(--accent);
 }
 
-nav {
-    /* display: flex; */
-    /* align-items: center; */
-    /* gap: 2rem; */
-    /* padding-right: 80px; */
+h1 { font-size: 2.6rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+p {
+  color: var(--fg1);
 }
 
-#contact-info a{
-    text-decoration: none;
-    font-size: 1.5rem;
-    margin: 5px;
-    color: #D1FFD1;
+
+/* ===============================
+   LINKS
+   =============================== */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px dotted transparent;
+  transition: 0.15s ease;
 }
 
-/* -------- HEADER SPECIFIC END---------- */
-
-/* Holds all left and center col content as well as home page about me*/
-/* .main-container { */
-/*     font-size: 2rem; */
-    /* margin: auto; */
-    /* max-width: 1000px; */
-    /* color: #FFFFFF; */
-/* } */
-
-footer {
-    font-size: 1.25rem;
-    margin-top: auto;
-    text-align: center;
-    color: #8FA39A;
+a:hover {
+  border-bottom-color: var(--accent);
 }
 
-/*Media query for main paragraph on resizing down to scale with page*/
 
+/* ===============================
+   LISTS (clean + modern)
+   =============================== */
+
+ul, ol {
+  padding-left: 1.2rem;
+  margin: 0 0 1.2rem 0;
+}
+
+li {
+  color: var(--fg1);
+  margin: 0.35rem 0;
+  line-height: 1.5;
+}
+
+li::marker {
+  color: var(--muted);
+}
+
+
+/* ===============================
+   PANELS / CARDS
+   =============================== */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.panel-soft {
+  background: var(--panel2);
+}
+
+
+/* ===============================
+   SELECTION + FOCUS
+   =============================== */
+
+::selection {
+  background: rgba(159, 227, 177, 0.25);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

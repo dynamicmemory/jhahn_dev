@@ -1,0 +1,37 @@
+:root {
+  /* ===== GREEN-GRAY BASE STACK (dark → light) ===== */
+  --bg0: #0b0f0d;   /* page */
+  --bg1: #111714;
+  --bg2: #161e1a;
+
+  --panel:  #121915;
+  --panel2: #18211c;
+
+  /* ===== FOREGROUND ===== */
+  --fg0: #d6e0da;   /* main text */
+  --fg1: #b8c6bf;   /* secondary */
+  --muted:  #8fa39a;
+  --muted2: #6f8178;
+
+  /* ===== BORDERS ===== */
+  --border:  #27342d;
+  --border2: #1a2420;
+
+  /* ===== ACCENTS ===== */
+  --accent:  #9fe3b1;   /* primary mint */
+  --accent2: #7fcf98;   /* softer green */
+
+  /* semantic */
+  --danger: #e57373;    /* keep red (don’t theme errors green) */
+  --warn:   #d8b26a;    /* amber stays amber */
+  --ok:     #6fd19b;    /* green success */
+
+  /* ===== EFFECTS ===== */
+  --shadow:  rgba(0, 0, 0, 0.55);
+  --shadow2: rgba(0, 0, 0, 0.28);
+
+  --radius: 6px;
+
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+          "Liberation Mono", "Courier New", monospace;
+}

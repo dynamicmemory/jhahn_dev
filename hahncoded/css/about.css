@@ -1,52 +1,53 @@
-#about-center-container{
-    font-size: 2rem;
-    padding: 100px;
-    border-radius: 20px;
-    color: #212121;
-}
-
-#about-center-container p {
-    margin: 50px;
-}
-
-.word{
-    position: relative;
-    animation: shimmer ease-in-out infinite alternate;
-}
-
-@keyframes shimmer {
-    0% { color: #252525; }
-    3% { color: #303030; }
-    5% { color: #353535; }
-    10% { color: #454545; }
-    18% { color: #808080; }
-    36% { color: #BAA2BA; }
-    54% { color: #393939; }
-    70% { color: #BAA2BA; }
-    84% { color: #808080; }
-    100% { color: #FFDEFF; }
-}
-
-
-/* ANIMATIONS FOR THE FLOATING TEXT*/
-.float{
-    position: relative;
-    animation: drift 5s ease-in-out infinite alternate;
-}
-
-.float:nth-child(1) { animation-duration: 30s; animation-delay: 0s; }
-.float:nth-child(2) { animation-duration: 45s; animation-delay: 0s; }
-.float:nth-child(3) { animation-duration: 15s; animation-delay: 0s; }
-.float:nth-child(4) { animation-duration: 60s; animation-delay: 0s; }
-.float:nth-child(5) { animation-duration: 75s; animation-delay: 0s; }
-
-@keyframes drift {
-    0% { transform: translate(0px, 0px) rotate(0deg); }
-    20% { transform: translate(-2.5px, -2.5px) rotate(0.1deg); }
-    40% { transform: translate(5px, -2.5px) rotate(-0.2deg); }
-    60% { transform: translate(-5px, 5px) rotate(0.3deg); }
-    80% { transform: translate(5px, 5px) rotate(-0.1deg); }
-    100% { transform: translate(0px, 0px) rotate(0deg); }
-}
-
-
+/* #about-center-container{ */
+/*     font-size: 2rem; */
+/*     padding: 100px; */
+/*     border-radius: 20px; */
+/*     /* color: #212121; */ */
+/*     color: #111714; */
+/* } */
+/**/
+/* #about-center-container p { */
+/*     margin: 50px; */
+/* } */
+/**/
+/* .word{ */
+/*     position: relative; */
+/*     animation: shimmer ease-in-out infinite alternate; */
+/* } */
+/**/
+/* @keyframes shimmer { */
+/*     0% { color: #111714; } */
+/*     3% { color: #303030; } */
+/*     5% { color: #353535; } */
+/*     10% { color: #454545; } */
+/*     18% { color: #B8C6BF; } */
+/*     36% { color: #D6E0DA; } */
+/*     54% { color: #393939; } */
+/*     70% { color: #D6E0DA; } */
+/*     84% { color: #B8C6BF; } */
+/*     100% { color: #FFDEFF; } */
+/* } */
+/**/
+/**/
+/* /* ANIMATIONS FOR THE FLOATING TEXT*/ */
+/* .float{ */
+/*     position: relative; */
+/*     animation: drift 5s ease-in-out infinite alternate; */
+/* } */
+/**/
+/* .float:nth-child(1) { animation-duration: 30s; animation-delay: 0s; } */
+/* .float:nth-child(2) { animation-duration: 45s; animation-delay: 0s; } */
+/* .float:nth-child(3) { animation-duration: 15s; animation-delay: 0s; } */
+/* .float:nth-child(4) { animation-duration: 60s; animation-delay: 0s; } */
+/* .float:nth-child(5) { animation-duration: 75s; animation-delay: 0s; } */
+/**/
+/* @keyframes drift { */
+/*     0% { transform: translate(0px, 0px) rotate(0deg); } */
+/*     20% { transform: translate(-2.5px, -2.5px) rotate(0.1deg); } */
+/*     40% { transform: translate(5px, -2.5px) rotate(-0.2deg); } */
+/*     60% { transform: translate(-5px, 5px) rotate(0.3deg); } */
+/*     80% { transform: translate(5px, 5px) rotate(-0.1deg); } */
+/*     100% { transform: translate(0px, 0px) rotate(0deg); } */
+/* } */
+/**/
+/**/
