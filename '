@@ -9,11 +9,11 @@ html {
 }
 
 body {
+    margin: 0;
+    min-height: 100vh;
+
     display: grid;
     grid-template-rows: auto 1fr auto;
-
-    min-height: 100vh;
-    margin: 0;
 
     background: var(--bg0);
     color: var(--fg0);
@@ -43,7 +43,7 @@ a {
     color: var(--accent);
     text-decoration: none;
     border-bottom: 1px dotted transparent;
-    transition: 0.5s ease;
+    transition: 0.15s ease;
 }
 
 a:hover {
@@ -64,6 +64,7 @@ li {
 li::marker {
     color: var(--muted);
 }
+
 
 /* ===============================Panels & Cards============================= */
 
@@ -95,7 +96,7 @@ li::marker {
 .page-container {
     display: grid;
     grid-template-rows: auto 1fr auto;
-    gap: 16px;
+    gap: 32px;
 
     max-width: 1280px;
     width: 100%;
@@ -109,68 +110,41 @@ li::marker {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     padding: 24px 32px;
     border-bottom: 1px solid var(--border);
 }
 
-.contact-info a {
-    margin: 0 8px;
+#contact-info a {
+    margin-left: 16px;
     color: var(--accent);
     text-decoration: none;
 }
 
-.contact-info a:hover {
+#contact-info a:hover {
     color: var(--accent2);
 }
 
 .layout {
     display: grid;
     grid-template-columns: 3fr 1fr;
-    gap: 16px; /* 32px if padding on */
+    gap: 32px;
 
+    /* max-width: 1280px; */
     width: 100%;
-    /* padding: 16px; */
     margin: 0 auto;
+    padding: 32px;
 }
 
 .content-area {
     width: 100%;
-
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-
     padding: 32px;
 }
 
-.content-area img {
-    display: block;
-
-    max-width: 100%;
-    height: auto;
-
-    margin: 1rem 0;
-}
-
-
-.content ul {
-    list-style-position: outside;
-    padding-left: 1.5rem;
-    margin-bottom:1rem;
-}
-.content li {
-  line-height: 1.5;
-  color: var(--fg1);
-}
-.content li::marker {
-    color: var(--muted);
-}
-
-
 .sidebar {
     width: 100%;
-    
     background: var(--bg1);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -203,18 +177,6 @@ li::marker {
 .project-link:hover {
     border-color: var(--accent);
     color: var(--accent);
-}
-
-.project-lang {
-    font-size: 0.9rem;
-    color: var(--muted2);
-    margin-left: 4px;
-}
-
-.project-desc {
-    font-size: 0.9rem;
-    /* color: var(--muted2); */
-    margin-left: 4px;
 }
 
 .footer {

@@ -56,9 +56,9 @@ unset($projects);
 ?>
 
 <?php include "header.php" ?>
-<main>
+<main class="layout">
 
-  <section>
+  <section class="content-area">
     <?php if ($project === null): ?>
 
       <?php include "about.php" ?>
@@ -70,20 +70,20 @@ unset($projects);
     <?php endif; ?>
   </section>
 
-  <aside>
+  <aside class="sidebar">
 
-    <ul> 
+    <ul class="project-list"> 
       <?php foreach($sections as $sectionName): ?>
         <?php if(empty($projectsBySection[$sectionName])): ?>
           <p><?= htmlspecialchars($sectionName) ?></p>
 
           <?php foreach($projectBySection[$sectionName] as $item): ?>
-            <li>
+            <li class="project-link">
               <a href="?project=<?= urlencode($item['slug']) ?>" 
                 class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
                 <?= htmlspecialchars($item['name']) ?>
-                <span class="proj-lang">- <?= htmlspecialchars($item['languages']) ?></span>
-                <p class="proj-desc"><?= htmlspecialchars($item['description']) ?></p>
+                <span class="project-lang">- <?= htmlspecialchars($item['languages']) ?></span>
+                <p class="project-desc"><?= htmlspecialchars($item['description']) ?></p>
               </a>
             </li>
           <?php endforeach; ?>
@@ -91,6 +91,7 @@ unset($projects);
         <?php endif; ?>
       <?php endforeach; ?>
     </ul>
+
   </aside>
 
 </main>
