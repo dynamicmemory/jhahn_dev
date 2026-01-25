@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Split up every char and place it in an individual span
         e.innerHTML = e.textContent
-            .split(' ')
-            .map(c => c === ' ' ? ' ' :`<span class="word">${c}</span>`)
-            .join(' ');
+            .split('')
+            .map(c => c === '' ? '' :`<span class="word">${c}</span>`)
+            .join('');
 
         // Randomise the length of the duration
         e.querySelectorAll('.word').forEach(c => {

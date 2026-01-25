@@ -1,35 +1,35 @@
-/* #about-center-container{ */
-/*     font-size: 2rem; */
-/*     padding: 100px; */
-/*     border-radius: 20px; */
-/*     /* color: #212121; */ */
-/*     color: #111714; */
-/* } */
-/**/
-/* #about-center-container p { */
-/*     margin: 50px; */
-/* } */
-/**/
-/* .word{ */
-/*     position: relative; */
-/*     animation: shimmer ease-in-out infinite alternate; */
-/* } */
-/**/
-/* @keyframes shimmer { */
-/*     0% { color: #111714; } */
-/*     3% { color: #303030; } */
-/*     5% { color: #353535; } */
-/*     10% { color: #454545; } */
-/*     18% { color: #B8C6BF; } */
-/*     36% { color: #D6E0DA; } */
-/*     54% { color: #393939; } */
-/*     70% { color: #D6E0DA; } */
-/*     84% { color: #B8C6BF; } */
-/*     100% { color: #FFDEFF; } */
-/* } */
-/**/
-/**/
-/* /* ANIMATIONS FOR THE FLOATING TEXT*/ */
+#about-center-container{
+    font-size: 2rem;
+    padding: 100px;
+    border-radius: 20px;
+    /* color: #212121; */
+    color: var(--panel);
+}
+
+#about-center-container p {
+    margin: 50px;
+    color: var(--panel);
+}
+
+.word{
+    position: relative;
+    animation: shimmer ease-in-out infinite alternate;
+}
+
+@keyframes shimmer {
+    0% { color: var(--panel2); }
+    5% { color: var(--border); }
+    10% { color: var(--muted); }
+    15% { color: var(--accent); }
+    30% { color: var(--accent2); }
+    45% { color: var(--fg1); }
+    55% { color: var(--accent); }
+    70% { color: var(--fg0); }
+    85% { color: var(--fg1); }
+    100% { color: var(--fg0); }
+}
+
+/* ANIMATIONS FOR THE FLOATING TEXT*/
 /* .float{ */
 /*     position: relative; */
 /*     animation: drift 5s ease-in-out infinite alternate; */

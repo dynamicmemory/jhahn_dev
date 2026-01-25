@@ -85,7 +85,8 @@ unset($projects);
                 <span class="project-lang">- <?= htmlspecialchars($item['languages']) ?></span>
                 <p class="project-desc"><?= htmlspecialchars($item['description']) ?></p>
               </a>
-            </li>
+             </li>
+        
           <?php endforeach; ?>
 
         <?php endif; ?>
