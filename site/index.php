@@ -58,7 +58,7 @@ unset($projects);
 <?php include "header.php" ?>
 <main class="layout">
 
-  <section class="content-area">
+  <section class="content-area md">
     <?php if ($project === null): ?>
 
       <?php include "about.php" ?>
@@ -78,9 +78,10 @@ unset($projects);
           <p><?= htmlspecialchars($sectionName) ?></p>
 
           <?php foreach($projectBySection[$sectionName] as $item): ?>
-            <li class="project-link">
+            <!-- <li class="project-link"> -->
+            <li>
               <a href="?project=<?= urlencode($item['slug']) ?>" 
-                class="<?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
+                class="project-link <?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
                 <?= htmlspecialchars($item['name']) ?>
                 <span class="project-lang">- <?= htmlspecialchars($item['languages']) ?></span>
                 <p class="project-desc"><?= htmlspecialchars($item['description']) ?></p>

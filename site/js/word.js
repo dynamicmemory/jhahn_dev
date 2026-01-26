@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // For each id in the list, call the wrap span function and apply the span
     // TODO: Dynamically load the ids from the page.
-    const ids = ["about-h1", "about-p1", "about-p2", "about-p3"]
+    const ids = ["about-h1", "about-p1", "about-p2", "about-p3", "title"]
     ids.forEach(id => wrapCharInSpan(id));
 });
 
