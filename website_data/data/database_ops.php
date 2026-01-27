@@ -39,7 +39,8 @@ $schema = "(
     rank INTEGER NOT NULL DEFAULT 1,
     languages TEXT,
     description TEXT NOT NULL,
-    content TEXT NOT NULL
+    content TEXT NOT NULL,
+    publish INTEGER DEFAULT 0 
     );";
 
 /* $table_name = "settings"; */
@@ -51,7 +52,7 @@ $schema = "(
 /*     tag TEXT DEFAULT 'general' */
 /* );"; */
 
-$fields = "id, name, slug, last_updated, languages, description, content";
+$fields = "id, name, slug, last_updated, section, rank, languages, description, content";
 $old_table = "old_projects";
 
 // Atomic operation for mirgrating tables

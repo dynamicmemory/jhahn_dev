@@ -12,7 +12,9 @@ $content = null;
 
 // Get all the projects in the db
 $projects_list = $database
-    ->query("SELECT name, slug, section , rank, languages, description FROM projects")
+    ->query("SELECT name, slug, section , rank, languages, description 
+        FROM projects
+        WHERE publish = 1")
     ->fetchAll();
 
 // Get the slug from the db for the url if a project has been clicked
@@ -74,14 +76,14 @@ unset($projects);
 
     <ul class="project-list"> 
       <?php foreach($sections as $sectionName): ?>
-        <?php if(empty($projectsBySection[$sectionName])): ?>
+        <?php if(!empty($projectBySection[$sectionName])): ?>
           <p><?= htmlspecialchars($sectionName) ?></p>
 
           <?php foreach($projectBySection[$sectionName] as $item): ?>
             <!-- <li class="project-link"> -->
             <li>
               <a href="?project=<?= urlencode($item['slug']) ?>" 
-                class="project-link <?= ($item["slug"] === $project["slug"]) ? 'active' : '' ?>">
+                class="project-link <?= ($project && $item["slug"] === $project["slug"]) ? 'active' : '' ?>">
                 <?= htmlspecialchars($item['name']) ?>
                 <span class="project-lang">- <?= htmlspecialchars($item['languages']) ?></span>
                 <p class="project-desc"><?= htmlspecialchars($item['description']) ?></p>

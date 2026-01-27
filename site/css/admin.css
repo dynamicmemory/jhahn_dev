@@ -57,5 +57,10 @@ main {
 
 input, textarea{ width: 100%; }
 
+input[type="checkbox"] {
+    width: auto;           /* ignore the global width:100% */
+    height: auto;          /* default size */
+}
+
 footer { margin-top: auto; text-align: center; }
 

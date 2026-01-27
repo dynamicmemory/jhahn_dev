@@ -24,12 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $languages = $_POST['languages'];
     $description= $_POST['description'];
     $content = $_POST['content'];
+    $publish = isset($_POST['publish']) ? 1 : 0;
 
     // Code for adding a new project
     if ($_POST["mode"] === "create") {
         $statement = $database->prepare(
-            "INSERT INTO projects (name, slug, last_updated, section, rank, languages, description, content) 
-            VALUES (:name, :slug, :last_updated, :section, :rank, :languages, :description, :content)"
+            "INSERT INTO projects (name, slug, last_updated, section, rank, languages, description, content, publish) 
+            VALUES (:name, :slug, :last_updated, :section, :rank, :languages, :description, :content, :publish)"
         );
         // Protect against inserting existing slug 
         try {
@@ -41,7 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ":rank" => $rank,
                 ":languages" => $languages,
                 ":description" => $description,
-                ":content" => $content
+                ":content" => $content,
+                ":publish" => $publish
             ]);
         } catch (PDOException $e) {
             die($e);
@@ -59,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             SET name = :name, slug = :slug, last_updated = :last_updated,
                        section = :section, rank = :rank,
                        languages = :languages, description = :description, 
-                       content = :content WHERE id = :id"
+                       content = :content, publish = :publish WHERE id = :id"
         );
 
         $statement->execute([
@@ -71,7 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ":rank" => $rank,
             ":languages" => $languages,
             ":description" => $description,
-            ":content" => $content
+            ":content" => $content,
+            ":publish" => $publish
         ]);
 
         echo "<p>Updated!</p>";
@@ -179,6 +182,12 @@ $projects = $database->query("SELECT id, name FROM projects ORDER BY id ASC");
 
           <label>Content (Markdown body): </label><br>
           <textarea name="content" rows="30"><?= htmlspecialchars($selected_project["content"]) ?></textarea>
+          <br><br>
+
+          <label class="checkbox-label">Publish: 
+                <input type="checkbox" name="publish" style="align-content: left;" value="1" 
+                    <?= !empty($selected_project["publish"]) ? "checked" : "" ?>>
+          </label>
           <br><br>
 
           <!-- ADD JSON MEDIA OBJECTS IF I CHOOSE TO IMPLEMENT HERE-->
