@@ -1,13 +1,13 @@
 #about-center-container{
     font-size: 2rem;
-    padding: 100px;
+    padding: 50px;
     border-radius: 20px;
     /* color: #212121; */
     color: var(--panel);
 }
 
 #about-center-container p {
-    margin: 50px;
+    margin: 20px;
     color: var(--panel);
 }
 
