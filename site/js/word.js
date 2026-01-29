@@ -29,6 +29,3 @@ document.addEventListener("DOMContentLoaded", () => {
     const ids = ["about-h1", "about-p1", "about-p2", "about-p3", "title"]
     ids.forEach(id => wrapCharInSpan(id));
 });
-
-
-

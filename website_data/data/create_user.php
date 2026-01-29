@@ -2,8 +2,9 @@
 // Roles = superadmin, admin, viewer
 require("../database.php");
 
+// Example for future me 
 $username = "superuser";
-$password = "pythagoras";
+$password = "password1";
 $role = "superadmin";
 
 /* remove_user($database, $username); */

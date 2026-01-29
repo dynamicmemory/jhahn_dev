@@ -1,6 +1,6 @@
 #about-center-container{
-    font-size: 2rem;
-    padding: 50px;
+    font-size: 1.75rem;
+    padding: 200px 20px 0 20px;
     border-radius: 20px;
     /* color: #212121; */
     color: var(--panel);
@@ -8,12 +8,13 @@
 
 #about-center-container p {
     margin: 20px;
-    color: var(--panel);
+    color: var(--fg0);
 }
 
-.word{
+.word {
     position: relative;
-    animation: shimmer ease-in-out infinite alternate;
+    /* animation: shimmer ease-in-out infinite alternate; */
+    /* animation: shimmer ease-in-out forwards; */
 }
 
 @keyframes shimmer {
