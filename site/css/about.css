@@ -1,6 +1,6 @@
 #about-center-container{
-    font-size: 1.75rem;
-    padding: 200px 20px 0 20px;
+    font-size: 1.25rem;
+    padding: 50px 50px 0 50px;
     border-radius: 20px;
     /* color: #212121; */
     color: var(--panel);
@@ -8,20 +8,21 @@
 
 #about-center-container p {
     margin: 20px;
-    color: var(--fg0);
+    /* color: var(--panel); */
+    color: var(--fg1);
 }
 
 .word {
     position: relative;
     /* animation: shimmer ease-in-out infinite alternate; */
-    /* animation: shimmer ease-in-out forwards; */
+    animation: shimmer ease-in-out forwards;
 }
 
 @keyframes shimmer {
-    0% { color: var(--panel2); }
-    5% { color: var(--border); }
-    10% { color: var(--muted); }
-    15% { color: var(--accent); }
+    0% { color: var(--fg1); }
+    5% { color: var(--muted); }
+    10% { color: var(--fg1); }
+    15% { color: var(--muted); }
     30% { color: var(--accent2); }
     45% { color: var(--fg1); }
     55% { color: var(--accent); }
@@ -29,6 +30,8 @@
     85% { color: var(--fg1); }
     100% { color: var(--fg0); }
 }
+
+
 
 /* ANIMATIONS FOR THE FLOATING TEXT*/
 /* .float{ */

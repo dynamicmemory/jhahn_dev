@@ -1,7 +1,14 @@
 <?php 
+session_start();
 // Add any php objects or code I need here.
 require_once __DIR__ . "/../website_data/database.php";
 require_once __DIR__ . "/includes/functions.php";
+
+$maintenance = getSetting("maintenance_mode");
+if ($maintenance && empty($_SESSION["user_id"])){
+    include "maintenance.php";
+    exit;
+}
 
 ?>
 <!DOCTYPE html>
@@ -29,7 +36,7 @@ require_once __DIR__ . "/includes/functions.php";
       <header class="header">
 
         <h1> 
-          <a href="/index.php"><?= getSetting("header_website_title") ?></a> 
+          <a id="title" href="/index.php"><?= getSetting("header_website_title") ?></a> 
         </h1>
 
         <h3 class="contact-info">

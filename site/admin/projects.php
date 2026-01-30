@@ -46,10 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ":publish" => $publish
             ]);
         } catch (PDOException $e) {
-            die($e);
-            /* echo "<p>$e</p>";  */
-            /* die("Slug already exists"); */
-        }
+            echo "<p>$name already exists in table, $e</p>";
+        } 
         echo "<p>Added project: $name</p>";
     }
 
@@ -63,20 +61,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                        languages = :languages, description = :description, 
                        content = :content, publish = :publish WHERE id = :id"
         );
-
-        $statement->execute([
-            ":id" => $id,
-            ":name" => $name,
-            ":slug" => $slug,
-            ":last_updated" => date('Y-m-d'),
-            ":section" => $section,
-            ":rank" => $rank,
-            ":languages" => $languages,
-            ":description" => $description,
-            ":content" => $content,
-            ":publish" => $publish
-        ]);
-
+        try {
+            $statement->execute([
+                ":id" => $id,
+                ":name" => $name,
+                ":slug" => $slug,
+                ":last_updated" => date('Y-m-d'),
+                ":section" => $section,
+                ":rank" => $rank,
+                ":languages" => $languages,
+                ":description" => $description,
+                ":content" => $content,
+                ":publish" => $publish
+            ]);
+        } catch (PDOException $e) {
+            echo "<p>$name was not updated, $e</p>";
+        }
         echo "<p>Updated!</p>";
     }
 

@@ -1,5 +1,6 @@
 <?php 
 require "../website_data/database.php";
+
 // Markdown Parser (https://github.com/erusev/parsedown/blob/master/Parsedown.php)
 // Maybe ill build my own md parser but for now ill use this.
 require __DIR__ . "/vendor/Parsedown.php";
