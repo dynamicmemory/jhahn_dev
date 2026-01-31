@@ -129,9 +129,8 @@ hr {
     justify-content: space-between;
     align-items: center;
 
-    padding: 24px 32px;
+    padding: 24px 32px 12px 32px;
     border-bottom: 1px solid var(--border);
-
 }
 
 .contact-info {
@@ -140,13 +139,17 @@ hr {
 }
 
 .icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
 
     fill: var(--accent);
     opacity: 0.8;
 
     transition: 0.25s ease;
+}
+
+.contact-info a {
+    border-bottom: none;
 }
 
 .contact-info a:hover .icon {
@@ -265,7 +268,6 @@ hr {
 }
 
 
-
 /*=======================markdown only inside main content ================= */
 .md {
     line-height: 1.7;
@@ -281,6 +283,10 @@ hr {
 .md h2 {
     font-size: 1.6rem;
     margin: 1.6rem 0 0.8rem;
+}
+
+.md li {
+    margin: 0.35rem 1rem;
 }
 
 /* paragraphs */

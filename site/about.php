@@ -8,6 +8,8 @@
         <p class="float" id="about-p1"><?= getsetting("about_p1"); ?></p>
         <p class="float" id="about-p2"><?= getSetting("about_p2"); ?></p>
         <p class="float" id="about-p3"><?= getSetting("about_p3"); ?></p>
+        <p class="float" id="about-p4"><?= getSetting("about_p4"); ?></p>
+        <p class="float" id="about-p5"><?= getSetting("about_p5"); ?></p>
     </div>
 </div>
 

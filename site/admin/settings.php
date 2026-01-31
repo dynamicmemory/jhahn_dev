@@ -85,7 +85,7 @@ if (isset($_GET["id"])) {
 }
 
 // Gets all the settings to display in the sidebar
-$settings = $database->query("SELECT id, key FROM settings ORDER BY id ASC");
+$settings = $database->query("SELECT id, key, tag FROM settings ORDER BY tag ASC");
 
 ?>
 

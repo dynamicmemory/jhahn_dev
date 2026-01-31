@@ -1,5 +1,5 @@
 #about-center-container{
-    font-size: 1.25rem;
+    font-size: 1.35rem;
     padding: 50px 50px 0 50px;
     border-radius: 20px;
     /* color: #212121; */
@@ -8,8 +8,8 @@
 
 #about-center-container p {
     margin: 20px;
-    /* color: var(--panel); */
-    color: var(--fg1);
+    color: var(--panel);
+    /* color: var(--fg1); */
 }
 
 .word {
@@ -19,18 +19,17 @@
 }
 
 @keyframes shimmer {
-    0% { color: var(--fg1); }
-    5% { color: var(--muted); }
-    10% { color: var(--fg1); }
+    0% { color: var(--bg1); }
+    5% { color: var(--panel2); }
+    10% { color: var(--muted2); }
     15% { color: var(--muted); }
-    30% { color: var(--accent2); }
-    45% { color: var(--fg1); }
-    55% { color: var(--accent); }
+    30% { color: var(--muted2); }
+    45% { color: var(--accent); }
+    55% { color: var(--accent2); }
     70% { color: var(--fg0); }
     85% { color: var(--fg1); }
     100% { color: var(--fg0); }
 }
-
 
 
 /* ANIMATIONS FOR THE FLOATING TEXT*/

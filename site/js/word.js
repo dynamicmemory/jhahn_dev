@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Randomise the length of the duration
         e.querySelectorAll('.word').forEach(c => {
             // c.style.animationDuration = `${10 + Math.random()*10}s`;
-            c.style.animationDuration = `${1 + Math.random()*1}s`;
-            c.style.animationDelay = `${delay + Math.random()*1}s`;
+            c.style.animationDuration = `${10 + Math.random()*10}s`;
+            c.style.animationDelay = `${delay + Math.random()*2}s`;
         });
     }
 
@@ -28,8 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // TODO: Dynamically load the ids from the page.
     // const ids = ["about-h1", "about-p1", "about-p2", "about-p3"]
     // ids.forEach(id => wrapCharInSpan(id));
-    // wrapCharInSpan("about-h1");
-    // wrapCharInSpan("about-p1", 2);
-    // wrapCharInSpan("about-p2", 4);
-    // wrapCharInSpan("about-p3", 6);
+    wrapCharInSpan("about-h1");
+    wrapCharInSpan("about-p1", 1);
+    wrapCharInSpan("about-p2", 3);
+    wrapCharInSpan("about-p3", 5);
+    wrapCharInSpan("about-p4", 7);
+    wrapCharInSpan("about-p5", 9);
 });
