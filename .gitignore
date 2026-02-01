@@ -1,1 +1,2 @@
-website_data/data/*.db
+storage/data/*.db
+storage/data/backups/*.db

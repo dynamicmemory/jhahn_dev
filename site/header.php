@@ -1,7 +1,7 @@
 <?php 
 session_start();
 // Add any php objects or code I need here.
-require_once __DIR__ . "/../website_data/database.php";
+require_once __DIR__ . "/../storage/database.php";
 require_once __DIR__ . "/includes/functions.php";
 
 $maintenance = getSetting("maintenance_mode");
@@ -47,8 +47,8 @@ if ($maintenance && empty($_SESSION["user_id"])){
             </svg>
           </a>
           |
-          <a class="contact-info" href="mailto:<?= getSetting("contact_email") ?>" target="_blank"
-            rel="noopener">
+          <a class="contact-info" href="mailto:<?= getSetting("contact_email") ?>"
+            >
             <svg class="icon" viewBox="0 0 24 24">
               <path d="M2 4h20v16H2V4zm10 7L4 6v12h16V6l-8 5z"/>
             </svg>

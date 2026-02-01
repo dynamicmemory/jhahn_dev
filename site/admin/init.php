@@ -5,7 +5,7 @@
 require_once "auth.php";
 
 // Gets the database object
-require_once "../../website_data/database.php";
+require_once "../../storage/database.php";
 
 // Gets the security and misc helpers
 require_once "../includes/csrf.php";

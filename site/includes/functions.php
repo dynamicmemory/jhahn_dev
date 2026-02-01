@@ -1,5 +1,5 @@
 <?php 
-require "../website_data/database.php";
+require "../storage/database.php";
 
 function getSetting($key, $default = null) {
     global $database;
