@@ -22,9 +22,9 @@
   --accent2: #7fcf98;   /* softer green */
 
   /* semantic */
-  --danger: #e57373;    /* keep red (don’t theme errors green) */
-  --warn:   #d8b26a;    /* amber stays amber */
-  --ok:     #6fd19b;    /* green success */
+  --danger: #e57373;
+  --warn:   #d8b26a;
+  --ok:     #6fd19b;
 
   /* ===== EFFECTS ===== */
   --shadow:  rgba(0, 0, 0, 0.55);

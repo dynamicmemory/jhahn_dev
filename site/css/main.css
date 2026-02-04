@@ -290,9 +290,10 @@ hr {
 }
 
 /* paragraphs */
-/* .md p { */
-/*     margin: 1rem 0; */
-/* } */
+.md p {
+    /* margin: 1rem 0; */
+    margin-left: 0.5rem;
+}
 
 /* code */
 .md pre {
