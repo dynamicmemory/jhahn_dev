@@ -8,8 +8,8 @@
 
 #about-center-container p {
     margin: 20px;
-    color: var(--panel);
-    /* color: var(--fg1); */
+    /* color: var(--panel); */
+    color: var(--fg1);
 }
 
 .word {

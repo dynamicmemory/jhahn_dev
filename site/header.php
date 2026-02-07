@@ -20,7 +20,7 @@ if ($maintenance && empty($_SESSION["user_id"])){
     <link rel="stylesheet" type="text/css" href="/css/app.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/about.css">
-    <script src="js/word.js"></script>
+    <!-- <script src="js/word.js"></script> -->
     <!-- FOR SYNTAX HIGHLIGHTING IN THE MD CONTENT IF I EVER WANT IT-->
     <!-- <link rel="stylesheet" -->
     <!--   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"> -->

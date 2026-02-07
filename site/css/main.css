@@ -197,7 +197,7 @@ hr {
     border: 1px solid var(--border);
     border-radius: var(--radius);
 
-    padding: 20px;
+    padding: 20px 15px;
     overflow-y: auto;
 }
 
@@ -234,7 +234,6 @@ hr {
     color: var(--accent);
 }
 
-
 .project-lang {
     font-size: 0.9rem;
     color: var(--muted2);
@@ -245,6 +244,7 @@ hr {
     font-size: 0.9rem;
     /* color: var(--muted2); */
     margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 /* ============================ FOOTER ================================ */
