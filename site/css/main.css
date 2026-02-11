@@ -136,6 +136,8 @@ hr {
 .contact-info {
     display: flex;
     gap: 14px;
+    padding: 0 70px 0 0;
+
 }
 
 .icon {
