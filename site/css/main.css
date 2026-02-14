@@ -141,8 +141,8 @@ hr {
 }
 
 .icon {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
 
     fill: var(--accent);
     opacity: 0.8;
@@ -218,6 +218,7 @@ hr {
 
 .project-link {
     display: block;
+    height: 110px;
 
     padding: 10px 12px;
     margin-bottom: 8px;
