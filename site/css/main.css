@@ -195,8 +195,8 @@ hr {
 .sidebar {
     width: 100%;
     
-    background: var(--bg1);
-    border: 1px solid var(--border);
+    /* background: var(--bg1); */
+    /* border: 1px solid var(--border); */
     border-radius: var(--radius);
 
     padding: 20px 15px;
