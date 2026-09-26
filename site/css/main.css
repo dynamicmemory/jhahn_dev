@@ -130,7 +130,7 @@ hr {
     justify-content: space-between;
     align-items: center;
 
-    padding: 2rem 0.5rem 0.5rem 1.5rem;
+    padding: 4rem 0.5rem 0rem 1.5rem;
     /* border-bottom: 1px solid var(--border); */
 }
 
@@ -169,7 +169,7 @@ hr {
     gap: 8px; /* 32px if padding on */
 
     width: 100%;
-    padding: 0.5rem;
+    /* padding: 0.5rem; */
     margin: 0 auto;
 }
 
@@ -199,8 +199,9 @@ hr {
     /* border: 1px solid var(--border); */
     /* border-radius: var(--radius); */
     margin: 0rem;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     overflow-y: auto;
+    padding: 2rem 1rem 1rem 1rem;
 }
 
 .sidebar p {
@@ -291,6 +292,7 @@ hr {
 .md h1 {
     font-size: 2.2rem;
     text-align: center;
+    color: var(--accent);
 
 }
 
