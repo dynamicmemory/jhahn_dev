@@ -54,6 +54,10 @@ foreach($projects_list as $p) {
 foreach($projectBySection as &$projects) {
     usort($projects, fn($a, $b) => $a["rank"] <=> $b["rank"]);
 }
+
+// TEMPORARY sorting of projects since removal of section headers
+usort($projects_list, fn($a, $b) => $a["rank"] <=> $b["rank"]);
+
 unset($projects);
 
 ?>
@@ -76,25 +80,27 @@ unset($projects);
   <aside class="sidebar">
 
     <ul class="project-list"> 
-      <?php foreach($sections as $sectionName): ?>
-        <?php if(!empty($projectBySection[$sectionName])): ?>
-          <p><?= htmlspecialchars($sectionName) ?></p>
+      <?php //foreach($sections as $sectionName): ?>
+        <?php //if(!empty($projectBySection[$sectionName])): ?>
+         <!-- <p><?= htmlspecialchars($sectionName) ?></p> -->
+         <p>Projects</p>
 
-          <?php foreach($projectBySection[$sectionName] as $item): ?>
+          <?php //foreach($projectBySection[$sectionName] as $item): ?>
+          <?php foreach($projects_list as $item): ?>
             <!-- <li class="project-link"> -->
             <li>
               <a href="?project=<?= urlencode($item['slug']) ?>" 
                 class="project-link <?= ($project && $item["slug"] === $project["slug"]) ? 'active' : '' ?>">
                 <?= htmlspecialchars($item['name']) ?>
-                <span class="project-lang">- <?= htmlspecialchars($item['languages']) ?></span>
+<!--                  <span class="project-lang">- <?= htmlspecialchars($item['languages']) ?></span> --> 
                 <p class="project-desc"><?= htmlspecialchars($item['description']) ?></p>
               </a>
              </li>
         
           <?php endforeach; ?>
 
-        <?php endif; ?>
-      <?php endforeach; ?>
+        <?php //endif; ?>
+      <?php //endforeach; ?>
     </ul>
 
   </aside>

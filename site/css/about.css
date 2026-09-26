@@ -1,22 +1,22 @@
 #about-center-container{
-    font-size: 1.35rem;
-    padding: 50px 50px 0 0;
+    font-size: 1rem;
+    padding: 0px 0px 0 0;
     border-radius: 20px;
     /* color: #212121; */
     color: var(--panel);
 }
 
 #about-center-container p {
-    margin: 20px;
+    margin: 10px, 0px, 10px, 0px;
     /* color: var(--panel); */
     color: var(--fg1);
 }
 
-.word {
-    position: relative;
+/* .word { */
+    /* position: relative; */
     /* animation: shimmer ease-in-out infinite alternate; */
-    animation: shimmer ease-in-out forwards;
-}
+    /* animation: shimmer ease-in-out forwards; */
+/* } */
 
 @keyframes shimmer {
     0% { color: var(--bg1); }
