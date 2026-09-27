@@ -65,7 +65,7 @@ unset($projects);
 <?php include "header.php" ?>
 <main class="layout">
 
-  <section class="content-area md">
+  <section class="content-area <?= $project === null ? 'about-center-container' : 'md' ?>">
     <?php if ($project === null): ?>
 
       <?php include "about.php" ?>

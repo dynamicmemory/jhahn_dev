@@ -40,6 +40,8 @@ if ($maintenance && empty($_SESSION["user_id"])){
           <a id="title" href="/index.php"><?= getSetting("header_website_title") ?></a> 
         </h1>
 
+<!--        <img class="icon" src="./media/jhahn_dev/logo-trans.png"></img>
+-->
 <!--        <h4>Projects Writing</h4> 
 -->
 
